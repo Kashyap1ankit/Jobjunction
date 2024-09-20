@@ -1,6 +1,8 @@
 import path from "path";
+import withPwa from "next-pwa";
 
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -29,4 +31,8 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const pwaConfig = withPwa({
+  dest: "public",
+});
+
+export default pwaConfig(nextConfig);
