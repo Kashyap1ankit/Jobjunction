@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Sitemap: http://jobjunction-olive.vercel.app/sitemap.xml

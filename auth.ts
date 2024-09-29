@@ -153,7 +153,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         sameSite: "lax",
         path: "/",
         secure: true,
-        maxAge: 60 * 60 * 24 * 1, //1day
+        maxAge: 60 * 60 * 24 * 7,
       },
     },
   },
