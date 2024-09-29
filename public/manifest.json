@@ -1,12 +1,14 @@
 {
-  "name": "job-junction-app",
+  "id": "/",
+  "name": "Job Junction",
   "short_name": "JJ",
-  "description": "Web app of job junction",
+  "description": "Discover, Apply & Grow",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "scope": "/",
+
   "icons": [
     {
       "src": "windows11/SmallTile.scale-100.png",

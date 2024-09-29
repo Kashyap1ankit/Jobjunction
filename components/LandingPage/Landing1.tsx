@@ -6,6 +6,7 @@ import { ArrowBigRightDash, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fraunces } from "@/utils/fonts/font";
+import PWAInstallButton from "../PwaInstallBtn";
 
 export default function LandingPart1() {
   return (
@@ -43,24 +44,7 @@ export default function LandingPart1() {
           </Link>
         </motion.div>
 
-        <motion.div
-          animate={{
-            x: [300, 0],
-            opacity: [0, 1],
-          }}
-          transition={{
-            delay: 1,
-          }}
-        >
-          <Link
-            href={"/jobs/create"}
-            className="flex gap-2 text-md  w-full   bg-white  rounded-md border-2 border-b-8  border-r-8 border-darkBg cursor-pointer hover:-translate-y-1 font-bebas text-black p-2  hover:bg-white"
-          >
-            <p>Post Job</p>
-
-            <Briefcase className="size-6 ml-2" />
-          </Link>
-        </motion.div>
+        <PWAInstallButton />
       </div>
     </div>
   );

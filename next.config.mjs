@@ -12,6 +12,7 @@ const nextConfig = {
     return config;
   },
   reactStrictMode: false,
+  swcMinify: true,
 
   images: {
     remotePatterns: [
@@ -33,6 +34,8 @@ const nextConfig = {
 
 const pwaConfig = withPwa({
   dest: "public",
+  register: true,
+  skipWaiting: true,
 });
 
 export default pwaConfig(nextConfig);
