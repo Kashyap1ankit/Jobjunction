@@ -5,7 +5,7 @@ services:
     env_file:
       - .env
     environment:
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=$DATABASE_URL
     ports:
       - 3000:3000
       - 5555:5555
@@ -21,9 +21,12 @@ services:
             - node_modules/
         - action: rebuild
           path: package.json
+    volumes:
+      - ./:/app
+      - /app/node_modules
   db:
     image: postgres:alpine
-    container_name: db
+    container_name: job_junction_db
     restart: always
     environment:
       POSTGRES_USER: postgres

@@ -1,50 +1,59 @@
 "use client";
 
 import React from "react";
-import GradualSpacing from "../magicui/gradual-spacing";
-import { ArrowBigRightDash, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { fraunces } from "@/utils/fonts/font";
-import PWAInstallButton from "../PwaInstallBtn";
+import { roboto_slab } from "@/utils/fonts/font";
 
 export default function LandingPart1() {
   return (
     <div>
-      <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 justify-center">
-        <GradualSpacing
-          duration={2}
-          text="Discover Apply"
-          className={`text-4xl sm:text-5xl  xl:text-8xl font-kanit mt-28 font-bold break-before-auto ${fraunces.className}`}
-        />
-        <GradualSpacing
-          text="Grow"
-          duration={4}
-          className={`text-4xl  sm:text-5xl xl:text-8xl font-kanit sm:mt-28 font-bold break-before-auto ${fraunces.className}`}
-        />
+      <div className="flex flex-col items-center gap-4 justify-center flex-wrap  px-4 md:px-0">
+        <p
+          className={`${roboto_slab.className} text-white text-3xl md:text-4xl lg:text-5xl text-center`}
+        >
+          Connecting Talent with Opportunity
+        </p>
+
+        <div className="flex gap-2">
+          <p
+            className={`${roboto_slab.className} text-white text-3xl md:text-4xl lg:text-5xl`}
+          >
+            Job
+          </p>
+          <motion.span
+            className={`${roboto_slab.className} text-3xl md:text-4xl lg:text-5xl text-primarySkyBlue skew-x-12 cursor-pointer`}
+            animate={{
+              y: [-200, 0],
+            }}
+            whileHover={{
+              rotate: -5,
+            }}
+          >
+            Junction
+          </motion.span>
+        </div>
+
+        <p className="text-xs md:text-md text-gray-500 text-center w-full sm:w-1/2">
+          Whether you&apos;re looking for your next career move or you know a
+          great opportunity for others, Job Junction is the place to be
+        </p>
       </div>
 
       <div className="flex gap-6 w-full mt-12 justify-center">
-        <motion.div
-          animate={{
-            x: [-300, 0],
-            opacity: [0, 1],
-          }}
-          transition={{
-            delay: 1,
-          }}
+        <Link
+          href={"/jobs"}
+          className={`${roboto_slab.className}  text-white   rounded-lg bg-primarySkyBlue cursor-pointer text-black py-2 px-4 `}
         >
-          <Link
-            href={"/jobs"}
-            className="flex gap-2 text-md  w-full   bg-white  rounded-md border-2 border-b-8  border-r-8 border-darkBg cursor-pointer hover:-translate-y-1 font-bebas text-black p-2  hover:bg-white"
-          >
-            <p>Apply Now</p>
+          <p className="text-sm md:text-md">Get Hired</p>
+        </Link>
 
-            <ArrowBigRightDash className="size-6" />
-          </Link>
-        </motion.div>
-
-        <PWAInstallButton />
+        <Link
+          href={"/#testimonal"}
+          className={`${roboto_slab.className}  text-white   rounded-lg bg-transparent border-2 border-slate-800 cursor-pointer text-black py-2 px-4  `}
+        >
+          <p className="text-sm md:text-md">Testimonal</p>
+        </Link>
       </div>
     </div>
   );

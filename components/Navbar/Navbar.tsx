@@ -1,30 +1,74 @@
 "use client";
-
 import Link from "next/link";
-import TextComponent from "../TextComp";
-import DesktopNav from "./DeskNav";
-import MobileNav from "./MobNav";
-import { poppins } from "@/utils/fonts/font";
+import { roboto_slab } from "@/utils/fonts/font";
+import Image from "next/image";
+import NavComponent from "./NavComp";
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import Profile from "./Profile";
+
+import { Tally3 } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export default function Navbar() {
+  const router = useRouter();
+  const session = useSession();
+  if (session.status === "loading") {
+    return <div>Loading....</div>;
+  }
+
   return (
-    <div className="p-2 sm:p-4 sm:px-12  flex justify-between items-center w-full bg-white dark:bg-darkBg ">
-      <div>
-        <Link href={"/"}>
-          <TextComponent
-            text="JobJunction"
-            className={`border-b-8  border-r-8 border-darkBg  bg-white px-2 py-1 rounded-md cursor-pointer hover:-translate-y-1 font-bebas ${poppins.className}`}
+    <div className="fixed top-0 left-0 py-2 px-4 sm:px-12  flex justify-between items-center border-b-2 border-primaryBorder w-full z-10 bg-primaryBg backdrop-blur-md bg-primaryBg/60">
+      <Link href={"/"}>
+        <div className="flex items-center gap-4">
+          <Image
+            src={"/Images/jj-logo.png"}
+            width={50}
+            height={0}
+            className="rounded-md"
+            alt="JJ"
           />
-        </Link>
-      </div>
 
-      <div className="hidden sm:block ">
-        <DesktopNav />
-      </div>
+          <p
+            className={`${roboto_slab.className} text-white text-xl md:text-2xl`}
+          >
+            Job <span className="text-primarySkyBlue ">Junction</span>
+          </p>
+        </div>
+      </Link>
 
-      <div className="block sm:hidden">
-        <MobileNav />
-      </div>
+      {session.status === "authenticated" ? (
+        <Profile />
+      ) : (
+        <>
+          <div className="hidden sm:block ">
+            <NavComponent />;
+          </div>
+
+          <div className="block sm:hidden">
+            <Sheet>
+              <SheetTrigger>
+                <Tally3 className="rotate-90 text-white" />
+              </SheetTrigger>
+              <SheetContent className="bg-primaryBg border-l-primaryBorder">
+                <SheetHeader>
+                  <SheetDescription>
+                    <NavComponent />
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </>
+      )}
     </div>
   );
 }

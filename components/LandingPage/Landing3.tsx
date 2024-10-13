@@ -5,7 +5,7 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export default function LandingPart3() {
   return (
-    <div className="rounded-lg bg-red-600 p-4 md:p-8 mt-52 flex flex-wrap md:flex-nowrap w-11/12 md:w-3/4 gap-8 mx-auto">
+    <div className="rounded-lg bg-red-600 p-4 md:p-8 mt-28 md:mt-52 flex flex-wrap md:flex-nowrap w-11/12 md:w-3/4 gap-8 mx-auto">
       <div>
         <TextComponent
           text="We're open sourced"
