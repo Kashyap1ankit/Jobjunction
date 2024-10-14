@@ -39,6 +39,10 @@ const config = {
         primarySkyBlue: "#355ee8",
         secondarySkyBlue: "#5174ed",
         primaryBorder: "#0e1728",
+        secondaryBorder: "#1e2738",
+
+        primaryViolet: "#2b2638",
+        inputBg: "#262a34",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -160,8 +160,8 @@ export default function MoreOptionDialog({
 
               <Separator />
 
-              {session.data.user.id === authorId ||
-              session.data.user.role === "ADMIN" ? (
+              {session.data?.user.id === authorId ||
+              session.data?.user.role === "ADMIN" ? (
                 <div className=" w-full my-4  ">
                   {deleting ? (
                     <FaSpinner className="animate-spin mx-auto" />
@@ -175,9 +175,7 @@ export default function MoreOptionDialog({
                     </div>
                   )}
                 </div>
-              ) : (
-                ""
-              )}
+              ) : null}
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

@@ -10,7 +10,7 @@ export const signupSchema = z.object({
   password: z
     .string({ required_error: "Oops! You missed a spot." })
     .min(6, { message: "Password must be atleast 6 char long" })
-    .max(8, { message: "Password can't be greater than 8 char" })
+    .max(10, { message: "Password can't be greater than 10 char" })
     .regex(new RegExp(".*[`~<>?,./!@#$%^&*()\\-_+=\"'|{}\\[\\];:\\\\].*"), {
       message: "Must include a special character",
     })
@@ -22,7 +22,7 @@ export const signupSchema = z.object({
   bio: z
     .string({ message: "Oops! You missed a spot" })
     .min(10, { message: "Extend it little more" })
-    .max(30, { message: "Max lenght is 20" }),
+    .max(110, { message: "Max lenght is 110" }),
   instagram_url: z.string().optional(),
   linkedin_url: z.string().optional(),
   twitter_url: z.string().optional(),
@@ -35,7 +35,7 @@ export const signinSchema = z.object({
   password: z
     .string({ required_error: "Oops! You missed a spot." })
     .min(6, { message: "Password must be atleast 6 char long" })
-    .max(8, { message: "Password can't be greater than 8 char" })
+    .max(10, { message: "Password can't be greater than 10 char" })
     .regex(new RegExp(".*[`~<>?,./!@#$%^&*()\\-_+=\"'|{}\\[\\];:\\\\].*"), {
       message: "Must include a special character",
     })

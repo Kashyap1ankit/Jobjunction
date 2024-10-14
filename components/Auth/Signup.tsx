@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useForm } from "react-hook-form";
+import { FieldArray, useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "@/schema/auth";
@@ -24,6 +24,10 @@ import Link from "next/link";
 import { FaGoogle, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { toast } from "sonner";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { IoArrowBack } from "react-icons/io5";
+import { fraunces, poppins } from "@/utils/fonts/font";
+import TextDivider from "../ui/text-divider";
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignupForm() {
   const [items, setItems] = useState<string[] | undefined>([]);
@@ -87,9 +91,9 @@ export default function SignupForm() {
   async function next() {
     const fields = filedValues[currentIndex];
 
-    const output = await trigger(fields as any);
+    const isValid = await trigger(fields as any);
 
-    if (!output) return;
+    if (!isValid) return;
 
     if (currentIndex > -1 && currentIndex < 2) {
       if (currentIndex === 1) {
@@ -109,17 +113,8 @@ export default function SignupForm() {
     setCurrentIndex((prev) => prev - 1);
   }
 
-  function deleteField(value: string) {
-    setItems((prev) => {
-      if (prev) {
-        const toremove = prev?.indexOf(value);
-        prev?.splice(toremove, 1);
-        return [...prev];
-      }
-    });
-  }
   return (
-    <div>
+    <div className="min-h-screen">
       {success &&
         toast("Account created Successfully.", {
           duration: 2000,
@@ -130,14 +125,18 @@ export default function SignupForm() {
           duration: 2000,
         })}
 
-      <div className=" mx-auto  mt-6 border-2 border-b-8 border-r-8 border-black  rounded-xl bg-white p-4 md:p-6 w-11/12 sm:w-1/2 ">
+      <div className="w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 mx-auto rounded-lg p-4 md:p-6  bg-transpraent mt-6 md:mt-8 mb-4 lg:mt-20 md:mt-24 border-2 border-secondaryBorder text-white">
+        <Link href={"/"}>
+          <IoArrowBack className="text-gray-400 size-6 cursor-pointer mb-4 hover:text-white" />
+        </Link>
+
         <div className="flex gap-2 ">
           {currentIndex > 0 ? (
             <ChevronLeft className="cursor-pointer" onClick={handlePrevious} />
           ) : (
             ""
           )}
-          <p className="text-gray-600 mb-6">Step {currentIndex + 1} / 2</p>
+          <p className="text-gray-400 mb-6">Step {currentIndex + 1} / 2</p>
           {currentIndex >= 0 ? (
             <ChevronRight className="cursor-pointer" onClick={handleNext} />
           ) : (
@@ -146,152 +145,168 @@ export default function SignupForm() {
         </div>
 
         <>
-          <p className="p-2 bg-white w-fit font-bold font-kanit text-3xl rounded-sm mb-6 border-2 border-b-8 border-r-8 border-black ">
-            JJ
+          <p
+            className={`${poppins.className} text-2xl sm:text-3xl  mb-2 text-center text-white font-bold `}
+          >
+            Create New Account
           </p>
-          <p className="text-2xl font-radio font-bold mb-2">Sign Up</p>
-          <p className="mb-6">Start your journey with jobjunction</p>
+          <p
+            className={`${poppins.className} text-sm sm:text-md text-center text-gray-500 font-bold`}
+          >
+            Start your journey with jobjunction
+          </p>
         </>
+
+        <Button
+          className="bg-white w-full flex gap-4 hover:bg-white mt-8"
+          onClick={() => signIn("google", { callbackUrl: "/jobs" })}
+        >
+          <FcGoogle className="size-6" />
+          <p className={`${poppins.className} text-black font-bold`}>
+            Signup With Google
+          </p>
+        </Button>
+
+        <TextDivider className="my-4">Or</TextDivider>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {currentIndex === 0 ? (
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4 gap-y-8">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-8  ">
               <div>
-                <label>Username</label>
-                <div className="flex gap-2 items-center border-2 border-black p-2 rounded-md text-black w-full col-span-2">
-                  <AtSign className="bg-white text-gray-400 size-5" />
+                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
+                  <AtSign className="text-gray-400 size-5" />
                   <input
                     type="text"
-                    placeholder="Ramu_09"
-                    className="outline-none w-full"
+                    placeholder="Username"
+                    className="outline-none w-full bg-inputBg text-white"
                     {...register("username")}
                   />
                 </div>
                 {errors.username?.message && (
-                  <p className="text-red-500">{errors.username?.message}</p>
+                  <p className="text-red-500 text-sm mt-2">
+                    {errors.username?.message}
+                  </p>
                 )}
               </div>
 
               <div>
-                <label>Email</label>
-
-                <div className="flex gap-2 items-center border-2 border-black p-2 rounded-md text-black">
-                  <Mail className=" bg-white text-gray-400 size-5" />
+                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
+                  <Mail className=" text-gray-400 size-5" />
                   <input
                     type="email"
-                    placeholder="ramu@gmail.com"
-                    className=" w-full outline-none"
+                    placeholder="Email"
+                    className="outline-none w-full bg-inputBg text-white"
                     {...register("email")}
                   />
                 </div>
                 {errors.email?.message && (
-                  <p className="text-red-500">{errors.email?.message}</p>
+                  <p className="text-red-500 text-sm mt-2">
+                    {errors.email?.message}
+                  </p>
                 )}
               </div>
 
               <div>
-                <label>Password</label>
-                <div className="border-2 border-black p-2 rounded-md text-black w-full flex gap-2 items-center">
-                  <Lock className=" bg-white text-gray-400 size-5" />
+                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
+                  <Lock className=" text-gray-400 size-5" />
                   <input
                     type={passwordClick ? "text" : "password"}
-                    placeholder="Hello@1"
-                    className="w-full outline-none"
+                    placeholder="Password"
+                    className="outline-none w-full bg-inputBg text-white"
                     {...register("password")}
                   />
                   <div onClick={() => setPasswordClick((prev) => !prev)}>
                     {passwordClick ? (
-                      <Eye className="cursor-pointer" />
+                      <Eye className="cursor-pointer text-gray-400 size-5" />
                     ) : (
-                      <EyeOff className="cursor-pointer" />
+                      <EyeOff className="cursor-pointer text-gray-400 size-5" />
                     )}
                   </div>
                 </div>
                 {errors.password?.message && (
-                  <p className="text-red-500">{errors.password?.message}</p>
+                  <p className="text-red-500 text-sm mt-2">
+                    {errors.password?.message}
+                  </p>
                 )}
               </div>
             </div>
-          ) : (
-            ""
-          )}
+          ) : null}
 
           {currentIndex === 1 ? (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-              <div className=" col-span-2">
-                <label>Bio</label>
+            <div className="grid grid-cols-1 gap-x-4 gap-y-8 mt-8">
+              <div className="w-full">
                 <input
                   type="text"
-                  placeholder="Write"
-                  className="border-2 border-black p-2 rounded-md text-black w-full"
+                  placeholder="Write Bio..."
+                  className="outline-none w-full bg-inputBg text-white p-4  rounded-md "
                   {...register("bio")}
                 />
                 {errors.bio?.message && (
-                  <p className="text-red-500">{errors.bio?.message}</p>
+                  <p className="text-red-500 text-sm mt-2">
+                    {errors.bio?.message}
+                  </p>
                 )}
               </div>
 
               <div>
-                <label>Instagram Link</label>
-                <div className="border-2 border-black p-2 rounded-md text-black w-full flex gap-2 items-center">
-                  <FaInstagram className="bg-white text-gray-400" />
+                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
+                  <FaInstagram className="text-gray-400 size-5" />
                   <input
                     type="text"
                     placeholder="Instagram url"
-                    className="outline-none w-full"
+                    className="outline-none w-full bg-inputBg text-white"
                     {...register("instagram_url")}
                   />
                 </div>
 
                 {errors.instagram_url?.message && (
-                  <p className="text-red-500">
+                  <p className="text-red-500 text-sm mt-2">
                     {errors.instagram_url?.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <label>Twitter Link</label>
-
-                <div className="border-2 border-black p-2 rounded-md text-black w-full flex gap-2 items-center">
-                  <FaTwitter className=" bg-white text-gray-400 " />
+                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
+                  <FaTwitter className="text-gray-400 size-5" />
                   <input
                     type="text"
                     placeholder="Twitter url"
-                    className="outline-none w-full"
+                    className="outline-none w-full bg-inputBg text-white"
                     {...register("twitter_url")}
                   />
                 </div>
 
                 {errors.twitter_url?.message && (
-                  <p className="text-red-500">{errors.twitter_url?.message}</p>
+                  <p className="text-red-500 text-sm mt-2">
+                    {errors.twitter_url?.message}
+                  </p>
                 )}
               </div>
 
-              <div className="col-span-2">
-                <label>Linkedin Link</label>
-                <div className="border-2 border-black p-2 rounded-md text-black w-full flex gap-2 items-center">
-                  <FaLinkedin className="bg-white text-gray-400" />
+              <div>
+                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
+                  <FaLinkedin className="text-gray-400 size-5" />
                   <input
                     type="text"
-                    placeholder="linkedin url"
-                    className=" w-full outline-none"
+                    placeholder="Linkedin url"
+                    className="outline-none w-full bg-inputBg text-white"
                     {...register("linkedin_url")}
                   />
                 </div>
 
                 {errors.linkedin_url?.message && (
-                  <p className="text-red-500">{errors.linkedin_url?.message}</p>
+                  <p className="text-red-500 text-sm mt-2">
+                    {errors.linkedin_url?.message}
+                  </p>
                 )}
               </div>
             </div>
-          ) : (
-            ""
-          )}
+          ) : null}
 
           <Button
             onClick={next}
-            className="flex mt-4 ml-auto"
+            className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full mt-6`}
             disabled={submitting}
           >
             {currentIndex === 1 ? (
@@ -308,23 +323,15 @@ export default function SignupForm() {
           </Button>
         </form>
 
-        <Separator className="my-4" />
-        <div>
-          <Button
-            className="bg-green-700 w-full flex gap-4"
-            onClick={() => signIn("google", { callbackUrl: "/jobs" })}
-          >
-            <p>Signup With Google </p>
-            <FaGoogle />
-          </Button>
-
-          <p className="mt-2 text-center text-gray-400">
-            Existing User ?
-            <Link href="/signin">
-              <span className="cursor-pointer"> Login to Account</span>
-            </Link>
-          </p>
-        </div>
+        <p className="mt-4 text-sm text-center text-gray-400">
+          Existing User ?
+          <Link href="/signin">
+            <span className="cursor-pointer text-secondarySkyBlue">
+              {" "}
+              Login to Account
+            </span>
+          </Link>
+        </p>
       </div>
     </div>
   );

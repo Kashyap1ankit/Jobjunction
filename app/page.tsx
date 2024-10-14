@@ -9,7 +9,7 @@ import FAQ from "@/components/LandingPage/Faq";
 
 export default function Home() {
   return (
-    <div>
+    <div className="pt-28 md:pt-48">
       <Background />
       <Navbar />
       <LandingPart1 />

@@ -36,7 +36,7 @@ export default function Component() {
         {testimonal.map((e: TestimonalCard, i: number) => {
           return (
             <CarouselItem key={i} className=" lg:basis-1/2">
-              <div className=" max-w-[600px] p-4 rounded-lg mx-auto bg-primaryBorder flex flex-col sm:flex-row sm:items-start gap-6 ">
+              <div className=" max-w-[600px] p-4 sm:p-8 rounded-lg mx-auto bg-primaryBorder flex flex-col sm:flex-row sm:items-start gap-6 ">
                 <Image
                   src={e.avatar}
                   width={400}
