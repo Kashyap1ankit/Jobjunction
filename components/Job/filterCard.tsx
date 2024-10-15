@@ -10,6 +10,12 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { Button } from "../ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const experienceValues = ["Fresher", "0-1y", "1y", "3y", "5y"];
 const jobTypeValues = ["Fulltime", "Internship", "Contract", "Freelance"];
@@ -70,9 +76,49 @@ export default function FilterSideBar() {
   };
 
   return (
-    <div>
-      <div className="py-4 px-2 lg:p-6">
-        <p className="font-bold text-left">Experience Level</p>
+    <>
+      <div className="w-full px-4">
+        <Button
+          className={`w-full mt-4  bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue text-white `}
+          onClick={() => {
+            setMobSheetOpen(false);
+            callBackend();
+          }}
+          disabled={disableApply}
+        >
+          Apply
+        </Button>
+      </div>
+
+      <Accordion
+        type="single"
+        collapsible
+        className="py-4 px-2 lg:p-4 border-2 border-primaryBorder bg-secondaryBorder rounded-lg"
+      >
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="font-bold text-left ">
+            Experience Level
+          </AccordionTrigger>
+          <AccordionContent className="grid grid-cols-2  gap-x-8">
+            {experienceValues.map((e: string, i: number) => {
+              return (
+                <div className="flex gap-2 mt-4" key={i}>
+                  <input
+                    type="checkbox"
+                    value={e}
+                    {...register(e)}
+                    className="accent-green-700 cursor-pointer"
+                  />
+                  <label className="text-gray-400">{e}</label>
+                </div>
+              );
+            })}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      {/* <div className="py-4 px-2 lg:p-6 border-2 border-primaryBorder bg-primaryBorder rounded-lg">
+        <p className="font-bold text-left ">Experience Level</p>
         <div className="grid grid-cols-2  gap-x-8">
           {experienceValues.map((e: string, i: number) => {
             return (
@@ -81,16 +127,43 @@ export default function FilterSideBar() {
                   type="checkbox"
                   value={e}
                   {...register(e)}
-                  className="accent-green-700"
+                  className="accent-green-700 cursor-pointer"
                 />
-                <label>{e}</label>
+                <label className="text-gray-400">{e}</label>
               </div>
             );
           })}
         </div>
-      </div>
+      </div> */}
 
-      <div className="py-4 px-2 lg:p-6">
+      <Accordion
+        type="single"
+        collapsible
+        className="py-4 px-2 lg:p-4 border-2 border-primaryBorder bg-secondaryBorder rounded-lg"
+      >
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="font-bold text-left ">
+            Job Type
+          </AccordionTrigger>
+          <AccordionContent className="grid grid-cols-2  gap-x-8">
+            {jobTypeValues.map((e: string, i: number) => {
+              return (
+                <div className="flex gap-2 mt-4" key={i}>
+                  <input
+                    type="checkbox"
+                    value={e}
+                    {...register(e)}
+                    className="accent-green-700"
+                  />
+                  <label className="text-gray-400">{e}</label>
+                </div>
+              );
+            })}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      {/* <div className="py-4 px-2 lg:p-6 border-2 border-primaryBorder bg-primaryBorder rounded-lg">
         <p className="font-bold text-left">Job Type</p>
         <div className="grid grid-cols-2  gap-x-8">
           {jobTypeValues.map((e: string, i: number) => {
@@ -102,14 +175,41 @@ export default function FilterSideBar() {
                   {...register(e)}
                   className="accent-green-700"
                 />
-                <label>{e}</label>
+                <label className="text-gray-400">{e}</label>
               </div>
             );
           })}
         </div>
-      </div>
+      </div> */}
 
-      <div className="py-4 px-2 lg:p-6">
+      <Accordion
+        type="single"
+        collapsible
+        className="py-4 px-2 lg:p-4 border-2 border-primaryBorder bg-secondaryBorder rounded-lg"
+      >
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="font-bold text-left ">
+            Location
+          </AccordionTrigger>
+          <AccordionContent className="grid grid-cols-2  gap-x-8">
+            {locationTypeValue.map((e: string, i: number) => {
+              return (
+                <div className="flex gap-2 mt-4" key={i}>
+                  <input
+                    type="checkbox"
+                    value={e}
+                    {...register(e)}
+                    className="accent-green-700"
+                  />
+                  <label className="text-gray-400">{e}</label>
+                </div>
+              );
+            })}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      {/* 
+      <div className="py-4 px-2 lg:p-6 border-2 border-primaryBorder bg-primaryBorder rounded-lg">
         <p className="font-bold text-left">Location Wise</p>
         <div className="grid grid-cols-2  gap-x-8">
           {locationTypeValue.map((e: string, i: number) => {
@@ -121,25 +221,12 @@ export default function FilterSideBar() {
                   {...register(e)}
                   className="accent-green-700"
                 />
-                <label>{e}</label>
+                <label className="text-gray-400">{e}</label>
               </div>
             );
           })}
         </div>
-      </div>
-
-      <div className="w-full px-4">
-        <Button
-          className="w-full mt-4"
-          onClick={() => {
-            setMobSheetOpen(false);
-            callBackend();
-          }}
-          disabled={disableApply}
-        >
-          Apply
-        </Button>
-      </div>
-    </div>
+      </div> */}
+    </>
   );
 }

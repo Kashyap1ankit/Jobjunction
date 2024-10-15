@@ -98,7 +98,7 @@ export default function SigninForm() {
                 <input
                   type="text"
                   placeholder="Username"
-                  className="outline-none w-full bg-inputBg text-white"
+                  className="outline-none w-full bg-inputBg text-white "
                   {...register("username")}
                 />
               </div>

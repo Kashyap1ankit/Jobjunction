@@ -4,8 +4,6 @@ import { roboto_slab } from "@/utils/fonts/font";
 import Image from "next/image";
 import NavComponent from "./NavComp";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
-import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import Profile from "./Profile";
 

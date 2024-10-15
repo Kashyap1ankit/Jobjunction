@@ -5,14 +5,12 @@ import {
 } from "@/components/ui/popover";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BadgeIndianRupee, BriefcaseBusiness } from "lucide-react";
-import { Button } from "../ui/button";
-import Link from "next/link";
+import { BriefcaseBusiness, Code, Pin } from "lucide-react";
 import { JobLisitingType } from "@/types/types";
-import { HiExternalLink } from "react-icons/hi";
 import MoreOptionDialog from "./MoreDialog";
-
 import JobSheetComp from "./JobSheet";
+import { MdVerifiedUser } from "react-icons/md";
+import Link from "next/link";
 
 export default function JobCard({
   id,
@@ -27,13 +25,16 @@ export default function JobCard({
   salary_max,
   experience_level,
   apply_link,
+  createdAt,
 }: JobLisitingType) {
+  const diff = new Date(Date.now()).getDate() - new Date(createdAt).getDate();
+
   return (
-    <div className="flex flex-col gap-4 mt-4 md:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-3/4 bg-white rounded-md border-2 ">
+    <div className="flex flex-col gap-8 mt-4 md:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-3/4 bg-primaryBorder text-white rounded-xl border-2 border-secondaryBorder hover:cursor-pointer hover:bg-hoverBorder ">
       {/* first section  */}
 
       <div className="flex justify-between">
-        <Popover>
+        {/* <Popover>
           <PopoverTrigger>
             <Avatar className="cursor-pointer size-8 md:size-10">
               <AvatarImage
@@ -48,13 +49,33 @@ export default function JobCard({
               <HiExternalLink />
             </Link>
           </PopoverContent>
-        </Popover>
+        </Popover> */}
 
         <div>
-          <p className="text-radio text-md md:text-2xl text-black tracking-wide font-bold">
-            {position}
-          </p>
-          <p className="text-gray-400 text-sm">{company}</p>
+          <div className="flex gap-2 items-center">
+            <p className="text-radio text-md md:text-2xl tracking-wide font-bold ">
+              {position}
+            </p>
+            <MdVerifiedUser className="text-sky-300 size-4" />
+          </div>
+          <div className="flex gap-2 items-center flex-wrap mt-2">
+            <p className="text-gray-400 text-sm">{company} | </p>
+            <p className="text-gray-400 text-sm">
+              Posted{" "}
+              {diff >= 0
+                ? "today"
+                : diff === 1
+                ? "yesterday"
+                : ` ${Math.abs(diff)}days ago`}{" "}
+              |
+            </p>
+            <Link
+              href={`/user/${author.id}/profile`}
+              className="text-gray-400 text-sm hover:cursor-pointer hover:text-blue-500"
+            >
+              feat: @{author.username}
+            </Link>
+          </div>
         </div>
 
         <MoreOptionDialog postId={id} authorId={author.id} />
@@ -63,31 +84,30 @@ export default function JobCard({
       {/* second section  */}
 
       <div>
-        <div className="flex w-fit gap-4 mt-6 flex-wrap">
-          <Button className="text-xs text-black bg-gray-300 hover:bg-gray-400 hover:text-white">
-            {location}
-          </Button>
-          <Button className="text-xs text-black bg-gray-300 hover:bg-gray-400 hover:text-white">
-            {role_name}
-          </Button>
-          <Button className="text-xs text-black bg-gray-300 hover:bg-gray-400 hover:text-white">
-            {job_type}
-          </Button>
+        <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
+            <BriefcaseBusiness className="size-4" />
+            <p className="text-xs text-white rounded-md">{job_type}</p>
+          </div>
+          <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
+            <Pin className="size-4" />
+            <p className="text-xs text-gray-400 rounded-md">{location}</p>
+          </div>
+
+          <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
+            <Code className="size-4" />
+            <p className="text-xs text-white  rounded-md">{role_name}</p>
+          </div>
+          <p className="text-xs text-white p-2 rounded-full bg-green-800">
+            ₹{salary_min / 1000}k -{" "}
+            <span>₹{Math.round(salary_max / 1000)}k</span>/month
+          </p>
         </div>
       </div>
-
-      <hr />
 
       {/* third section  */}
 
       <div className="flex flex-wrap gap-4 justify-between items-center">
-        <div className="flex gap-2">
-          <BadgeIndianRupee />
-          <p>
-            ₹{salary_min} - <span>₹{salary_max}</span>/month
-          </p>
-        </div>
-
         <div className="flex gap-2">
           <BriefcaseBusiness />
           <p>{experience_level}</p>
@@ -106,6 +126,7 @@ export default function JobCard({
           salary_max={salary_max}
           experience_level={experience_level}
           apply_link={apply_link}
+          createdAt={createdAt}
         />
       </div>
     </div>

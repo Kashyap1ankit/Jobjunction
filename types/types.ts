@@ -80,6 +80,7 @@ export type JobLisitingType = {
     username: string;
     role: "ADMIN" | "USER";
   };
+  createdAt: Date;
 };
 
 export type universalErrorType = {

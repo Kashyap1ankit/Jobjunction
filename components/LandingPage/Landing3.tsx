@@ -21,6 +21,7 @@ export default function LandingPart3() {
             <Button
               variant={"outline"}
               className="flex gap-4 font-bold bg-white hover:bg-white border-b-4 border-r-4 border-darkBg"
+              aria-label="Github"
             >
               <FaGithub className="size-6" />
               <TextComponent text="Code" />
@@ -31,6 +32,7 @@ export default function LandingPart3() {
             <Button
               variant={"outline"}
               className="flex gap-4 font-bold bg-white hover:bg-white border-b-4 border-r-4 border-darkBg"
+              arial-label="X"
             >
               <FaTwitter className="size-6" />
               <TextComponent text="Twitter" />

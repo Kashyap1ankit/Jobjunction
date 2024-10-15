@@ -85,6 +85,7 @@ export async function GetAllPost() {
             role: true,
           },
         },
+        createdAt: true,
       },
     });
 

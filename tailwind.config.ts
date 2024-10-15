@@ -40,6 +40,7 @@ const config = {
         secondarySkyBlue: "#5174ed",
         primaryBorder: "#0e1728",
         secondaryBorder: "#1e2738",
+        hoverBorder: "#1f2636",
 
         primaryViolet: "#2b2638",
         inputBg: "#262a34",

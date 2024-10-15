@@ -7,7 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { JobLisitingType } from "@/types/types";
-import { fraunces, poppins } from "@/utils/fonts/font";
+import { fraunces, poppins, roboto_slab } from "@/utils/fonts/font";
 import { BadgeIndianRupee, X } from "lucide-react";
 import { useState } from "react";
 import { TbHandClick } from "react-icons/tb";
@@ -32,16 +32,17 @@ export default function JobSheetComp({
   salary_max,
   experience_level,
   apply_link,
+  createdAt,
 }: JobLisitingType) {
   const [applySheet, setApplySheet] = useState(false);
   return (
     <div id={id}>
       <Sheet open={applySheet}>
         <SheetTrigger
-          className="bg-white text-black border-2 border-b-8 border-r-8 border-black hover:bg-white flex gap-2 p-2 rounded-md"
+          className={`${roboto_slab.className}  flex gap-2 p-2 rounded-md text-xs sm:text-sm bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full`}
           onClick={() => setApplySheet(true)}
         >
-          <p className="text-xs sm:text-sm">Apply Now</p>
+          <p className="text-xs sm:text-sm ">See More</p>
           <TbHandClick className="size-4" />
         </SheetTrigger>
         <SheetContent className="w-11/12 sm:w-3/4  lg:w-1/2  sm:max-w-full overflow-y-scroll no-scrollbar">

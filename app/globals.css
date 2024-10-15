@@ -70,6 +70,7 @@
 
 .filter-scrollbar::-webkit-scrollbar {
   width: 10px;
+  display: none;
 }
 
 .filter-scrollbar::-webkit-scrollbar-track {
@@ -78,4 +79,10 @@
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+input:-webkit-autofill {
+  background-color: #262a34 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #262a34 inset;
+  -webkit-text-fill-color: white !important;
 }
