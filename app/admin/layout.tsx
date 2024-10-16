@@ -1,6 +1,6 @@
-import AdminSideBar from "@/components/Admin/AdminSideBar";
-import Navbar from "@/components/Navbar/Navbar";
-import React from "react";
+import React, { lazy } from "react";
+const AdminSideBar = lazy(() => import("@/components/Admin/AdminSideBar"));
+const Navbar = lazy(() => import("@/components/Navbar/Navbar"));
 
 export default function AdminLayout({
   children,

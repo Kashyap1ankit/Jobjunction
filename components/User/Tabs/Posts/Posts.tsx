@@ -62,6 +62,7 @@ export default function PostedJob() {
                       salary_max={e.salary_max}
                       experience_level={e.experience_level}
                       apply_link={e.apply_link}
+                      createdAt={e.createdAt}
                     />
                   );
                 })}

@@ -34,29 +34,14 @@ export default function JobCard({
       {/* first section  */}
 
       <div className="flex justify-between">
-        {/* <Popover>
-          <PopoverTrigger>
-            <Avatar className="cursor-pointer size-8 md:size-10">
-              <AvatarImage
-                src={author.avatar ? author.avatar : "/Images/avatar.png"}
-              />
-              <AvatarFallback>CO</AvatarFallback>
-            </Avatar>
-          </PopoverTrigger>
-          <PopoverContent className="flex gap-2 items-center flex-wrap  overflow-x-scroll no-scrollbar">
-            <p>{author.username}</p>
-            <Link href={`/user/${author.id}/profile`}>
-              <HiExternalLink />
-            </Link>
-          </PopoverContent>
-        </Popover> */}
-
         <div>
           <div className="flex gap-2 items-center">
             <p className="text-radio text-md md:text-2xl tracking-wide font-bold ">
               {position}
             </p>
-            <MdVerifiedUser className="text-sky-300 size-4" />
+            {author.role === "ADMIN" ? (
+              <MdVerifiedUser className="text-sky-300 size-4" />
+            ) : null}
           </div>
           <div className="flex gap-2 items-center flex-wrap mt-2">
             <p className="text-gray-400 text-sm">{company} | </p>
@@ -83,26 +68,24 @@ export default function JobCard({
 
       {/* second section  */}
 
-      <div>
-        <div className="flex gap-2 flex-wrap">
-          <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
-            <BriefcaseBusiness className="size-4" />
-            <p className="text-xs text-white rounded-md">{job_type}</p>
-          </div>
-          <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
-            <Pin className="size-4" />
-            <p className="text-xs text-gray-400 rounded-md">{location}</p>
-          </div>
-
-          <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
-            <Code className="size-4" />
-            <p className="text-xs text-white  rounded-md">{role_name}</p>
-          </div>
-          <p className="text-xs text-white p-2 rounded-full bg-green-800">
-            ₹{salary_min / 1000}k -{" "}
-            <span>₹{Math.round(salary_max / 1000)}k</span>/month
-          </p>
+      <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
+          <BriefcaseBusiness className="size-4" />
+          <p className="text-xs text-white rounded-md">{job_type}</p>
         </div>
+        <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
+          <Pin className="size-4" />
+          <p className="text-xs text-gray-400 rounded-md">{location}</p>
+        </div>
+
+        <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
+          <Code className="size-4" />
+          <p className="text-xs text-white  rounded-md">{role_name}</p>
+        </div>
+        <p className="text-xs text-white p-2 rounded-full bg-green-800">
+          ₹{salary_min / 1000}k - <span>₹{Math.round(salary_max / 1000)}k</span>
+          /month
+        </p>
       </div>
 
       {/* third section  */}

@@ -114,7 +114,7 @@ export default function MoreOptionDialog({
         {session.data?.user.id === authorId ||
         session.data?.user.role === "ADMIN" ? (
           <div onClick={() => handlePostDelete()}>
-            <Trash2 className=" size-4 md:size-6 cursor-pointer" />
+            <Trash2 className=" size-4 md:size-6 cursor-pointer text-white" />
           </div>
         ) : null}
 

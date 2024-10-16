@@ -74,7 +74,7 @@ export default function SavedJobsComp() {
                   {bookmarkedJobs.map((e: GetUserBookmarksType) => {
                     return (
                       <div
-                        className="flex flex-row justify-between mt-4 lg:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-2/3 bg-white rounded-md border-2"
+                        className="flex flex-row justify-between mt-4 lg:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-2/3 bg-primaryBorder rounded-lg border-2 border-primaryBorder"
                         key={e.id}
                         id={e.id}
                       >
@@ -103,7 +103,7 @@ export default function SavedJobsComp() {
                           </HoverCard>
 
                           <div>
-                            <p className="text-radio text-sm md:text-xl text-black tracking-wide font-bold">
+                            <p className="text-radio text-sm md:text-xl text-white tracking-wide font-bold">
                               {e.post.position}
                             </p>
                             <p className="text-gray-400 text-sm">

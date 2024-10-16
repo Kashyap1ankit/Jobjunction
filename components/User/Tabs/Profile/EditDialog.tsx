@@ -12,12 +12,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { userProfileUpdateSchema, userProfileUpdateType } from "@/schema/auth";
 import { refetchAtom, universalError } from "@/store/store";
+import { fraunces } from "@/utils/fonts/font";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PenIcon, X } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaSpinner } from "react-icons/fa";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 export default function EditUserProfileDialog({
   id,
@@ -75,21 +76,21 @@ export default function EditUserProfileDialog({
       <AlertDialog open={modalOpen}>
         <AlertDialogTrigger>
           <div
-            className="flex gap-2 items-center border-2 border-slate-200 p-2 rounded-full cursor-pointer"
+            className="flex gap-2 items-center px-4 py-2 rounded-full cursor-pointer bg-secondaryBorder"
             onClick={() => setModalOpen(true)}
           >
-            <PenIcon className="size-4" />
-            <p className="text-sm md:text-lg">Edit</p>
+            <PenIcon className="size-4 text-white" />
+            <p className="text-sm md:text-lg text-white">Edit</p>
           </div>
         </AlertDialogTrigger>
-        <AlertDialogContent className="rounded-md max-w-[300px] sm:max-w-[400px] md:max-w-[450px]">
+        <AlertDialogContent className="rounded-md max-w-[300px] sm:max-w-[400px] md:max-w-[450px] bg-primaryBg">
           <AlertDialogHeader>
             <div className="flex justify-between items-center">
-              <AlertDialogTitle className="mx-auto">
-                Edit Information
+              <AlertDialogTitle className="mx-auto text-white text-2xl">
+                Edit Information !
               </AlertDialogTitle>
               <X
-                className="size-4 cursor-pointer"
+                className="size-4 cursor-pointer text-gray-400"
                 onClick={() => setModalOpen(false)}
               />
             </div>
@@ -99,13 +100,13 @@ export default function EditUserProfileDialog({
                 className="flex flex-col gap-6 mt-4"
               >
                 <div>
-                  <label htmlFor="bio" className="text-md font-bold text-black">
+                  <label htmlFor="bio" className="text-md font-bold text-white">
                     Bio
                   </label>
                   <input
                     type="text"
                     {...register("bio")}
-                    className="px-4 py-2 border-2 border-slate-200 mt-2 p-2 rounded-md text-black w-full "
+                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
                     placeholder="Write.."
                     id="bio"
                     defaultValue={bio || undefined}
@@ -118,14 +119,14 @@ export default function EditUserProfileDialog({
                 <div>
                   <label
                     htmlFor="instagram_url"
-                    className="text-md font-bold text-black"
+                    className="text-md font-bold text-white"
                   >
                     Instagram
                   </label>
                   <input
                     type="text"
                     {...register("instagram_url")}
-                    className="px-4 py-2 border-2 border-slate-200 mt-2 p-2 rounded-md text-black w-full "
+                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
                     placeholder=""
                     id="instagram_url"
                     defaultValue={instagram_url || undefined}
@@ -140,14 +141,14 @@ export default function EditUserProfileDialog({
                 <div>
                   <label
                     htmlFor="twitter_url"
-                    className="text-md font-bold text-black"
+                    className="text-md font-bold text-white"
                   >
                     Twitter
                   </label>
                   <input
                     type="text"
                     {...register("twitter_url")}
-                    className="px-4 py-2 border-2 border-slate-200 mt-2 p-2 rounded-md text-black w-full "
+                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
                     placeholder=""
                     id="twitter_url"
                     defaultValue={twitter_url || undefined}
@@ -162,14 +163,14 @@ export default function EditUserProfileDialog({
                 <div>
                   <label
                     htmlFor="linkedin_url"
-                    className="text-md font-bold text-black"
+                    className="text-md font-bold text-white"
                   >
                     Linkedin
                   </label>
                   <input
                     type="text"
                     {...register("linkedin_url")}
-                    className="px-4 py-2 border-2 border-slate-200 mt-2 p-2 rounded-md text-black w-full "
+                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
                     placeholder=""
                     id="linkedin_url"
                     defaultValue={linkedin_url || undefined}
@@ -183,7 +184,7 @@ export default function EditUserProfileDialog({
 
                 <div className="flex flex-row-reverse">
                   <Button
-                    className="p-2 bg-white w-fit font-bold font-kanit text-black rounded-sm mb-6 border-2 border-b-4 border-r-4 border-black hover:bg-white "
+                    className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full mt-6`}
                     disabled={loader}
                   >
                     {loader ? <FaSpinner className="animate-spin" /> : "Save"}

@@ -7,4 +7,3 @@ export default function DesktopFilterCard() {
     </div>
   );
 }
-// border-r-2

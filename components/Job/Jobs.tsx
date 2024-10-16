@@ -53,7 +53,7 @@ export default function AllJobsComp() {
   return (
     <>
       {errorNoPost ? (
-        <div className="w-full h-screen max-h-screen flex items-center justify-center">
+        <div className="w-full h-screen max-h-screen flex items-center justify-center text-white">
           <p>No Post found</p>
         </div>
       ) : (

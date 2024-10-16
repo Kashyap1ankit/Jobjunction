@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar/Navbar";
-import React from "react";
+import React, { lazy } from "react";
+const Navbar = lazy(() => import("@/components/Navbar/Navbar"));
 
 export default function JobLayout({ children }: { children: React.ReactNode }) {
   return (

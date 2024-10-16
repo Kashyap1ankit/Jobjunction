@@ -138,6 +138,7 @@ export async function GetPostByAuthorId(authorId: string) {
             role: true,
           },
         },
+        createdAt: true,
       },
     });
     if (!getPost || getPost.length === 0)

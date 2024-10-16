@@ -27,7 +27,7 @@ export default function SidebarComp() {
   }, []);
 
   if (!session.data?.user) {
-    return <div>No User found</div>;
+    return <div className="text-gray-400">No User found</div>;
   }
 
   return (
@@ -39,9 +39,9 @@ export default function SidebarComp() {
           className="min-w-40 text-center"
         >
           <p
-            className={` duration-500 ${
+            className={` duration-500 text-gray-400 ${
               activeTab === "profile"
-                ? "bg-sideBarBgColor text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
+                ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full "
                 : ""
             }`}
           >
@@ -55,9 +55,9 @@ export default function SidebarComp() {
           className="min-w-40 text-center"
         >
           <p
-            className={` duration-500 ${
+            className={` duration-500 text-gray-400 ${
               activeTab === "profile"
-                ? "bg-sideBarBgColor text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
+                ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full "
                 : ""
             }`}
           >
@@ -73,9 +73,9 @@ export default function SidebarComp() {
           className="min-w-40 text-center"
         >
           <p
-            className={` mt-8  duration-500 ${
+            className={` mt-8  duration-500 text-gray-400 ${
               activeTab === "posts"
-                ? "bg-sideBarBgColor text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full"
+                ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full"
                 : ""
             }`}
           >
@@ -89,9 +89,9 @@ export default function SidebarComp() {
           className="min-w-40 text-center"
         >
           <p
-            className={` mt-8  duration-500 ${
+            className={` mt-8 text-gray-400 duration-500 ${
               activeTab === "posts"
-                ? "bg-sideBarBgColor text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full"
+                ? "bg-secondaryBorder  text-white w-fit p-2 rounded-full  font-kanit w-full"
                 : ""
             }`}
           >
@@ -108,9 +108,9 @@ export default function SidebarComp() {
             className="min-w-40 text-center"
           >
             <p
-              className={` mt-8  duration-500 ${
+              className={` mt-8  duration-500 text-gray-400 ${
                 activeTab === "bookmark"
-                  ? "bg-sideBarBgColor text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full"
+                  ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full"
                   : ""
               }`}
             >
@@ -126,7 +126,7 @@ export default function SidebarComp() {
             <p
               className={` mt-8  duration-500 text-red-500 ${
                 activeTab === "destroy"
-                  ? "bg-sideBarBgColor  w-fit p-2 rounded-full  font-kanit w-full"
+                  ? "bg-secondaryBorder w-fit p-2 rounded-full  font-kanit w-full"
                   : ""
               }`}
             >

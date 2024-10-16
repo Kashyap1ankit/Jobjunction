@@ -24,7 +24,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 left-0 py-2 px-4 sm:px-12  flex justify-between items-center border-b-2 border-primaryBorder w-full z-10 bg-primaryBg backdrop-blur-md bg-primaryBg/60">
+    <div className="fixed top-0 left-0 py-2 px-4 sm:px-12  flex justify-between items-center border-b-2 border-primaryBorder w-full z-50 bg-primaryBg backdrop-blur-md bg-primaryBg/60">
       <Link href={"/"}>
         <div className="flex items-center gap-4">
           <Image
