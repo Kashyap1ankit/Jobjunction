@@ -36,6 +36,7 @@ import {
 } from "react-icons/md";
 
 import { IoCodeSlash } from "react-icons/io5";
+import { useEffect } from "react";
 
 const limit = 5000;
 
@@ -44,7 +45,7 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
     editable: edit,
     editorProps: {
       attributes: {
-        class: "outline-none mt-4",
+        class: "outline-none mt-4 min-h-44",
       },
     },
     extensions: [
@@ -68,7 +69,7 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
       }),
       CodeBlock.configure({
         HTMLAttributes: {
-          class: "bg-black text-white",
+          class: "bg-black text-gray-500",
         },
       }),
       HorizonatlRule.configure({
@@ -104,6 +105,12 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
     content: content,
   });
 
+  //setting the default color to white
+
+  useEffect(() => {
+    editor?.commands.setColor("#ffffff");
+  }, [editor]);
+
   if (!editor) return null;
 
   const percentage = editor
@@ -113,10 +120,11 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
   function handleColor(e: any) {
     editor?.commands.setColor(e.target.value);
   }
+
   return (
     <div className={className}>
       {edit ? (
-        <div className="flex gap-8 mt-2 border-b-2 pb-2 border-black overflow-x-scroll no-scrollbar items-center relative sticky top-0 left-0 px-4 z-50 bg-gray-200">
+        <div className="flex gap-8 mt-2  pb-2 overflow-x-scroll no-scrollbar items-center relative sticky top-0 left-0 px-4 z-50 bg-inputBg">
           <div
             onClick={() =>
               editor.commands.toggleHeading({
@@ -124,67 +132,110 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
               })
             }
           >
-            <LucideHeading1 />
+            <LucideHeading1
+              className={`text-gray-500 cursor-pointer  ${
+                editor.isActive("heading") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
           <div onClick={() => editor.commands.toggleBulletList()}>
-            <MdFormatListBulleted />
+            <MdFormatListBulleted
+              className={`text-gray-500 cursor-pointer  ${
+                editor.isActive("bulletList") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
 
           <div onClick={() => editor.commands.toggleCodeBlock()}>
-            <IoCodeSlash />
+            <IoCodeSlash
+              className={`text-gray-500 cursor-pointer  ${
+                editor.isActive("codeBlock") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
 
           <div onClick={() => editor.commands.setHorizontalRule()}>
-            <LucideRuler className="size-4" />
+            <LucideRuler
+              className={`size-4 text-gray-500 cursor-pointer  ${
+                editor.isActive("horizontalRule") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
 
           <div onClick={() => editor.commands.toggleBold()}>
-            <MdFormatBold />
+            <MdFormatBold
+              className={`text-gray-500 cursor-pointer  ${
+                editor.isActive("bold") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
           <div onClick={() => editor.commands.toggleItalic()}>
-            <MdFormatItalic />
+            <MdFormatItalic
+              className={`text-gray-500 cursor-pointer  ${
+                editor.isActive("italic") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
           <div onClick={() => editor.commands.toggleUnderline()}>
-            <MdFormatUnderlined />
+            <MdFormatUnderlined
+              className={`text-gray-500 cursor-pointer  ${
+                editor.isActive("underline") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
           <div onClick={() => editor.commands.toggleHighlight()}>
-            <Highlighter className="size-4" />
+            <Highlighter
+              className={`size-4 text-gray-500 cursor-pointer  ${
+                editor.isActive("highlight") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
 
           <div onClick={() => editor.commands.toggleStrike()}>
-            <Strikethrough className="size-4" />
+            <Strikethrough
+              className={`size-4 text-gray-500 cursor-pointer  ${
+                editor.isActive("strike") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
 
-          <div onClick={() => editor.commands.setColor("red")}>
+          <div>
             <input
               type="color"
-              className="w-6 h-6  rounded-full border-none outline-none"
+              className="w-6 h-6 bg-transparent rounded-full border-none outline-none cursor-pointer"
+              defaultValue={"#ffffff"}
               onChange={(e) => handleColor(e)}
             />
           </div>
           <div onClick={() => editor.commands.undo()}>
-            <Undo className="size-4" />
+            <Undo
+              className={`size-4 text-gray-500 cursor-pointer  ${
+                editor.isActive("undo") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
           <div onClick={() => editor.commands.redo()}>
-            <Redo className="size-4" />
+            <Redo
+              className={`size-4 text-gray-500 cursor-pointer  ${
+                editor.isActive("redo") ? "text-white font-bold" : ""
+              }`}
+            />
           </div>
         </div>
-      ) : (
-        ""
-      )}
+      ) : null}
 
       <EditorContent editor={editor} />
 
       {edit ? (
         <div
-          className={`character-count mt-8 ${
+          className={`character-count mt-8 text-white flex gap-2 items-center ${
             editor.storage.characterCount.characters() === limit
               ? "character-count--warning"
               : ""
           }`}
         >
           <svg height="20" width="20" viewBox="0 0 20 20">
-            <circle r="10" cx="10" cy="10" fill="#e9ecef" />
+            <circle r="10" cx="10" cy="10" fill="gray" />
             <circle
               r="5"
               cx="10"
@@ -199,9 +250,7 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
           </svg>
           {editor.storage.characterCount.characters()} / {limit} characters
         </div>
-      ) : (
-        ""
-      )}
+      ) : null}
     </div>
   );
 };

@@ -1,8 +1,7 @@
-"use client";
-
-import MobileFilterCard from "@/components/Job/mobFilterCard";
-import DesktopFilterCard from "@/components/Job/deskFilterCard";
-import AllJobsComp from "@/components/Job/Jobs";
+import { lazy } from "react";
+const MobileFilterCard = lazy(() => import("@/components/Job/mobFilterCard"));
+const DesktopFilterCard = lazy(() => import("@/components/Job/deskFilterCard"));
+const AllJobsComp = lazy(() => import("@/components/Job/Jobs"));
 
 export default function AllJobs() {
   return (

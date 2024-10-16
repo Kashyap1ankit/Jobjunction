@@ -5,7 +5,7 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export default function LandingPart3() {
   return (
-    <div className="rounded-lg bg-red-600 p-4 md:p-8 mt-52 flex flex-wrap md:flex-nowrap w-11/12 md:w-3/4 gap-8 mx-auto">
+    <div className="rounded-lg bg-red-600 p-4 md:p-8 mt-28 md:mt-52 flex flex-wrap md:flex-nowrap w-11/12 md:w-3/4 gap-8 mx-auto">
       <div>
         <TextComponent
           text="We're open sourced"
@@ -21,6 +21,7 @@ export default function LandingPart3() {
             <Button
               variant={"outline"}
               className="flex gap-4 font-bold bg-white hover:bg-white border-b-4 border-r-4 border-darkBg"
+              aria-label="Github"
             >
               <FaGithub className="size-6" />
               <TextComponent text="Code" />
@@ -31,6 +32,7 @@ export default function LandingPart3() {
             <Button
               variant={"outline"}
               className="flex gap-4 font-bold bg-white hover:bg-white border-b-4 border-r-4 border-darkBg"
+              arial-label="X"
             >
               <FaTwitter className="size-6" />
               <TextComponent text="Twitter" />

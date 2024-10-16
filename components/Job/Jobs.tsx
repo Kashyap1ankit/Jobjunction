@@ -13,15 +13,6 @@ import {
   universalLoader,
 } from "@/store/store";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
 export default function AllJobsComp() {
   const [allJobs, setAllJobs] = useRecoilState(allJobListings);
   const [loading, setLoading] = useRecoilState(universalLoader);
@@ -62,11 +53,11 @@ export default function AllJobsComp() {
   return (
     <>
       {errorNoPost ? (
-        <div className="w-full h-screen max-h-screen flex items-center justify-center">
+        <div className="w-full h-screen max-h-screen flex items-center justify-center text-white">
           <p>No Post found</p>
         </div>
       ) : (
-        <div className="lg:flex lg:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
+        <div className="md:flex md:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar bg-transparent ">
           {loading ? (
             <div className="w-full h-full flex items-center justify-center ">
               <p className="bg-white border-2 border-b-8 border-r-8 border-black p-4 rounded-md font-bold animate-bounce ">
@@ -91,6 +82,7 @@ export default function AllJobsComp() {
                     salary_max={e.salary_max}
                     experience_level={e.experience_level}
                     apply_link={e.apply_link}
+                    createdAt={e.createdAt}
                   />
                 );
               })}

@@ -26,6 +26,7 @@ import EditUserProfileDialog from "./EditDialog";
 import { TbExternalLink } from "react-icons/tb";
 import Link from "next/link";
 import { UserRole } from "@prisma/client";
+import { roboto_slab } from "@/utils/fonts/font";
 
 export default function UserProfileDashboard() {
   const [accountCreated, setAccountCreated] = useState<string>();
@@ -90,16 +91,14 @@ export default function UserProfileDashboard() {
   if (loader) {
     return (
       <div className="w-full h-full flex items-center justify-center ">
-        <p className="bg-white border-2 border-b-8 border-r-8 border-black p-4 rounded-md font-bold animate-bounce ">
-          JJ
-        </p>
+        <p className="bg-white p-4 rounded-md font-bold animate-bounce ">JJ</p>
       </div>
     );
   }
 
   if (error.status) {
     return (
-      <div className="w-full h-full flex items-center justify-center text-xl">
+      <div className="w-full h-full flex items-center justify-center text-xl text-red-400">
         Error...
         <RefreshCcw
           onClick={() => {
@@ -109,7 +108,7 @@ export default function UserProfileDashboard() {
             });
             setRefetch((prev) => !prev);
           }}
-          className="cursor-pointer size-4"
+          className="cursor-pointer size-4 text-red-400"
         />
       </div>
     );
@@ -117,10 +116,7 @@ export default function UserProfileDashboard() {
 
   return (
     <div className="mb-6">
-      <p className="text-bold font-kanit font-bold text-xl mt-4 md:mt-0">
-        My Profile
-      </p>
-      <div className="flex justify-between items-center border-2 border-slate-200 p-4 rounded-xl mt-12">
+      <div className="flex justify-between items-center border-2 border-primaryBorder bg-primaryBorder p-4 rounded-xl mt-12">
         <div className="flex gap-6 items-center">
           <Image
             src={user.avatar || "/Images/avatar.png"}
@@ -131,7 +127,7 @@ export default function UserProfileDashboard() {
           />
 
           <div>
-            <p className="text-sm sm:text-lg md:text-xl font-kanit font-bold">
+            <p className="text-sm sm:text-lg md:text-xl font-kanit font-bold text-white">
               {user.username}
             </p>
 
@@ -152,9 +148,11 @@ export default function UserProfileDashboard() {
         </div>
       </div>
 
-      <div className=" border-2 border-slate-200 p-4 rounded-xl mt-12">
+      <div className=" border-2 border-primaryBorder bg-primaryBorder p-4 rounded-xl mt-12">
         <div className="flex justify-between items-center">
-          <p className="text-bold font-kanit font-bold text-xl">More Details</p>
+          <p className="text-bold font-kanit font-bold text-xl text-white">
+            More Details
+          </p>
 
           {isVisitorUser ? (
             <EditUserProfileDialog
@@ -175,7 +173,7 @@ export default function UserProfileDashboard() {
               <User2 className="size-4" />
               <span>User Name</span>
             </p>
-            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-700">
+            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-300">
               {user.username}
             </p>
           </div>
@@ -185,7 +183,7 @@ export default function UserProfileDashboard() {
               <Mail className="size-4" />
               <span> Email Id</span>
             </p>
-            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-700">
+            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-300">
               {user.email}
             </p>
           </div>
@@ -195,7 +193,7 @@ export default function UserProfileDashboard() {
               <Notebook className="size-4" />
               <span>Bio</span>
             </p>
-            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-700">
+            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-300">
               {user.bio || "null"}
             </p>
           </div>
@@ -205,7 +203,7 @@ export default function UserProfileDashboard() {
               <Linkedin className="size-4" />
               <span>Linkedin</span>
             </p>
-            <p className=" flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-600">
+            <p className=" flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-300">
               {user.linkedin_url || "null"}
               {user.linkedin_url ? (
                 <Link href={user.linkedin_url}>
@@ -222,7 +220,7 @@ export default function UserProfileDashboard() {
               <FaTwitter />
               <span>Twitter</span>
             </p>
-            <p className="flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-600">
+            <p className="flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-300">
               {user.twitter_url || "null"}
               {user.twitter_url ? (
                 <Link href={user.twitter_url}>
@@ -239,7 +237,7 @@ export default function UserProfileDashboard() {
               <FaInstagram />
               <span>Instagram</span>
             </p>
-            <p className="flex gap-2 items-center font-bold font-kanit text-sm  sm:text-lg  md:text-lg text-slate-600">
+            <p className="flex gap-2 items-center font-bold font-kanit text-sm  sm:text-lg  md:text-lg text-slate-300">
               {user.instagram_url || "null"}
               {user.instagram_url ? (
                 <Link href={user.instagram_url}>

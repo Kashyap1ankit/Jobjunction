@@ -26,46 +26,44 @@ export default function Profile() {
             className="w-8 h-8 md:w-12 md:h-12 rounded-full shadow-md"
           />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="flex flex-col items-left">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
+        <DropdownMenuContent className="flex flex-col items-left  bg-secondaryBorder text-gray-400 border-2 border-primaryBorder mx-4">
           <DropdownMenuItem>
             <Link
               href="/jobs"
-              className="flex gap-2 items-center w-full justify-center "
+              className="flex gap-2 items-center w-full justify-center cursor-pointer "
             >
-              <TextComponent text="Get Job" className=" font-bebas" />
               <TbHandClick />
+              <TextComponent text="Apply" className=" font-bebas" />
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Link
               href={"/jobs/create"}
-              className="flex gap-2 items-center w-full justify-center"
+              className="flex gap-2 items-center w-full justify-center cursor-pointer"
             >
-              <TextComponent text="Post Job" className=" font-bebas" />
               <PlusCircle className="size-4" />
+              <TextComponent text="Post" className=" font-bebas" />
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Link
               href={`/user/${session.data?.user?.id}/profile`}
-              className="flex gap-2 items-center w-full justify-center"
+              className="flex gap-2 items-center w-full justify-center cursor-pointer"
             >
-              <TextComponent text="Profile" className=" font-bebas" />
               <UserCircle className="size-4" />
+              <TextComponent text="Profile" className=" font-bebas" />
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <div
               onClick={() => signOut()}
-              className="flex gap-2 items-center w-full justify-center"
+              className="flex gap-2 items-center w-full justify-center cursor-pointer"
             >
-              <p>Logout</p>
               <LogOut className=" size-4 " />
+              <p>Logout</p>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>

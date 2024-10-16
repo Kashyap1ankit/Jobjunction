@@ -30,7 +30,7 @@ export default async function RootLayout({
 
       <body className={inter.className}>
         <AuthProvider session={session}>
-          <div className=" overflow-x-hidden ">
+          <div className=" overflow-x-hidden bg-primaryBg">
             {children}
             <Toaster />
           </div>

@@ -10,6 +10,21 @@ export type FieldsMarqueeType = {
   applied: string;
 };
 
+export type TestimonalCard = {
+  name: string;
+  job_title: string;
+  description: string;
+  company: string;
+  avatar: string;
+  twitter: string;
+  linkedin: string;
+};
+
+export type FaqTypes = {
+  question: string;
+  answer: string;
+};
+
 //Seeding database types
 
 export type SeededUserType = {
@@ -65,6 +80,7 @@ export type JobLisitingType = {
     username: string;
     role: "ADMIN" | "USER";
   };
+  createdAt: Date;
 };
 
 export type universalErrorType = {

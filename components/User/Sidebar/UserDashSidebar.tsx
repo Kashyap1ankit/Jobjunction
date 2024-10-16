@@ -14,18 +14,22 @@ export default function UserDashboardSidebar() {
   const [sheetOpen, setSheetOpen] = useState(false);
   return (
     <>
-      <div className=" border-r-2 border-slate-200 hidden md:block min-h-screen">
+      <div className=" border-r-2 border-primaryBorder hidden md:block min-h-screen pt-8 ">
         <SidebarComp />
       </div>
 
       <div className="block md:hidden">
         <Sheet open={sheetOpen}>
           <SheetTrigger onClick={() => setSheetOpen(true)}>
-            <Tally3 className="rotate-90" />
+            <Tally3 className="rotate-90 text-gray-400" />
           </SheetTrigger>
-          <SheetContent side={"left"} onClick={() => setSheetOpen(false)}>
+          <SheetContent
+            side={"left"}
+            onClick={() => setSheetOpen(false)}
+            className="bg-primaryBg border-r-gray-500"
+          >
             <SheetHeader>
-              <SheetDescription className="mt-8">
+              <SheetDescription className="mt-4">
                 <SidebarComp />
               </SheetDescription>
             </SheetHeader>

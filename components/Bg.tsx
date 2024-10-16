@@ -1,5 +1,17 @@
+import { cn } from "@/lib/utils";
+import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
+
 export default function Background() {
   return (
-    <div className="fixed inset-0 -z-10  bg-white bg-[linear-gradient(to_right,#f0f0ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_8rem] dark:bg-darkBg dark:bg-[linear-gradient(to_right,#b8b8e3_0px,transparent_0.5px),linear-gradient(to_bottom,#b8b8e3_0px,transparent_0.5px)]"></div>
+    <AnimatedGridPattern
+      numSquares={30}
+      maxOpacity={0.1}
+      duration={3}
+      repeatDelay={1}
+      className={cn(
+        "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+        "inset-x-0 inset-y-[-40%] h-[200%] skew-y-12"
+      )}
+    />
   );
 }
