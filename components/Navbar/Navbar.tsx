@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
-import { roboto_slab } from "@/utils/fonts/font";
+import { workSans } from "@/utils/fonts/font";
 import Image from "next/image";
 import NavComponent from "./NavComp";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Profile from "./Profile";
 
@@ -17,7 +16,6 @@ import {
 } from "@/components/ui/sheet";
 
 export default function Navbar() {
-  const router = useRouter();
   const session = useSession();
   if (session.status === "loading") {
     return <div>Loading....</div>;
@@ -35,9 +33,7 @@ export default function Navbar() {
             alt="JJ"
           />
 
-          <p
-            className={`${roboto_slab.className} text-white text-xl md:text-2xl`}
-          >
+          <p className={`${workSans.className} text-white text-xl md:text-2xl`}>
             Job <span className="text-primarySkyBlue ">Junction</span>
           </p>
         </div>
