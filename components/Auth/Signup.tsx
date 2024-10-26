@@ -125,7 +125,7 @@ export default function SignupForm() {
           duration: 2000,
         })}
 
-      <div className="w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 mx-auto rounded-lg p-4 md:p-6  bg-transpraent mt-6 md:mt-8 mb-4 lg:mt-20 md:mt-24 border-2 border-secondaryBorder text-white">
+      <div className="w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 mx-auto rounded-lg p-4 md:p-6  bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg mt-6 md:mt-8 lg:mt-20 md:mt-24 border-2 border-slate-800 mt-6 md:mt-8 mb-4 lg:mt-20 md:mt-24 text-white">
         <Link href={"/"}>
           <IoArrowBack className="text-gray-400 size-6 cursor-pointer mb-4 hover:text-white" />
         </Link>

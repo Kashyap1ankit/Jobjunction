@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
-import { roboto_slab } from "@/utils/fonts/font";
+import { workSans } from "@/utils/fonts/font";
 import Image from "next/image";
 import NavComponent from "./NavComp";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Profile from "./Profile";
 
@@ -17,14 +16,13 @@ import {
 } from "@/components/ui/sheet";
 
 export default function Navbar() {
-  const router = useRouter();
   const session = useSession();
   if (session.status === "loading") {
     return <div>Loading....</div>;
   }
 
   return (
-    <div className="fixed top-0 left-0 py-2 px-4 sm:px-12  flex justify-between items-center border-b-2 border-primaryBorder w-full z-50 bg-primaryBg backdrop-blur-md bg-primaryBg/60">
+    <div className="flex justify-between items-center fixed top-0 left-0 py-4 px-4 sm:px-12  border-b-2 border-primaryBorder w-full z-50 bg-primaryBg backdrop-blur-md bg-primaryBg/60 ">
       <Link href={"/"}>
         <div className="flex items-center gap-4">
           <Image
@@ -35,9 +33,7 @@ export default function Navbar() {
             alt="JJ"
           />
 
-          <p
-            className={`${roboto_slab.className} text-white text-xl md:text-2xl`}
-          >
+          <p className={`${workSans.className} text-white text-xl md:text-2xl`}>
             Job <span className="text-primarySkyBlue ">Junction</span>
           </p>
         </div>
@@ -47,7 +43,7 @@ export default function Navbar() {
         <Profile />
       ) : (
         <>
-          <div className="hidden sm:block ">
+          <div className="hidden sm:inline-flex ">
             <NavComponent />;
           </div>
 
