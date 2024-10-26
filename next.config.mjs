@@ -1,5 +1,4 @@
 import path from "path";
-import withPwa from "next-pwa";
 
 /** @type {import('next').NextConfig} */
 
@@ -32,10 +31,4 @@ const nextConfig = {
   },
 };
 
-const pwaConfig = withPwa({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-});
-
-export default pwaConfig(nextConfig);
+export default nextConfig;

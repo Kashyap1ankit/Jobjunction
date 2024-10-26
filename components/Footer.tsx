@@ -5,7 +5,7 @@ import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 export default function Footer() {
   return (
     <div className="mt-12 w-full flex  gap-6 justify-center flex-wrap  p-4  border-t-2 border-primaryBorder">
-      <Link href={"https://x.com/Ankitka38153827"} target="_blank">
+      <Link href={"https://x.com/kashyap_tweetts"} target="_blank">
         <FaTwitter className="text-gray-500 size-6 cursor-pointer hover:text-gray-200" />
       </Link>
 

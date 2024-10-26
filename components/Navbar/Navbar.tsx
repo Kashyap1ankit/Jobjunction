@@ -22,7 +22,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 left-0 py-2 px-4 sm:px-12  flex justify-between items-center border-b-2 border-primaryBorder w-full z-50 bg-primaryBg backdrop-blur-md bg-primaryBg/60">
+    <div className="flex justify-between items-center fixed top-0 left-0 py-4 px-4 sm:px-12  border-b-2 border-primaryBorder w-full z-50 bg-primaryBg backdrop-blur-md bg-primaryBg/60 ">
       <Link href={"/"}>
         <div className="flex items-center gap-4">
           <Image
@@ -43,7 +43,7 @@ export default function Navbar() {
         <Profile />
       ) : (
         <>
-          <div className="hidden sm:block ">
+          <div className="hidden sm:inline-flex ">
             <NavComponent />;
           </div>
 

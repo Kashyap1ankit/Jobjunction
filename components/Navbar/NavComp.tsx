@@ -7,7 +7,7 @@ export default function NavComponent() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col sm:flex-row gap-8">
+    <div className="flex flex-col sm:flex-row gap-y-8  sm:gap-x-8">
       <Button
         className={`${workSans.className} w-full bg-white text-black hover:bg-white`}
         onClick={() => signIn()}

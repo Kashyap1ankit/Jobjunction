@@ -59,7 +59,7 @@ export default function SigninForm() {
 
   return (
     <div className="min-h-screen">
-      <div className="mx-auto rounded-lg p-4 md:p-6 w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 bg-transpraent mt-6 md:mt-8 lg:mt-20 md:mt-24 border-2 border-secondaryBorder flex flex-col gap-6">
+      <div className="mx-auto rounded-lg p-4 md:p-6 w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg mt-6 md:mt-8 lg:mt-20 md:mt-24 border-2 border-slate-800 flex flex-col gap-6">
         {error && toast("Username / Password mismatched")}
 
         <div>
