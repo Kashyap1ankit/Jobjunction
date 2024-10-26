@@ -14,7 +14,7 @@ export default function LandingPart3() {
         <p
           className={`${roboto_slab.className} text-2xl sm:text-3xl lg:text-4xl text-white font-bold`}
         >
-          We're{" "}
+          We&apos;re{" "}
           <span
             className={`${roboto_slab.className}  text-primarySkyBlue cursor-pointer`}
           >
@@ -25,8 +25,8 @@ export default function LandingPart3() {
         <p
           className={`${poppins.className} text-xs sm:text-sm text-gray-300 mt-4 w-11/12 md:w-3/4  mb-12 `}
         >
-          We are open for everyone who want's to be the part of this communit &
-          is capable to contribute to this platform
+          We are open for everyone who want&apos;s to be the part of this
+          communit & is capable to contribute to this platform
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
