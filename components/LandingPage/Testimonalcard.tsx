@@ -63,10 +63,18 @@ export default function Component() {
 
                   <TextDivider className="mt-4">
                     <div className="flex gap-8 items-center">
-                      <Link href={e.twitter} target="_blank">
+                      <Link
+                        href={e.twitter}
+                        target="_blank"
+                        aria-label="twitter"
+                      >
                         <FaTwitter className="text-sideBarColor size-6 cursor-pointer" />
                       </Link>
-                      <Link href={e.linkedin} target="_blank">
+                      <Link
+                        href={e.linkedin}
+                        target="_blank"
+                        aria-label="linkedin"
+                      >
                         <FaLinkedin className="text-sideBarColor size-6 cursor-pointer" />
                       </Link>
                     </div>

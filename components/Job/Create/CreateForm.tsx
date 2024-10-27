@@ -256,7 +256,10 @@ export default function CreateForm() {
 
             <div>
               <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                <Link className=" text-gray-400 size-5" />
+                <Link
+                  className=" text-gray-400 size-5"
+                  aria-label="apply_link_form"
+                />
                 <input
                   className="outline-none w-full bg-inputBg text-white"
                   placeholder="Apply Link"
@@ -277,6 +280,7 @@ export default function CreateForm() {
               type="submit"
               className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue  mt-6`}
               disabled={loading}
+              aria-label="create-job-submit"
             >
               {loading ? <FaSpinner className="animate-spin" /> : "Submit"}
             </Button>

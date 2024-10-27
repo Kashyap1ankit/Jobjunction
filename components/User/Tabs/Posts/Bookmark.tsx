@@ -96,7 +96,10 @@ export default function SavedJobsComp() {
                             </HoverCardTrigger>
                             <HoverCardContent className="flex gap-2 items-center">
                               <p>{e.post.author.username}</p>
-                              <Link href={`/user/${e.post.author.id}/profile`}>
+                              <Link
+                                href={`/user/${e.post.author.id}/profile`}
+                                aria-label="user-profile"
+                              >
                                 <HiExternalLink />
                               </Link>
                             </HoverCardContent>

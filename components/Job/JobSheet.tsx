@@ -128,9 +128,14 @@ export default function JobSheetComp({
                 content={role_description}
               />
 
-              <Link href={apply_link} className="block w-full">
+              <Link
+                href={apply_link}
+                className="block w-full"
+                aria-label="apply"
+              >
                 <Button
                   className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full`}
+                  aria-label="mobile-apply"
                 >
                   Apply
                 </Button>

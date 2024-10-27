@@ -30,7 +30,10 @@ export default function LandingPart3() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href={"https://github.com/Kashyap1ankit/Jobjunction"}>
+          <Link
+            href={"https://github.com/Kashyap1ankit/Jobjunction"}
+            aria-label="github"
+          >
             <Button
               variant={"outline"}
               className="flex gap-4 font-bold bg-white hover:bg-white border-b-4 border-r-4 border-darkBg w-full"
@@ -41,7 +44,7 @@ export default function LandingPart3() {
             </Button>
           </Link>
 
-          <Link href={"https://x.com/kashyap_tweetts"}>
+          <Link href={"https://x.com/kashyap_tweetts"} aria-label="twitter">
             <Button
               variant={"outline"}
               className="flex gap-4 font-bold  border-b-4 border-r-4 border-darkBg bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full"

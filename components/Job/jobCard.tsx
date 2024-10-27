@@ -57,6 +57,7 @@ export default function JobCard({
             <Link
               href={`/user/${author.id}/profile`}
               className="text-gray-400 text-sm hover:cursor-pointer hover:text-blue-500"
+              aria-label="username"
             >
               feat: @{author.username}
             </Link>

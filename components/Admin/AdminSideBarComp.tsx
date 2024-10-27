@@ -26,6 +26,7 @@ export default function AdminSideBarComp() {
           href={`/admin`}
           onClick={() => setActiveTab("admin")}
           className="min-w-40 text-center"
+          aria-label="admin"
         >
           <p
             className={` duration-500 ${
@@ -42,6 +43,7 @@ export default function AdminSideBarComp() {
           href={`/admin/users/all`}
           onClick={() => setActiveTab("users")}
           className="min-w-40 text-center"
+          aria-label="admin-user"
         >
           <p
             className={`mt-8 duration-500 ${

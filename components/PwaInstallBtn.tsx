@@ -70,6 +70,7 @@ const PWAInstallButton = () => {
           <Link
             href={"/jobs/create"}
             className="flex gap-2 text-md  w-full   bg-white  rounded-md border-2 border-b-8  border-r-8 border-darkBg cursor-pointer hover:-translate-y-1 font-bebas text-black p-2  hover:bg-white"
+            aria-label="create-route"
           >
             <p>Post Job</p>
 

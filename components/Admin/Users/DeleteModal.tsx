@@ -71,12 +71,14 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
               handleDeleteAccountByAdmin();
             }}
             disabled={loading}
+            aria-label="delete-account-yes"
           >
             {loading ? <FaSpinner className="animate-spin" /> : "Yes"}
           </Button>
           <Button
             onClick={() => setModalOpen(false)}
             className="bg-transparent text-black hover:bg-transparent border-2 border-slate-500"
+            aria-label="delete-account-no"
           >
             No
           </Button>

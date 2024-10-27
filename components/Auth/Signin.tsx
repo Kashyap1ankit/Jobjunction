@@ -63,7 +63,7 @@ export default function SigninForm() {
         {error && toast("Username / Password mismatched")}
 
         <div>
-          <Link href={"/"}>
+          <Link href={"/"} aria-label="go-back">
             <IoArrowBack className="text-gray-400 size-6 cursor-pointer mb-4 hover:text-white" />
           </Link>
           <p
@@ -81,6 +81,7 @@ export default function SigninForm() {
         <Button
           className="bg-white w-full flex gap-4 hover:bg-white"
           onClick={() => signIn("google", { callbackUrl: "/jobs" })}
+          aria-label="signin"
         >
           <FcGoogle className="size-6" />
           <p className={`${poppins.className} text-black font-bold`}>
@@ -137,6 +138,7 @@ export default function SigninForm() {
               type="submit"
               disabled={submitting}
               className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue`}
+              aria-label="signup"
             >
               {submitting ? (
                 <TbFidgetSpinner className="animate-spin text-2xl " />
@@ -149,7 +151,7 @@ export default function SigninForm() {
 
         <p className="mt-4 text-sm text-center text-gray-400">
           New User ?
-          <Link href="/signup">
+          <Link href="/signup" aria-label="signup">
             <span className="cursor-pointer text-secondarySkyBlue">
               {" "}
               Create Account

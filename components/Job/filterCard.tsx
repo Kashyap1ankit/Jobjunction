@@ -85,6 +85,7 @@ export default function FilterSideBar() {
             callBackend();
           }}
           disabled={disableApply}
+          aria-label="apply"
         >
           Apply
         </Button>
