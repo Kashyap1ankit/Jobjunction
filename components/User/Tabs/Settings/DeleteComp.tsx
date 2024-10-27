@@ -137,6 +137,7 @@ export default function DeleteComp() {
                     <Button
                       disabled={loading}
                       className="mt-4 bg-red-500 hover:bg-red-500 text-white"
+                      aria-label="delete-yes"
                     >
                       {loading ? <FaSpinner className="animate-spin" /> : "Yes"}
                     </Button>

@@ -37,6 +37,7 @@ export default function SidebarComp() {
           href={`/user/${session.data?.user.id}/profile`}
           onClick={() => setActiveTab("profile")}
           className="min-w-40 text-center"
+          aria-label="profile"
         >
           <p
             className={` duration-500 text-gray-400 ${
@@ -53,6 +54,7 @@ export default function SidebarComp() {
           href={`/user/${userId}/profile`}
           onClick={() => setActiveTab("profile")}
           className="min-w-40 text-center"
+          aria-label="user-profile"
         >
           <p
             className={` duration-500 text-gray-400 ${
@@ -71,6 +73,7 @@ export default function SidebarComp() {
           href={`/user/${session.data?.user.id}/jobs/me`}
           onClick={() => setActiveTab("posts")}
           className="min-w-40 text-center"
+          aria-label="post"
         >
           <p
             className={` mt-8  duration-500 text-gray-400 ${
@@ -87,6 +90,7 @@ export default function SidebarComp() {
           href={`/user/${userId}/jobs/me`}
           onClick={() => setActiveTab("posts")}
           className="min-w-40 text-center"
+          aria-label="user-post"
         >
           <p
             className={` mt-8 text-gray-400 duration-500 ${
@@ -106,6 +110,7 @@ export default function SidebarComp() {
             href={`/user/${session.data?.user.id}/jobs/bookmarks`}
             onClick={() => setActiveTab("bookmark")}
             className="min-w-40 text-center"
+            aria-label="saved"
           >
             <p
               className={` mt-8  duration-500 text-gray-400 ${
@@ -122,6 +127,7 @@ export default function SidebarComp() {
             href={`/user/${session.data?.user.id}/settings/delete`}
             onClick={() => setActiveTab("destroy")}
             className="min-w-40 text-center"
+            aria-label="delete"
           >
             <p
               className={` mt-8  duration-500 text-red-500 ${

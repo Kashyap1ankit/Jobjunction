@@ -38,6 +38,7 @@ export default function LandingPart1() {
         <Link
           href={"/jobs"}
           className={`${workSans.className}  text-white   rounded-lg bg-primarySkyBlue cursor-pointer text-black py-2 px-4 text-sm md:text-md text-center `}
+          aria-label="explore"
         >
           Explore Careers
         </Link>
@@ -45,6 +46,7 @@ export default function LandingPart1() {
         <Link
           href={"/#testimonal"}
           className={`${workSans.className}  text-white   rounded-lg bg-gray-800 z-30 cursor-pointer text-black py-2 px-4  text-sm md:text-md text-center`}
+          aria-label="testimonal"
         >
           Success Stories
         </Link>

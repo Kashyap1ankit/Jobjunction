@@ -23,13 +23,13 @@ export default function Navbar() {
 
   return (
     <div className="flex justify-between items-center fixed top-0 left-0 py-4 px-4 sm:px-12  border-b-2 border-primaryBorder w-full z-50 bg-primaryBg backdrop-blur-md bg-primaryBg/60 ">
-      <Link href={"/"}>
+      <Link href={"/"} aria-label="jj">
         <div className="flex items-center gap-4">
           <Image
             src={"/Images/jj-logo.png"}
-            width={50}
-            height={0}
-            className="rounded-md"
+            width={500}
+            height={500}
+            className="rounded-md w-12"
             alt="JJ"
           />
 

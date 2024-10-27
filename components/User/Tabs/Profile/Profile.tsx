@@ -206,7 +206,7 @@ export default function UserProfileDashboard() {
             <p className=" flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-300">
               {user.linkedin_url || "null"}
               {user.linkedin_url ? (
-                <Link href={user.linkedin_url}>
+                <Link href={user.linkedin_url} aria-label="linkedin">
                   <TbExternalLink />
                 </Link>
               ) : (
@@ -223,7 +223,7 @@ export default function UserProfileDashboard() {
             <p className="flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-300">
               {user.twitter_url || "null"}
               {user.twitter_url ? (
-                <Link href={user.twitter_url}>
+                <Link href={user.twitter_url} aria-label="twitter">
                   <TbExternalLink />
                 </Link>
               ) : (
@@ -240,7 +240,7 @@ export default function UserProfileDashboard() {
             <p className="flex gap-2 items-center font-bold font-kanit text-sm  sm:text-lg  md:text-lg text-slate-300">
               {user.instagram_url || "null"}
               {user.instagram_url ? (
-                <Link href={user.instagram_url}>
+                <Link href={user.instagram_url} aria-label="instagram">
                   <TbExternalLink />
                 </Link>
               ) : (

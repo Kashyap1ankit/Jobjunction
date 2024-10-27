@@ -186,6 +186,7 @@ export default function EditUserProfileDialog({
                   <Button
                     className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full mt-6`}
                     disabled={loader}
+                    aria-label="edit-profile-save"
                   >
                     {loader ? <FaSpinner className="animate-spin" /> : "Save"}
                   </Button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { FieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "@/schema/auth";
@@ -18,10 +18,9 @@ import {
   Mail,
   X,
 } from "lucide-react";
-import { Separator } from "../ui/separator";
 import { CreateUser } from "@/app/actions/users/signup";
 import Link from "next/link";
-import { FaGoogle, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { toast } from "sonner";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { IoArrowBack } from "react-icons/io5";
@@ -126,7 +125,7 @@ export default function SignupForm() {
         })}
 
       <div className="w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 mx-auto rounded-lg p-4 md:p-6  bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg mt-6 md:mt-8 lg:mt-20 md:mt-24 border-2 border-slate-800 mt-6 md:mt-8 mb-4 lg:mt-20 md:mt-24 text-white">
-        <Link href={"/"}>
+        <Link href={"/"} aria-label="go-back">
           <IoArrowBack className="text-gray-400 size-6 cursor-pointer mb-4 hover:text-white" />
         </Link>
 
@@ -160,6 +159,7 @@ export default function SignupForm() {
         <Button
           className="bg-white w-full flex gap-4 hover:bg-white mt-8"
           onClick={() => signIn("google", { callbackUrl: "/jobs" })}
+          aria-label="signup-google"
         >
           <FcGoogle className="size-6" />
           <p className={`${poppins.className} text-black font-bold`}>
@@ -308,6 +308,7 @@ export default function SignupForm() {
             onClick={next}
             className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full mt-6`}
             disabled={submitting}
+            aria-label="signup-submit"
           >
             {currentIndex === 1 ? (
               <div>
@@ -325,9 +326,8 @@ export default function SignupForm() {
 
         <p className="mt-4 text-sm text-center text-gray-400">
           Existing User ?
-          <Link href="/signin">
+          <Link href="/signin" aria-label="signin">
             <span className="cursor-pointer text-secondarySkyBlue">
-              {" "}
               Login to Account
             </span>
           </Link>

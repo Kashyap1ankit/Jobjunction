@@ -12,6 +12,7 @@ import { TbHandClick } from "react-icons/tb";
 import TextComponent from "../TextComp";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 
 export default function Profile() {
   const session = useSession();
@@ -19,11 +20,14 @@ export default function Profile() {
   return (
     <div>
       <DropdownMenu>
-        <DropdownMenuTrigger className="outline-none">
-          <img
+        <DropdownMenuTrigger className="outline-none" aria-label="profile-dd">
+          <Image
             src={imageUrl || "/Images/avatar.png"}
-            alt=""
+            alt="user-avatar"
             className="w-8 h-8 md:w-12 md:h-12 rounded-full shadow-md"
+            aria-label="user-profile"
+            width={500}
+            height={500}
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="flex flex-col items-left  bg-secondaryBorder text-gray-400 border-2 border-primaryBorder mx-4">
@@ -31,6 +35,7 @@ export default function Profile() {
             <Link
               href="/jobs"
               className="flex gap-2 items-center w-full justify-center cursor-pointer "
+              aria-label="apply"
             >
               <TbHandClick />
               <TextComponent text="Apply" className=" font-bebas" />
@@ -41,6 +46,7 @@ export default function Profile() {
             <Link
               href={"/jobs/create"}
               className="flex gap-2 items-center w-full justify-center cursor-pointer"
+              aria-label="post"
             >
               <PlusCircle className="size-4" />
               <TextComponent text="Post" className=" font-bebas" />
@@ -51,6 +57,7 @@ export default function Profile() {
             <Link
               href={`/user/${session.data?.user?.id}/profile`}
               className="flex gap-2 items-center w-full justify-center cursor-pointer"
+              aria-label="profile"
             >
               <UserCircle className="size-4" />
               <TextComponent text="Profile" className=" font-bebas" />
