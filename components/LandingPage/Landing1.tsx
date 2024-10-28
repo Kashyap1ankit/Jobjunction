@@ -4,10 +4,25 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { poppins, roboto_slab, workSans } from "@/utils/fonts/font";
+import Image from "next/image";
 
 export default function LandingPart1() {
   return (
     <div className=" px-4 md:px-0">
+      <Link
+        href={"https://peerlist.io/kashyap1ankit/project/job-junction"}
+        aria-label="peerlist-tag"
+        target="_blank"
+      >
+        <Image
+          src={"/Images/peerlist.svg"}
+          width={400}
+          height={400}
+          alt="peerlist-img"
+          className="w-24 md:w-32 mx-auto mb-4 "
+        />
+      </Link>
+
       <div className="flex flex-col gap-4 items-center flex-wrap ">
         <p
           className={`${roboto_slab.className} text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center w-11/12   lg:w-3/4 `}
