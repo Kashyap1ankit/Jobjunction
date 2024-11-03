@@ -23,7 +23,7 @@ services:
           path: package.json
     volumes:
       - ./:/app
-      - /app/node_modules
+      - ./node_modules:/app/node_modules
   db:
     image: postgres:alpine
     container_name: job_junction_db
