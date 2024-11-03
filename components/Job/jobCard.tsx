@@ -1,16 +1,11 @@
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BriefcaseBusiness, Code, Pin } from "lucide-react";
 import { JobLisitingType } from "@/types/types";
 import MoreOptionDialog from "./MoreDialog";
 import JobSheetComp from "./JobSheet";
 import { MdVerifiedUser } from "react-icons/md";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { calculateDayDiff } from "@/utils/helpers/calculate-day-difference";
 
 export default function JobCard({
   id,
@@ -27,7 +22,12 @@ export default function JobCard({
   apply_link,
   createdAt,
 }: JobLisitingType) {
-  const diff = new Date(Date.now()).getDate() - new Date(createdAt).getDate();
+  const [diff, setDiff] = useState(0);
+
+  useEffect(() => {
+    const calculatedDiff = calculateDayDiff(createdAt);
+    setDiff(calculatedDiff);
+  }, []);
 
   return (
     <div className="flex flex-col gap-8 mt-4 md:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-3/4 bg-primaryBorder text-white rounded-xl border-2 border-secondaryBorder hover:cursor-pointer hover:bg-hoverBorder ">
@@ -47,11 +47,15 @@ export default function JobCard({
             <p className="text-gray-400 text-sm">{company} | </p>
             <p className="text-gray-400 text-sm">
               Posted{" "}
-              {diff >= 0
-                ? "today"
-                : diff === 1
-                ? "yesterday"
-                : ` ${Math.abs(diff)}days ago`}{" "}
+              {diff > 0
+                ? diff < 1
+                  ? "today"
+                  : diff > 1 && diff < 2
+                  ? "yesterday"
+                  : diff > 2 && diff < 6
+                  ? `${Math.ceil(diff)} days ago`
+                  : `${Math.ceil(Math.ceil(diff) / 7)} weeks ago`
+                : "Invalid posting date"}
               |
             </p>
             <Link
