@@ -47,14 +47,16 @@ export type SeededPostsType = {
   authorId: string;
   apply_link: string;
   company: string;
+  company_logo: string | null;
+  company_website: string | null;
   experience_level: string;
   job_type: string;
   location: string;
   position: string;
   role_description: string;
-  role_name: string;
-  salary_max: number;
-  salary_min: number;
+  salary_disclosed: boolean;
+  salary_max: number | null;
+  salary_min: number | null;
 };
 export type GetAllPostResponseType = {
   status: number;
@@ -71,9 +73,9 @@ export type JobLisitingType = {
   location: string;
   position: string;
   role_description: string;
-  role_name: string;
-  salary_max: number;
-  salary_min: number;
+  salary_disclosed: boolean;
+  salary_max: number | null;
+  salary_min: number | null;
   author: {
     id: string;
     avatar: string | null;
@@ -108,7 +110,7 @@ export type GetUserBookmarksType = {
     apply_link: string;
     company: string;
     position: string;
-    role_name: string;
+
     author: {
       id: string;
       avatar: string | null;

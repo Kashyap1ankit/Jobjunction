@@ -24,7 +24,7 @@ export async function CreateJob(postdata: createJobSchemaType) {
         location: postdata.location,
         position: postdata.position,
         role_description: postdata.role_description,
-        role_name: postdata.role_name,
+        salary_disclosed: postdata.salary_disclosed,
         salary_max: postdata.salary_max,
         salary_min: postdata.salary_min,
         author: {
@@ -74,7 +74,7 @@ export async function GetAllPost() {
         location: true,
         position: true,
         role_description: true,
-        role_name: true,
+        salary_disclosed: true,
         salary_max: true,
         salary_min: true,
         author: {
@@ -127,7 +127,7 @@ export async function GetPostByAuthorId(authorId: string) {
         location: true,
         position: true,
         role_description: true,
-        role_name: true,
+        salary_disclosed: true,
         salary_max: true,
         salary_min: true,
         author: {

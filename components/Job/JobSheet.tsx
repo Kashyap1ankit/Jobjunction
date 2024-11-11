@@ -33,7 +33,7 @@ export default function JobSheetComp({
   role_description,
   job_type,
   location,
-  role_name,
+
   salary_min,
   salary_max,
   experience_level,
@@ -77,10 +77,6 @@ export default function JobSheetComp({
                   <p className="text-xs text-gray-400 rounded-md">{location}</p>
                 </div>
 
-                <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
-                  <Code className="size-4" />
-                  <p className="text-xs text-white  rounded-md">{role_name}</p>
-                </div>
                 <p className="text-xs text-white p-2 rounded-full bg-green-800">
                   ₹{salary_min / 1000}k -{" "}
                   <span>₹{Math.round(salary_max / 1000)}k</span>/month

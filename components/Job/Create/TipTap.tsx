@@ -42,6 +42,7 @@ const limit = 5000;
 
 const Tiptap = ({ className, name, setValue, edit, content }: any) => {
   const editor = useEditor({
+    immediatelyRender: false,
     editable: edit,
     editorProps: {
       attributes: {
@@ -124,7 +125,7 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
   return (
     <div className={className}>
       {edit ? (
-        <div className="flex gap-8 mt-2  pb-2 overflow-x-scroll no-scrollbar items-center relative sticky top-0 left-0 px-4 z-50 bg-inputBg">
+        <div className="flex gap-8 mt-2  pb-2 overflow-x-scroll no-scrollbar items-center relative sticky top-0 left-0 px-4 z-50 bg-[#161f2d] border-b-2 border-b-primaryBorder">
           <div
             onClick={() =>
               editor.commands.toggleHeading({
