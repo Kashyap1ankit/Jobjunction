@@ -33,7 +33,7 @@ export default function JobSheetComp({
   role_description,
   job_type,
   location,
-
+  salary_disclosed,
   salary_min,
   salary_max,
   experience_level,
@@ -78,8 +78,11 @@ export default function JobSheetComp({
                 </div>
 
                 <p className="text-xs text-white p-2 rounded-full bg-green-800">
-                  ₹{salary_min / 1000}k -{" "}
-                  <span>₹{Math.round(salary_max / 1000)}k</span>/month
+                  {salary_disclosed && salary_min && salary_max
+                    ? `  ₹ ${Math.round(salary_min / 1000)}k - ₹ ${Math.round(
+                        salary_max / 1000
+                      )}k/month`
+                    : "Not disclosed"}
                 </p>
               </div>
 
