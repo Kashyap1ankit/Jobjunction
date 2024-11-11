@@ -26,7 +26,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         location: true,
         position: true,
         role_description: true,
-        role_name: true,
+
         salary_max: true,
         salary_min: true,
         author: {

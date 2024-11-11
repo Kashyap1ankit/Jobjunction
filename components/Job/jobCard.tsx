@@ -15,7 +15,7 @@ export default function JobCard({
   role_description,
   job_type,
   location,
-  role_name,
+  salary_disclosed,
   salary_min,
   salary_max,
   experience_level,
@@ -83,13 +83,12 @@ export default function JobCard({
           <p className="text-xs text-gray-400 rounded-md">{location}</p>
         </div>
 
-        <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
-          <Code className="size-4" />
-          <p className="text-xs text-white  rounded-md">{role_name}</p>
-        </div>
         <p className="text-xs text-white p-2 rounded-full bg-green-800">
-          ₹{salary_min / 1000}k - <span>₹{Math.round(salary_max / 1000)}k</span>
-          /month
+          {salary_disclosed && salary_min && salary_max
+            ? `  ₹ ${Math.round(salary_min / 1000)}k - ₹ ${Math.round(
+                salary_max / 1000
+              )}k/month`
+            : "Not disclosed"}
         </p>
       </div>
 
@@ -109,7 +108,7 @@ export default function JobCard({
           role_description={role_description}
           job_type={job_type}
           location={location}
-          role_name={role_name}
+          salary_disclosed={salary_disclosed}
           salary_min={salary_min}
           salary_max={salary_max}
           experience_level={experience_level}

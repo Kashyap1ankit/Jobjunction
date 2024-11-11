@@ -4,7 +4,7 @@ import prisma from "@/db";
 import { calculateDayDiff } from "@/utils/helpers/calculate-day-difference";
 import cron from "node-cron";
 
-export async function deleteExpiredJobs() {
+async function deleteExpiredJobs() {
   try {
     const allJobs = await prisma.post.findMany({
       select: {
@@ -33,12 +33,8 @@ export async function deleteExpiredJobs() {
 export const cleanDB = async () => {
   cron.schedule(
     "0 0 * * *", //running my delete jobs function everynight at 12am IST
-    () => {
-      deleteExpiredJobs();
-    },
-    {
-      scheduled: true,
-      timezone: "Asia/Kolkata",
+    async () => {
+      await deleteExpiredJobs();
     }
   );
 };

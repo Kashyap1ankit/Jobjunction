@@ -32,14 +32,16 @@ model Post {
   authorId         String
   apply_link       String
   company          String
+  company_logo     String?
+  company_website  String?
   experience_level String
   job_type         String
   location         String
   position         String
   role_description String
-  role_name        String
-  salary_max       Int
-  salary_min       Int
+  salary_disclosed Boolean
+  salary_max       Int?
+  salary_min       Int?
   author           User      @relation(fields: [authorId], references: [id],onDelete: Cascade)
   bookmarks        Bookmark[]
 
@@ -54,6 +56,8 @@ model Bookmark {
   post   Post   @relation(fields: [postId],references: [id],onDelete: Cascade)
   user   User   @relation(fields: [userId],references: [id],onDelete: Cascade)
 }
+
+
 
 enum Provider {
   google

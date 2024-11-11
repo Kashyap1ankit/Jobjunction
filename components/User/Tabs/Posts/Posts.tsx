@@ -57,7 +57,7 @@ export default function PostedJob() {
                       role_description={e.role_description}
                       job_type={e.job_type}
                       location={e.location}
-                      role_name={e.role_name}
+                      salary_disclosed={e.salary_disclosed}
                       salary_min={e.salary_min}
                       salary_max={e.salary_max}
                       experience_level={e.experience_level}

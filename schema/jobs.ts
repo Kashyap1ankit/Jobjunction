@@ -1,57 +1,115 @@
 import z from "zod";
 
-const locationEnum = ["Remote", "Onsite", "Hybrid"] as const;
+export const locationEnum = ["Remote", "Onsite", "Hybrid"] as const;
 
-const jobTypeEnum = [
+export const jobTypeEnum = [
   "Fulltime",
   "Internship",
   "Contract",
   "Freelance",
 ] as const;
 
-const experienceEnum = ["Fresher", "0-1y", "1y", "3y", "5y"] as const;
+export const experienceEnum = [
+  "Fresher",
+  "0-1y",
+  "1-3y",
+  "3-5y",
+  "5y",
+] as const;
 
-export const createJobSchema = z.object({
-  position: z
-    .string({ message: "Position is required" })
-    .min(2, { message: "Extend it little" })
-    .max(20, { message: "Keep it shorter" }),
+export const createJobSchema = z
+  .object({
+    position: z
+      .string({ message: "Position is required" })
+      .min(2, { message: "Extend it little" })
+      .max(20, { message: "Keep it shorter" }),
 
-  company: z
-    .string({ message: "Company name is required" })
-    .min(2, { message: "Extend it little" }),
+    company: z
+      .string({ message: "Company name is required" })
+      .min(2, { message: "Extend it little" }),
 
-  role_description: z.string({ message: "Description is required" }).min(200, {
-    message: "Description need to be long",
-  }),
-  location: z.enum(locationEnum, {
-    message: "Unexpected Inputs",
-  }),
+    company_logo: z
+      .string({ message: "Company's logo must be string" })
+      .optional(),
+    company_website: z
+      .string()
+      .optional()
+      .refine(
+        (value) => !value || /^https?:\/\/[^\s$.?#].[^\s]*$/.test(value),
+        {
+          message: "Company's website must be a valid URL",
+        }
+      ),
 
-  job_type: z.enum(jobTypeEnum, { message: "Unexpected Inputs" }),
+    role_description: z
+      .string({ message: "Description is required" })
+      .min(200, {
+        message: "Description need to be long",
+      }),
+    location: z.enum(locationEnum, {
+      message: "Unexpected Inputs",
+    }),
 
-  role_name: z
-    .string({ message: "Role must be defined" })
-    .min(2, {
-      message: "Role can't be this small",
-    })
-    .max(20, { message: "Keep it shorter" }),
+    job_type: z.enum(jobTypeEnum, { message: "Unexpected Inputs" }),
 
-  experience_level: z.enum(experienceEnum, { message: "Unexpected Inputs" }),
+    experience_level: z.enum(experienceEnum, { message: "Unexpected Inputs" }),
 
-  salary_min: z
-    .number({ message: "Min salary must specified" })
-    .min(5000, { message: "Salary can't be less than 5000" }),
+    salary_disclosed: z.boolean({ message: "Required" }),
 
-  salary_max: z
-    .number({ message: "Max salary must specified" })
-    .min(5001, { message: "Max Salary can't be less than 5001" }),
+    salary_min: z.coerce
+      .number({ message: "Max salary must be a number" })
+      .nonnegative()
+      .optional()
+      .transform((val) => (val === 0 ? null : val)),
+    salary_max: z.coerce
+      .number({ message: "Max salary must be a number" })
+      .nonnegative()
+      .optional()
+      .transform((val) => (val === 0 ? null : val)),
 
-  apply_link: z
-    .string({ message: "Must provide apply link" })
-    .url({ message: "Invalid url" }),
+    apply_link: z
+      .string({ message: "Must provide apply link" })
+      .url({ message: "Invalid url" }),
 
-  author: z.string({ message: "Author is required" }).optional(),
-});
+    author: z.string({ message: "Author is required" }).optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.salary_disclosed) {
+      if (!data.salary_min) {
+        return ctx.addIssue({
+          code: "custom",
+          path: ["salary_min"],
+          message: "Minimum salary is required when salary is disclosed",
+        });
+      }
+
+      if (data.salary_min < 5000) {
+        return ctx.addIssue({
+          code: "too_small",
+          path: ["salary_min"],
+          minimum: 5000,
+          inclusive: true,
+          type: "number",
+          message: "Number must be greater than or equal to 5000",
+        });
+      }
+
+      if (!data.salary_max) {
+        return ctx.addIssue({
+          code: "custom",
+          path: ["salary_max"],
+          message: "Maximum salary is required when salary is disclosed",
+        });
+      }
+
+      if (data.salary_max <= data.salary_min) {
+        return ctx.addIssue({
+          code: "custom",
+          path: ["salary_max"],
+          message: "Number must be greater than Minimum salary",
+        });
+      }
+    }
+  });
 
 export type createJobSchemaType = z.infer<typeof createJobSchema>;

@@ -103,7 +103,6 @@ export async function GetBookmarkByUserId(userId: string) {
             apply_link: true,
             company: true,
             position: true,
-            role_name: true,
             author: {
               select: {
                 id: true,
