@@ -39,7 +39,7 @@ export default function DeleteComp() {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+
   const [inputError, setInputError] = useState(false);
   const [randomString, setRandomString] = useState<string>(
     Randomstring.generate(8)
@@ -65,10 +65,7 @@ export default function DeleteComp() {
       setModalOpen(false);
       signOut();
     } catch (error) {
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 1500);
+      toast("Error Occured");
     } finally {
       setLoading(false);
     }
@@ -80,7 +77,6 @@ export default function DeleteComp() {
 
   return (
     <div className="min-h-screen">
-      {error ? toast("Error Occured") : ""}
       <p className="text-xl text-red-500 font-kanit">Delete Account</p>
 
       <div className="mt-8">

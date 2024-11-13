@@ -54,6 +54,8 @@ export default function PostedJob() {
                       author={e.author}
                       position={e.position}
                       company={e.company}
+                      company_logo={e.company_logo}
+                      company_website={e.company_website}
                       role_description={e.role_description}
                       job_type={e.job_type}
                       location={e.location}

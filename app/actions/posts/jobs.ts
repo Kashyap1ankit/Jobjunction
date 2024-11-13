@@ -3,6 +3,15 @@
 import { createJobSchema, createJobSchemaType } from "@/schema/jobs";
 import { CheckUser } from "../users/checkUser";
 import prisma from "@/db";
+import { v2 as cloudinary } from "cloudinary";
+import streamifier from "streamifier";
+import { File } from "buffer";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // Create new Jobs
 
@@ -19,6 +28,8 @@ export async function CreateJob(postdata: createJobSchemaType) {
       data: {
         apply_link: postdata.apply_link,
         company: postdata.company,
+        company_logo: postdata.company_logo,
+        company_website: postdata.company_website,
         experience_level: postdata.experience_level,
         job_type: postdata.job_type,
         location: postdata.location,
@@ -69,6 +80,8 @@ export async function GetAllPost() {
         id: true,
         apply_link: true,
         company: true,
+        company_logo: true,
+        company_website: true,
         experience_level: true,
         job_type: true,
         location: true,
@@ -122,6 +135,8 @@ export async function GetPostByAuthorId(authorId: string) {
         id: true,
         apply_link: true,
         company: true,
+        company_logo: true,
+        company_website: true,
         experience_level: true,
         job_type: true,
         location: true,
@@ -199,6 +214,58 @@ export async function DestroyPost(postId: string, authorId: string) {
     return {
       status: 404,
       message: (error as Error).message,
+    };
+  }
+}
+
+//Upload Image
+
+export async function UploadImage(data: FormData) {
+  try {
+    const file = data.get("image");
+
+    if (!file || !(file instanceof File)) {
+      return {
+        status: 401,
+        message: "File is not provided",
+      };
+    }
+    //Converting the file instance to buffer
+    const bufferArr = await file.arrayBuffer();
+    const buffer = Buffer.from(bufferArr);
+
+    const uploadToCloud = new Promise<any>((resolve, reject) => {
+      const cld = cloudinary.uploader.upload_stream(
+        {
+          use_filename: true,
+          folder: "jobjunction",
+          overwrite: false,
+        },
+        (err: any, res: any) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(res);
+        }
+      );
+
+      streamifier.createReadStream(buffer).pipe(cld);
+    });
+
+    const uploadedImageObject = await uploadToCloud;
+
+    return {
+      status: 200,
+      message: "File uploaded successfully",
+      public_id: uploadedImageObject.public_id,
+      secure_url: uploadedImageObject.secure_url,
+    };
+  } catch (error) {
+    return {
+      status: 200,
+      message: "File unot ploaded",
+      public_id: null,
+      secure_url: null,
     };
   }
 }

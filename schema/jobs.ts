@@ -28,9 +28,7 @@ export const createJobSchema = z
       .string({ message: "Company name is required" })
       .min(2, { message: "Extend it little" }),
 
-    company_logo: z
-      .string({ message: "Company's logo must be string" })
-      .optional(),
+    company_logo: z.union([z.any().optional(), z.string().optional()]),
     company_website: z
       .string()
       .optional()

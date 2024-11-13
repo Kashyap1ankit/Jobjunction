@@ -13,10 +13,6 @@ export default function AllUser() {
   const session = useSession();
   const [users, setUsers] = useState<GetAllUserType[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({
-    status: false,
-    message: "",
-  });
 
   useEffect(() => {
     const getAllUsers = async () => {
@@ -27,17 +23,7 @@ export default function AllUser() {
         if (response.status !== 200) throw new Error(response.message);
         setUsers(response.data);
       } catch (error) {
-        setError({
-          status: true,
-          message: (error as Error).message,
-        });
-
-        setTimeout(() => {
-          setError({
-            status: true,
-            message: (error as Error).message,
-          });
-        }, 1500);
+        toast((error as Error).message);
       } finally {
         setLoading(false);
       }
@@ -51,8 +37,6 @@ export default function AllUser() {
   }
   return (
     <div>
-      {error.status ? toast(error.message) : ""}
-
       <div className="md:flex md:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center ">
