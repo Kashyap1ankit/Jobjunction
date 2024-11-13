@@ -40,7 +40,7 @@ export default function JobCard({
         <div className="flex items-center gap-4">
           <div>
             <Image
-              src={company_logo}
+              src={company_logo || ""}
               height={500}
               width={500}
               alt="Post-image"
