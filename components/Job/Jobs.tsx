@@ -16,7 +16,6 @@ import {
 export default function AllJobsComp() {
   const [allJobs, setAllJobs] = useRecoilState(allJobListings);
   const [loading, setLoading] = useRecoilState(universalLoader);
-  const [error, setError] = useRecoilState(universalError);
   const errorNoPost = useRecoilValue(joblistingError);
 
   useEffect(() => {
@@ -27,17 +26,7 @@ export default function AllJobsComp() {
         if (response.status !== 200) throw new Error(response.message);
         setAllJobs(response.data);
       } catch (error) {
-        setError({
-          status: false,
-          message: (error as Error).message,
-        });
-
-        setTimeout(() => {
-          setError({
-            status: true,
-            message: "",
-          });
-        }, 1500);
+        toast((error as Error).message || "Error Occured");
       } finally {
         setLoading(false);
       }
@@ -45,10 +34,6 @@ export default function AllJobsComp() {
 
     getAllJobs();
   }, []);
-
-  {
-    error.status ? toast(error.message || "Error Occured") : "";
-  }
 
   return (
     <>
@@ -74,6 +59,8 @@ export default function AllJobsComp() {
                     author={e.author}
                     position={e.position}
                     company={e.company}
+                    company_logo={e.company_logo}
+                    company_website={e.company_website}
                     role_description={e.role_description}
                     job_type={e.job_type}
                     location={e.location}

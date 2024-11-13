@@ -123,6 +123,7 @@ async function insertPosts() {
             authorId: e.authorId,
             apply_link: e.apply_link,
             company: e.company,
+            company_logo: "/Images/jj-logo.png",
             experience_level: e.experience_level,
             job_type: e.job_type,
             location: e.location,

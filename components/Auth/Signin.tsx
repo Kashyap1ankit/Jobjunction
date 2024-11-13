@@ -26,11 +26,9 @@ export default function SigninForm() {
   });
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [passwordClick, setPasswordClick] = useState<boolean>(false);
-  const [error, setError] = useState<boolean | null>(null);
 
   async function onSubmit(data: any) {
     setSubmitting(true);
-    setError(null);
     try {
       const res = await signIn("credentials", {
         username: data.username,
@@ -39,18 +37,12 @@ export default function SigninForm() {
       });
 
       if (res?.error) {
-        setError(true);
-        setTimeout(() => {
-          setError(false);
-        }, 2000);
+        toast("Username / Password mismatched");
       } else {
         window.location.href = res?.url || "/jobs";
       }
-    } catch (error: any) {
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 2000);
+    } catch (error) {
+      toast("Username / Password mismatched");
     } finally {
       setSubmitting(false);
       reset();
@@ -60,8 +52,6 @@ export default function SigninForm() {
   return (
     <div className="min-h-screen">
       <div className="mx-auto rounded-lg p-4 md:p-6 w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg mt-6 md:mt-8 lg:mt-20 md:mt-24 border-2 border-slate-800 flex flex-col gap-6">
-        {error && toast("Username / Password mismatched")}
-
         <div>
           <Link href={"/"} aria-label="go-back">
             <IoArrowBack className="text-gray-400 size-6 cursor-pointer mb-4 hover:text-white" />

@@ -1,7 +1,7 @@
 "use client";
 
 import { Bookmark, Trash2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import {
   CheckForBookmark,
@@ -22,17 +22,6 @@ export default function MoreOptionDialog({
   authorId: string;
 }) {
   const [bookmarked, setBookmarked] = useRecoilState(bookmarkedPosts(postId));
-  const [showBookmarkToast, setShowBookmarkToast] = useState({
-    status: false,
-    message: "",
-  });
-
-  const [deleted, setDeleted] = useState(false);
-  const [deleteError, setDeleteError] = useState({
-    status: false,
-    message: "",
-  });
-
   const session: any = useSession();
   const router = useRouter();
 
@@ -44,23 +33,10 @@ export default function MoreOptionDialog({
       );
       if (response.status !== 200) throw new Error(response.message);
       setBookmarked(true);
-      setShowBookmarkToast({
-        status: true,
-        message: response.message,
-      });
+      toast(response.message);
     } catch (error) {
       setBookmarked(false);
-      setShowBookmarkToast({
-        status: true,
-        message: (error as Error).message,
-      });
-    } finally {
-      setTimeout(() => {
-        setShowBookmarkToast({
-          status: false,
-          message: "",
-        });
-      }, 100);
+      toast((error as Error).message);
     }
   }
 
@@ -69,24 +45,10 @@ export default function MoreOptionDialog({
       const response = await DestroyPost(postId, session.data.user.id);
 
       if (response.status !== 201) throw new Error(response.message);
-      setDeleted(true);
-      setTimeout(() => {
-        setDeleted(false);
-      }, 1000);
-
+      toast("Deleted Successfully");
       router.refresh();
     } catch (error) {
-      setDeleteError({
-        status: true,
-        message: (error as Error).message,
-      });
-      setTimeout(() => {
-        setDeleteError({
-          status: false,
-          message: "",
-        });
-      }, 1000);
-    } finally {
+      toast((error as Error).message);
     }
   }
 
@@ -106,17 +68,13 @@ export default function MoreOptionDialog({
 
   return (
     <>
-      {showBookmarkToast.status ? toast(showBookmarkToast.message) : null}
-      {deleted && toast("Deleted Successfully")}
-      {deleteError.status && toast(deleteError.message)}
-
       <div className="flex gap-2">
-        {session.data?.user.id === authorId ||
+        {/* {session.data?.user.id === authorId ||
         session.data?.user.role === "ADMIN" ? (
           <div onClick={() => handlePostDelete()}>
             <Trash2 className=" size-4 md:size-6 cursor-pointer text-white" />
           </div>
-        ) : null}
+        ) : null} */}
 
         <div onClick={() => handleBookmarkClick()}>
           <Bookmark
