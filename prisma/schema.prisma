@@ -32,7 +32,7 @@ model Post {
   authorId         String
   apply_link       String
   company          String
-  company_logo     String
+  company_logo     String?
   company_website  String?
   experience_level String
   job_type         String
