@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "npx prisma generate && npx prisma migrate deploy",
+    "postinstall": "npx prisma migrate reset && npx prisma generate ",
     "prisma:seed": "npx prisma db seed",
     "prisma:docker": "npx prisma migrate dev && npm run prisma:seed && npx prisma studio ",
     "dev:docker": "concurrently \"npm run prisma:docker \" \" npm run dev\" "
