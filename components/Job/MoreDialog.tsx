@@ -9,21 +9,14 @@ import {
 } from "@/app/actions/posts/bookmark";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
-import { bookmarkedPosts } from "@/store/store";
-import { useRecoilState } from "recoil";
+import { allJobListings, bookmarkedPosts } from "@/store/store";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { DestroyPost } from "@/app/actions/posts/jobs";
 import { useRouter } from "next/navigation";
 
-export default function MoreOptionDialog({
-  postId,
-  authorId,
-}: {
-  postId: string;
-  authorId: string;
-}) {
+export function BookmarkPostComp({ postId }: { postId: string }) {
   const [bookmarked, setBookmarked] = useRecoilState(bookmarkedPosts(postId));
   const session: any = useSession();
-  const router = useRouter();
 
   async function handleBookmarkClick() {
     try {
@@ -33,21 +26,10 @@ export default function MoreOptionDialog({
       );
       if (response.status !== 200) throw new Error(response.message);
       setBookmarked(true);
+
       toast(response.message);
     } catch (error) {
       setBookmarked(false);
-      toast((error as Error).message);
-    }
-  }
-
-  async function handlePostDelete() {
-    try {
-      const response = await DestroyPost(postId, session.data.user.id);
-
-      if (response.status !== 201) throw new Error(response.message);
-      toast("Deleted Successfully");
-      router.refresh();
-    } catch (error) {
       toast((error as Error).message);
     }
   }
@@ -69,13 +51,6 @@ export default function MoreOptionDialog({
   return (
     <>
       <div className="flex gap-2">
-        {/* {session.data?.user.id === authorId ||
-        session.data?.user.role === "ADMIN" ? (
-          <div onClick={() => handlePostDelete()}>
-            <Trash2 className=" size-4 md:size-6 cursor-pointer text-white" />
-          </div>
-        ) : null} */}
-
         <div onClick={() => handleBookmarkClick()}>
           <Bookmark
             className={`size-4 md:size-6 cursor-pointer ${
@@ -85,5 +60,43 @@ export default function MoreOptionDialog({
         </div>
       </div>
     </>
+  );
+}
+
+export function DeletePostComp({
+  postId,
+  authorId,
+}: {
+  postId: string;
+  authorId: string;
+}) {
+  const session: any = useSession();
+  const router = useRouter();
+  const setAllJobs = useSetRecoilState(allJobListings);
+
+  async function handlePostDelete() {
+    try {
+      const response = await DestroyPost(postId, session.data.user.id);
+
+      if (response.status !== 201) throw new Error(response.message);
+      toast("Deleted Successfully");
+      setAllJobs((prev) => {
+        const filteredArray = prev.filter((e) => e.id !== postId);
+        return filteredArray;
+      });
+    } catch (error) {
+      toast((error as Error).message);
+    }
+  }
+
+  return (
+    <div>
+      {session.data?.user.id === authorId ||
+      session.data?.user.role === "ADMIN" ? (
+        <div onClick={() => handlePostDelete()}>
+          <Trash2 className=" size-4 md:size-6 cursor-pointer text-red-600" />
+        </div>
+      ) : null}
+    </div>
   );
 }

@@ -133,18 +133,9 @@ export async function GetPostByAuthorId(authorId: string) {
 
       select: {
         id: true,
-        apply_link: true,
         company: true,
-        company_logo: true,
         company_website: true,
-        experience_level: true,
-        job_type: true,
-        location: true,
         position: true,
-        role_description: true,
-        salary_disclosed: true,
-        salary_max: true,
-        salary_min: true,
         author: {
           select: {
             id: true,
@@ -240,6 +231,7 @@ export async function UploadImage(data: FormData) {
           use_filename: true,
           folder: "jobjunction",
           overwrite: false,
+          resource_type: "image",
         },
         (err: any, res: any) => {
           if (err) {

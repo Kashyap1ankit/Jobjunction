@@ -1,6 +1,6 @@
 import { BriefcaseBusiness, Code, Pin } from "lucide-react";
 import { JobLisitingType } from "@/types/types";
-import MoreOptionDialog from "./MoreDialog";
+import { BookmarkPostComp } from "./MoreDialog";
 import JobSheetComp from "./JobSheet";
 import { MdVerifiedUser } from "react-icons/md";
 import Link from "next/link";
@@ -44,7 +44,7 @@ export default function JobCard({
               height={500}
               width={500}
               alt="Post-image"
-              className="w-16 rounded-md"
+              className="w-16 h-16 rounded-md"
               aria-label="post_image"
             />
           </div>
@@ -75,7 +75,7 @@ export default function JobCard({
           </div>
         </div>
 
-        <MoreOptionDialog postId={id} authorId={author.id} />
+        <BookmarkPostComp postId={id} />
       </div>
 
       {/* second section  */}

@@ -48,7 +48,7 @@ const posts = [
     job_type: "Internship",
     location: "Onsite",
     position: "Frontend",
-    role_description: "Hello world of the world is one of ",
+    role_description: "Hello world of the world is one of",
     salary_disclosed: true,
     salary_max: 5000,
     salary_min: 150000,

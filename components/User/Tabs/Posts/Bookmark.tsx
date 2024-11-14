@@ -7,16 +7,18 @@ import { useSession } from "next-auth/react";
 import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
-import { HiExternalLink } from "react-icons/hi";
-import MoreOptionDialog from "@/components/Job/MoreDialog";
+import { BookmarkPostComp } from "@/components/Job/MoreDialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { poppins } from "@/utils/fonts/font";
+import { Link2 } from "lucide-react";
 
 export default function SavedJobsComp() {
   const {
@@ -70,59 +72,61 @@ export default function SavedJobsComp() {
                   </p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-y-8 ">
-                  {bookmarkedJobs.map((e: GetUserBookmarksType) => {
-                    return (
-                      <div
-                        className="flex flex-row justify-between mt-4 lg:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-2/3 bg-primaryBorder rounded-lg border-2 border-primaryBorder"
-                        key={e.id}
-                        id={e.id}
+                <Table>
+                  <TableHeader className="">
+                    <TableRow
+                      className={`${poppins.className} bg-gray-700 text-white font-bold hover:bg-gray-700`}
+                    >
+                      <TableHead className="text-white rounded-tl-md">
+                        Id
+                      </TableHead>
+                      <TableHead className="text-white">Company</TableHead>
+                      <TableHead className="text-white">Role</TableHead>
+                      <TableHead className="text-white">Apply Link</TableHead>
+                      <TableHead className="text-white rounded-tr-md">
+                        Action
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody
+                    className={`${poppins.className} bg-primaryBorder text-white font-bold text-gray-400`}
+                  >
+                    {bookmarkedJobs.map((post) => (
+                      <TableRow
+                        key={post.id}
+                        className=" hover:bg-primaryBorder cursor-pointer"
                       >
-                        {/* first section  */}
-
-                        <div className="flex gap-4">
-                          <HoverCard>
-                            <HoverCardTrigger>
-                              <Avatar className="cursor-pointer size-8 md:size-10">
-                                <AvatarImage
-                                  src={
-                                    e.post.author.avatar
-                                      ? e.post.author.avatar
-                                      : "/Images/avatar.png"
-                                  }
-                                />
-                                <AvatarFallback>CO</AvatarFallback>
-                              </Avatar>
-                            </HoverCardTrigger>
-                            <HoverCardContent className="flex gap-2 items-center">
-                              <p>{e.post.author.username}</p>
-                              <Link
-                                href={`/user/${e.post.author.id}/profile`}
-                                aria-label="user-profile"
-                              >
-                                <HiExternalLink />
-                              </Link>
-                            </HoverCardContent>
-                          </HoverCard>
-
-                          <div>
-                            <p className="text-radio text-sm md:text-xl text-white tracking-wide font-bold">
-                              {e.post.position}
-                            </p>
-                            <p className="text-gray-400 text-sm">
-                              {e.post.company}
-                            </p>
-                          </div>
-                        </div>
-
-                        <MoreOptionDialog
-                          postId={e.post.id}
-                          authorId={e.post.author.id}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
+                        <TableCell className="font-medium">
+                          #{post.id.slice(0, 5)}
+                        </TableCell>
+                        <TableCell>
+                          <Link
+                            href={post.post.company_website || "/jobs"}
+                            aria-label="company_website"
+                            target="_blank"
+                            className="hover:text-blue-500"
+                          >
+                            {post.post.company}
+                          </Link>
+                        </TableCell>
+                        <TableCell>{post.post.position}</TableCell>
+                        <TableCell>
+                          <Link
+                            href={post.post.apply_link || "/jobs"}
+                            aria-label="apply_link"
+                            target="_blank"
+                            className="hover:text-blue-500"
+                          >
+                            <Link2 />
+                          </Link>
+                        </TableCell>
+                        <TableCell className="">
+                          <BookmarkPostComp postId={post.post.id} />
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
               )}
             </div>
           )}

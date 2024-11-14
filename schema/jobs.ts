@@ -28,17 +28,31 @@ export const createJobSchema = z
       .string({ message: "Company name is required" })
       .min(2, { message: "Extend it little" }),
 
-    company_logo: z.union([z.any().optional(), z.string().optional()]),
+    company_logo: z.union([
+      z
+        .any()
+        .optional()
+        .refine(
+          (val) => {
+            if (val[0]) {
+              return val[0].size < 2 * 1024 * 1024; //not more than 2mb
+            }
+            return true;
+          },
+          { message: "Image should be less than 2mb" }
+        ),
+      z.string().optional(),
+    ]),
     company_website: z
       .string()
       .optional()
+      .transform((value) => (value?.length === 0 ? undefined : value))
       .refine(
         (value) => !value || /^https?:\/\/[^\s$.?#].[^\s]*$/.test(value),
         {
           message: "Company's website must be a valid URL",
         }
       ),
-
     role_description: z
       .string({ message: "Description is required" })
       .min(200, {
