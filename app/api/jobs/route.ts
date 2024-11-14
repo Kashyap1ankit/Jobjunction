@@ -21,12 +21,14 @@ export async function POST(req: NextRequest, res: NextResponse) {
         id: true,
         apply_link: true,
         company: true,
+        company_logo: true,
+        company_website: true,
         experience_level: true,
         job_type: true,
         location: true,
         position: true,
         role_description: true,
-
+        salary_disclosed: true,
         salary_max: true,
         salary_min: true,
         author: {

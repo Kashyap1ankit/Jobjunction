@@ -76,7 +76,7 @@ export default function DeleteComp() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-12">
       <p className="text-xl text-red-500 font-kanit">Delete Account</p>
 
       <div className="mt-8">

@@ -87,6 +87,20 @@ export type JobLisitingType = {
   createdAt: Date;
 };
 
+export type GetUserPostedJobsType = {
+  id: string;
+  company: string;
+  company_website: string | null;
+  position: string;
+  author: {
+    id: string;
+    avatar: string | null;
+    username: string;
+    role: "ADMIN" | "USER";
+  };
+  createdAt: Date;
+};
+
 export type universalErrorType = {
   status: boolean;
   message: string;
@@ -111,6 +125,7 @@ export type GetUserBookmarksType = {
     id: string;
     apply_link: string;
     company: string;
+    company_website: string | null;
     position: string;
 
     author: {

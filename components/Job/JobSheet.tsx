@@ -24,12 +24,15 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "../ui/separator";
 import { MdAdminPanelSettings } from "react-icons/md";
+import Image from "next/image";
 
 export default function JobSheetComp({
   id,
   author,
   position,
   company,
+  company_logo,
+  company_website,
   role_description,
   job_type,
   location,
@@ -60,6 +63,14 @@ export default function JobSheetComp({
               />
             </div>
             <SheetTitle className="text-left">
+              <Image
+                src={company_logo}
+                height={500}
+                width={500}
+                alt="Post-image"
+                className="w-full h-24 md:h-44  rounded-md"
+                aria-label="post_image"
+              />
               <p className="text-gray-500 text-xs sm:text-sm  ">{company}</p>
               <p
                 className={`${poppins.className} text-lg md:text-xl lg:text-2xl mt-2 text-white`}
@@ -75,6 +86,13 @@ export default function JobSheetComp({
                 <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
                   <Pin className="size-4" />
                   <p className="text-xs text-gray-400 rounded-md">{location}</p>
+                </div>
+
+                <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
+                  <BriefcaseBusiness className="size-4" />
+                  <p className="text-xs text-white rounded-md">
+                    {experience_level}
+                  </p>
                 </div>
 
                 <p className="text-xs text-white p-2 rounded-full bg-green-800">
@@ -122,7 +140,7 @@ export default function JobSheetComp({
               </div>
               <Separator className="mt-6 bg-gray-500" />
               <Tiptap
-                className="rounded-md w-full font-kanit mt-2   overflow-x-hidden"
+                className="rounded-md w-full font-kanit mt-2   overflow-x-hidden "
                 edit={false}
                 content={role_description}
               />
