@@ -240,6 +240,7 @@ export async function UploadImage(data: FormData) {
           use_filename: true,
           folder: "jobjunction",
           overwrite: false,
+          resource_type: "image",
         },
         (err: any, res: any) => {
           if (err) {

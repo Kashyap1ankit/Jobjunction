@@ -44,7 +44,7 @@ export default function JobCard({
               height={500}
               width={500}
               alt="Post-image"
-              className="w-16 rounded-md"
+              className="w-16 h-16 rounded-md"
               aria-label="post_image"
             />
           </div>
