@@ -68,7 +68,7 @@ export type JobLisitingType = {
   id: string;
   apply_link: string;
   company: string;
-  company_logo: string | null;
+  company_logo: string;
   company_website: string | null;
   experience_level: string;
   job_type: string;
