@@ -7,7 +7,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, PlusCircle, UserCircle } from "lucide-react";
+import {
+  LogOut,
+  PlusCircle,
+  Shield,
+  ShieldAlert,
+  UserCircle,
+} from "lucide-react";
 import { TbHandClick } from "react-icons/tb";
 import TextComponent from "../TextComp";
 import Link from "next/link";
@@ -63,6 +69,19 @@ export default function Profile() {
               <TextComponent text="Profile" className=" font-bebas" />
             </Link>
           </DropdownMenuItem>
+
+          {session.data?.user?.role === "ADMIN" ? (
+            <DropdownMenuItem>
+              <Link
+                href={`/admin`}
+                className="flex gap-2 items-center w-full justify-center cursor-pointer"
+                aria-label="profile"
+              >
+                <Shield className=" size-4 fill-white" />
+                <p>Admin</p>
+              </Link>
+            </DropdownMenuItem>
+          ) : null}
 
           <DropdownMenuItem>
             <div

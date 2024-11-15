@@ -1,9 +1,11 @@
+import { lazy, Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import AuthProvider from "@/provider";
+const AuthProvider = lazy(() => import("@/provider"));
 import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/sonner";
+import Loader from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,12 +24,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider session={session}>
-          <div className=" overflow-x-hidden bg-primaryBg">
-            {children}
-            <Toaster />
-          </div>
-        </AuthProvider>
+        <Suspense fallback={<Loader />}>
+          <AuthProvider session={session}>
+            <div className=" overflow-x-hidden bg-primaryBg">
+              {children}
+              <Toaster />
+            </div>
+          </AuthProvider>
+        </Suspense>
       </body>
     </html>
   );

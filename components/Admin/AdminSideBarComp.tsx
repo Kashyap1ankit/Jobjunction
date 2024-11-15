@@ -16,7 +16,7 @@ export default function AdminSideBarComp() {
   }, []);
 
   if (!session.data?.user) {
-    return <div>No User found</div>;
+    return <div className="text-gray-400">No User found</div>;
   }
 
   return (
@@ -29,9 +29,9 @@ export default function AdminSideBarComp() {
           aria-label="admin"
         >
           <p
-            className={` duration-500 ${
+            className={` duration-500 text-gray-400 ${
               activeTab === "admin"
-                ? "bg-sideBarBgColor text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
+                ? "bg-secondaryBorder text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
                 : ""
             }`}
           >
@@ -46,9 +46,9 @@ export default function AdminSideBarComp() {
           aria-label="admin-user"
         >
           <p
-            className={`mt-8 duration-500 ${
+            className={`mt-8 duration-500 text-gray-400 ${
               activeTab === "users"
-                ? "bg-sideBarBgColor text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
+                ? "bg-secondaryBorder text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
                 : ""
             }`}
           >
