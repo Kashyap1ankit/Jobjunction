@@ -9,9 +9,9 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import {
   allJobListings,
   joblistingError,
-  universalError,
   universalLoader,
 } from "@/store/store";
+import JobCardSkeleton from "./jobCardSkeletion";
 
 export default function AllJobsComp() {
   const [allJobs, setAllJobs] = useRecoilState(allJobListings);
@@ -44,11 +44,13 @@ export default function AllJobsComp() {
       ) : (
         <div className="md:flex md:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar bg-transparent ">
           {loading ? (
-            <div className="w-full h-full flex items-center justify-center ">
-              <p className="bg-white border-2 border-b-8 border-r-8 border-black p-4 rounded-md font-bold animate-bounce ">
-                JJ
-              </p>
-            </div>
+            [1, 2, 3].map((_, i) => {
+              return (
+                <div key={i}>
+                  <JobCardSkeleton />
+                </div>
+              );
+            })
           ) : (
             <>
               {allJobs.map((e: JobLisitingType) => {

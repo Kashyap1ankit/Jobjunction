@@ -1,5 +1,8 @@
-import Navbar from "@/components/Navbar/Navbar";
-import UserDashboardSidebar from "@/components/User/Sidebar/UserDashSidebar";
+import { lazy } from "react";
+const Navbar = lazy(() => import("@/components/Navbar/Navbar"));
+const UserDashboardSidebar = lazy(
+  () => import("@/components/User/Sidebar/UserDashSidebar")
+);
 
 export default function UserLayout({
   children,

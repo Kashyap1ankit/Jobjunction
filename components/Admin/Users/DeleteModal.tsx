@@ -21,7 +21,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({
+  const [_, setError] = useState({
     status: false,
     message: "",
   });

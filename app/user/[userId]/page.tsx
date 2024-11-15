@@ -14,5 +14,5 @@ export default function UserProfilePage({
     if (pathname === `/user/${params.userId}`)
       redirect(`/user/${params.userId}/profile`);
   });
-  return <div> You entered wrong page</div>;
+  return <div className="text-white"> You entered wrong page</div>;
 }

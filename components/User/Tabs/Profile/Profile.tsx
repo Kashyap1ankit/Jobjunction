@@ -27,6 +27,7 @@ import { TbExternalLink } from "react-icons/tb";
 import Link from "next/link";
 import { UserRole } from "@prisma/client";
 import { roboto_slab } from "@/utils/fonts/font";
+import Loader from "@/app/loading";
 
 export default function UserProfileDashboard() {
   const [accountCreated, setAccountCreated] = useState<string>();
@@ -89,11 +90,7 @@ export default function UserProfileDashboard() {
   }, [refetch]);
 
   if (loader) {
-    return (
-      <div className="w-full h-full flex items-center justify-center ">
-        <p className="bg-white p-4 rounded-md font-bold animate-bounce ">JJ</p>
-      </div>
-    );
+    return <Loader />;
   }
 
   if (error.status) {

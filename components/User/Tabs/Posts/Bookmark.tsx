@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/table";
 import { poppins } from "@/utils/fonts/font";
 import { Link2 } from "lucide-react";
+import Loader from "@/app/loading";
 
 export default function SavedJobsComp() {
   const {
@@ -66,11 +67,7 @@ export default function SavedJobsComp() {
           ) : (
             <div className="py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
               {loading ? (
-                <div className="w-full h-full flex items-center justify-center ">
-                  <p className="bg-white border-2 border-b-8 border-r-8 border-black p-4 rounded-md font-bold animate-bounce ">
-                    JJ
-                  </p>
-                </div>
+                <Loader />
               ) : (
                 <Table>
                   <TableHeader className="">

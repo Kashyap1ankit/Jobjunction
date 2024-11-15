@@ -16,7 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
-import { TbHandClick } from "react-icons/tb";
+import { TbClick, TbHandClick } from "react-icons/tb";
 import Tiptap from "./Create/TipTap";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -25,6 +25,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "../ui/separator";
 import { MdAdminPanelSettings } from "react-icons/md";
 import Image from "next/image";
+import { BookmarkPostComp } from "./MoreDialog";
 
 export default function JobSheetComp({
   id,
@@ -63,20 +64,32 @@ export default function JobSheetComp({
               />
             </div>
             <SheetTitle className="text-left">
-              <Image
-                src={company_logo}
-                height={500}
-                width={500}
-                alt="Post-image"
-                className="w-full h-24 md:h-44  rounded-md"
-                aria-label="post_image"
-              />
-              <p className="text-gray-500 text-xs sm:text-sm  ">{company}</p>
-              <p
-                className={`${poppins.className} text-lg md:text-xl lg:text-2xl mt-2 text-white`}
-              >
-                {position}
-              </p>
+              <div className="flex gap-2 items-center mb-4">
+                <Image
+                  src={company_logo}
+                  height={500}
+                  width={500}
+                  alt="Post-image"
+                  className="w-10   rounded-md"
+                  aria-label="post_image"
+                />
+                <p className="text-gray-500 text-sm sm:text-md  ">{company}</p>
+              </div>
+              {company_website ? (
+                <Link
+                  href={company_website}
+                  className={`${poppins.className} text-lg md:text-xl lg:text-2xl mt-2 text-white hover:underline hover:text-blue-400`}
+                  target="_blank"
+                >
+                  {position}
+                </Link>
+              ) : (
+                <p
+                  className={`${poppins.className} text-lg md:text-xl lg:text-2xl mt-2 text-white`}
+                >
+                  {position}
+                </p>
+              )}
 
               <div className="flex gap-2 flex-wrap mt-2">
                 <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
@@ -145,18 +158,29 @@ export default function JobSheetComp({
                 content={role_description}
               />
 
-              <Link
-                href={apply_link}
-                className="block w-full"
-                aria-label="apply"
-              >
+              <div className="flex gap-8">
                 <Button
-                  className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full`}
+                  className={`${fraunces.className} bg-green-800 hover:bg-green-800 w-full flex gap-2`}
                   aria-label="mobile-apply"
                 >
-                  Apply
+                  <BookmarkPostComp postId={id} />
+                  <p className="text-md md:text-lg">Save</p>
                 </Button>
-              </Link>
+
+                <Link
+                  href={apply_link}
+                  className="block w-full"
+                  aria-label="apply"
+                >
+                  <Button
+                    className={`${fraunces.className} flex gap-2 bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full`}
+                    aria-label="mobile-apply"
+                  >
+                    <TbHandClick className="size-4 md:size-6" />
+                    <p className="text-md md:text-lg">Apply</p>
+                  </Button>
+                </Link>
+              </div>
             </SheetDescription>
           </SheetHeader>
         </SheetContent>

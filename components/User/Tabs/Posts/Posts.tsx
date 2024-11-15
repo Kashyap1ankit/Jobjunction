@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { PlusIcon } from "lucide-react";
 import { isProfileVisitorUser } from "@/store/store";
 import { useRecoilValue } from "recoil";
+import Loader from "@/app/loading";
 
 export default function PostedJob() {
   const { userId }: { userId: string } = useParams();
@@ -55,11 +56,7 @@ export default function PostedJob() {
         ) : (
           <div className="lg:flex lg:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
             {loading ? (
-              <div className="w-full h-full flex items-center justify-center ">
-                <p className="bg-white border-2 border-b-8 border-r-8 border-black p-4 rounded-md font-bold animate-bounce ">
-                  JJ
-                </p>
-              </div>
+              <Loader />
             ) : (
               <>
                 {isVisitorUser ? (

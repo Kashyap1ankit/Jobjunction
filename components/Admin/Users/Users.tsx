@@ -18,6 +18,7 @@ import {
 
 import { poppins } from "@/utils/fonts/font";
 import Link from "next/link";
+import Loader from "@/app/loading";
 
 export default function AllUser() {
   const session = useSession();
@@ -43,17 +44,13 @@ export default function AllUser() {
   }, []);
 
   if (!session.data?.user) {
-    return <div>Not Logged In</div>;
+    return <div className="text-white">Not Logged In</div>;
   }
   return (
     <div>
       <div className="md:flex md:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
         {loading ? (
-          <div className="w-full h-full flex items-center justify-center ">
-            <p className="bg-white border-2 border-b-8 border-r-8 border-black p-4 rounded-md font-bold animate-bounce ">
-              JJ
-            </p>
-          </div>
+          <Loader />
         ) : (
           <>
             <Table>
