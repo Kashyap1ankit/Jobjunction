@@ -59,9 +59,9 @@ export default function SavedJobsComp() {
     <div>
       <>
         <div>
-          {errorNoPost ? (
+          {errorNoPost || bookmarkedJobs.length < 0 ? (
             <div className="w-full h-screen flex items-center justify-center">
-              <p>No Bookmarks found</p>
+              <p className="text-white">No Bookmarks found</p>
             </div>
           ) : (
             <div className="py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">

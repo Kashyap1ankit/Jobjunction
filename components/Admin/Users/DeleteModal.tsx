@@ -51,9 +51,9 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
 
   return (
     <AlertDialog open={modalOpen}>
-      <AlertDialogTrigger className="mt-8">
+      <AlertDialogTrigger>
         <Trash2
-          className="cursor-pointer hover:text-red-500 "
+          className="cursor-pointer text-red-500 "
           onClick={() => setModalOpen(true)}
         />
       </AlertDialogTrigger>

@@ -48,7 +48,7 @@ export default function PostedJob() {
   return (
     <>
       <div>
-        {errorNoPost ? (
+        {errorNoPost || myPostedJobs.length < 0 ? (
           <div className="w-full h-screen flex items-center justify-center">
             <p className="text-white">No Post found</p>
           </div>

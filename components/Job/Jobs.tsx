@@ -37,7 +37,7 @@ export default function AllJobsComp() {
 
   return (
     <>
-      {errorNoPost ? (
+      {errorNoPost || allJobs.length <= 0 ? (
         <div className="w-full h-screen max-h-screen flex items-center justify-center text-white">
           <p>No Post found</p>
         </div>

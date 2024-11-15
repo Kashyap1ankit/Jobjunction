@@ -100,8 +100,12 @@ export async function GetAllUserAdmin(userId: string) {
         id: true,
         username: true,
         role: true,
-        avatar: true,
         email: true,
+        _count: {
+          select: {
+            posts: true,
+          },
+        },
       },
     });
 

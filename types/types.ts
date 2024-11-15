@@ -136,13 +136,15 @@ export type GetUserBookmarksType = {
   };
 };
 
-export type GetAllUserType = {
+export interface GetAllUserType {
   id: string;
   username: string;
   role: UserRole;
-  avatar: string | null;
   email: string;
-};
+  _count: {
+    posts: number;
+  };
+}
 
 export interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
