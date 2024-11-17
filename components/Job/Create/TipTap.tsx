@@ -103,7 +103,7 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
         setValue(name, value, { shouldValidate: true });
       }
     },
-    content: content,
+    content,
   });
 
   //setting the default color to white

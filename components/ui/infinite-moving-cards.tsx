@@ -138,7 +138,7 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
-        {items.map((item, idx) => {
+        {items.map((item) => {
           const Icon = arrayToUse.filter((e) => {
             if (e.name.includes(item)) {
               return e.element;

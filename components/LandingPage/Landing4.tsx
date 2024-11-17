@@ -1,4 +1,4 @@
-import { poppins, roboto_slab } from "@/utils/fonts/font";
+import { roboto_slab } from "@/utils/fonts/font";
 import Component from "./Testimonalcard";
 
 export default function LandingPart4() {
@@ -9,11 +9,9 @@ export default function LandingPart4() {
       >
         Recently
         <span className={`${roboto_slab.className} text-primarySkyBlue`}>
-          {""} Placed
+          Placed
         </span>
       </p>
-
-      <p></p>
 
       <Component />
     </div>

@@ -120,7 +120,7 @@ export async function GetAllUserAdmin(userId: string) {
   } catch (error) {
     return {
       status: 404,
-      message: "Users fetched",
+      message: (error as Error).message,
       data: [],
     };
   }

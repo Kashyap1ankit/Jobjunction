@@ -29,13 +29,13 @@ export async function UpdateUserInfo(
 
     const updatedUser = await prisma.user.update({
       where: {
-        id: id,
+        id,
       },
       data: {
-        bio: bio,
-        instagram_url: instagram_url,
-        linkedin_url: linkedin_url,
-        twitter_url: twitter_url,
+        bio,
+        instagram_url,
+        linkedin_url,
+        twitter_url,
       },
     });
 

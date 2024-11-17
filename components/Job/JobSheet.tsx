@@ -8,15 +8,9 @@ import {
 } from "@/components/ui/sheet";
 import { JobLisitingType } from "@/types/types";
 import { fraunces, poppins, roboto_slab } from "@/utils/fonts/font";
-import {
-  BadgeIndianRupee,
-  BriefcaseBusiness,
-  Code,
-  Pin,
-  X,
-} from "lucide-react";
+import { BriefcaseBusiness, Pin, X } from "lucide-react";
 import { useState } from "react";
-import { TbClick, TbHandClick } from "react-icons/tb";
+import { TbHandClick } from "react-icons/tb";
 import Tiptap from "./Create/TipTap";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -42,7 +36,6 @@ export default function JobSheetComp({
   salary_max,
   experience_level,
   apply_link,
-  createdAt,
 }: JobLisitingType) {
   const [applySheet, setApplySheet] = useState(false);
   return (

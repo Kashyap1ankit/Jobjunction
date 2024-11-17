@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, Code, Pin } from "lucide-react";
+import { BriefcaseBusiness, Pin } from "lucide-react";
 import { JobLisitingType } from "@/types/types";
 import { BookmarkPostComp } from "./MoreDialog";
 import JobSheetComp from "./JobSheet";
@@ -26,6 +26,24 @@ export default function JobCard({
   createdAt,
 }: JobLisitingType) {
   const [diff, setDiff] = useState(0);
+
+  const getPostedTime = (diff: number) => {
+    if (diff <= 0) {
+      return "Invalid posting date";
+    }
+    if (diff < 1) {
+      return "today";
+    }
+    if (diff >= 1 && diff < 2) {
+      return "yesterday";
+    }
+    if (diff >= 2 && diff < 6) {
+      return `${Math.ceil(diff)} days ago`;
+    }
+    {
+      return `${Math.ceil(Math.ceil(diff) / 7)} weeks ago`;
+    }
+  };
 
   useEffect(() => {
     const calculatedDiff = calculateDayDiff(createdAt);
@@ -60,16 +78,7 @@ export default function JobCard({
             <div className="mt-2 flex flex-wrap items-center gap-2">
               <p className="text-sm text-gray-400">{company} | </p>
               <p className="text-sm text-gray-400">
-                Posted{" "}
-                {diff > 0
-                  ? diff < 1
-                    ? "today"
-                    : diff > 1 && diff < 2
-                      ? "yesterday"
-                      : diff > 2 && diff < 6
-                        ? `${Math.ceil(diff)} days ago`
-                        : `${Math.ceil(Math.ceil(diff) / 7)} weeks ago`
-                  : "Invalid posting date"}
+                Posted {getPostedTime(diff)}
               </p>
             </div>
           </div>

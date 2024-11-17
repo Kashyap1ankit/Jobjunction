@@ -48,7 +48,7 @@ export default function CreateForm() {
   const [logo, setLogo] = useState<File | null>(null);
 
   async function handleLogoChange(e: ChangeEvent<HTMLInputElement>) {
-    let selectedFile = e.target.files ? e.target.files[0] : null;
+    const selectedFile = e.target.files ? e.target.files[0] : null;
     if (selectedFile === undefined) return; //if user opens the model to select the file but came back without choosing an thing so holding prev val
     setLogo(selectedFile);
   }

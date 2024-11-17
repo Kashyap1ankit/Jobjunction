@@ -128,7 +128,7 @@ export async function GetPostByAuthorId(authorId: string) {
 
     const getPost = await prisma.post.findMany({
       where: {
-        authorId: authorId,
+        authorId,
       },
 
       select: {
@@ -175,7 +175,7 @@ export async function DestroyPost(postId: string, authorId: string) {
     const isUserAuthor = await prisma.post.findFirst({
       where: {
         id: postId,
-        authorId: authorId,
+        authorId,
       },
     });
 
@@ -255,7 +255,7 @@ export async function UploadImage(data: FormData) {
   } catch (error) {
     return {
       status: 200,
-      message: "File unot ploaded",
+      message: (error as Error).message,
       public_id: null,
       secure_url: null,
     };

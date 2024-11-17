@@ -12,7 +12,6 @@ import { toast } from "sonner";
 import { allJobListings, bookmarkedPosts } from "@/store/store";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { DestroyPost } from "@/app/actions/posts/jobs";
-import { useRouter } from "next/navigation";
 
 export function BookmarkPostComp({ postId }: { postId: string }) {
   const [bookmarked, setBookmarked] = useRecoilState(bookmarkedPosts(postId));
@@ -40,7 +39,7 @@ export function BookmarkPostComp({ postId }: { postId: string }) {
         const response = await CheckForBookmark(session.data?.user?.id, postId);
         if (response.status !== 200) throw new Error(response.message);
         setBookmarked(true);
-      } catch (error) {
+      } catch {
         setBookmarked(false);
       }
     };
@@ -71,7 +70,6 @@ export function DeletePostComp({
   authorId: string;
 }) {
   const session: any = useSession();
-  const router = useRouter();
   const setAllJobs = useSetRecoilState(allJobListings);
 
   async function handlePostDelete() {

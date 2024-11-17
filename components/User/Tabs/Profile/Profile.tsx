@@ -21,12 +21,11 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import EditUserProfileDialog from "./EditDialog";
 import { TbExternalLink } from "react-icons/tb";
 import Link from "next/link";
 import { UserRole } from "@prisma/client";
-import { roboto_slab } from "@/utils/fonts/font";
 import Loader from "@/app/loading";
 
 export default function UserProfileDashboard() {
@@ -34,8 +33,7 @@ export default function UserProfileDashboard() {
   const [loader, setLoader] = useRecoilState(universalLoader);
   const [error, setError] = useRecoilState(universalError);
   const [refetch, setRefetch] = useRecoilState(refetchAtom);
-  const [isVisitorUser, setIsVisitorUser] =
-    useRecoilState(isProfileVisitorUser);
+  const isVisitorUser = useRecoilValue(isProfileVisitorUser);
 
   const [user, setUser] = useState<GetUserDetailByIdType>({
     id: "",

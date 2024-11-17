@@ -68,7 +68,7 @@ export default function FilterSideBar() {
       if (finalData.status !== 200) throw new Error(finalData.message);
       setError(false);
       setAllJobs(finalData.data);
-    } catch (error) {
+    } catch {
       setError(true);
     } finally {
       setLoading(false);

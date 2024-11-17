@@ -48,7 +48,7 @@ export default function SavedJobsComp() {
         const response = await GetBookmarkByUserId(user.id);
         if (response.status !== 200) throw new Error(response.message);
         setBookmarkedJobs(response.data);
-      } catch (error) {
+      } catch {
         setErrorNoPost(true);
       } finally {
         setLoading(false);

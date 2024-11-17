@@ -16,7 +16,6 @@ import {
   EyeOff,
   Lock,
   Mail,
-  X,
 } from "lucide-react";
 import { CreateUser } from "@/app/actions/users/signup";
 import Link from "next/link";
@@ -29,7 +28,6 @@ import TextDivider from "../ui/text-divider";
 import { FcGoogle } from "react-icons/fc";
 
 export default function SignupForm() {
-  const [items, setItems] = useState<string[] | undefined>([]);
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const {

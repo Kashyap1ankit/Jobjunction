@@ -2,14 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { isProfileVisitorUser } from "@/store/store";
-import { redirect, useParams, useRouter } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
@@ -64,7 +63,7 @@ export default function DeleteComp() {
       if (response.status !== 201) throw new Error(response.message);
       setModalOpen(false);
       signOut();
-    } catch (error) {
+    } catch {
       toast("Error Occured");
     } finally {
       setLoading(false);

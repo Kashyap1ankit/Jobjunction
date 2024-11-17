@@ -3,17 +3,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  LogOut,
-  PlusCircle,
-  Shield,
-  ShieldAlert,
-  UserCircle,
-} from "lucide-react";
+import { LogOut, PlusCircle, Shield, UserCircle } from "lucide-react";
 import { TbHandClick } from "react-icons/tb";
 import TextComponent from "../TextComp";
 import Link from "next/link";

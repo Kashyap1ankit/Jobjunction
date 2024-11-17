@@ -42,7 +42,7 @@ export default function SigninForm() {
         window.location.href = res?.url || "/jobs";
       }
     } catch (error) {
-      toast("Username / Password mismatched");
+      toast((error as Error).message);
     } finally {
       setSubmitting(false);
       reset();

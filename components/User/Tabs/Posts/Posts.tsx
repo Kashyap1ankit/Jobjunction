@@ -37,7 +37,7 @@ export default function PostedJob() {
         const response = await GetPostByAuthorId(userId);
         if (response.status !== 200) throw new Error(response.message);
         setMyPostedJobs(response.data);
-      } catch (error) {
+      } catch {
         setErrorNoPost(true);
       } finally {
         setLoading(false);
