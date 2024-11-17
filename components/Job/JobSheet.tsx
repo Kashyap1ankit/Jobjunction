@@ -49,66 +49,66 @@ export default function JobSheetComp({
     <div id={id}>
       <Sheet open={applySheet}>
         <SheetTrigger
-          className={`${roboto_slab.className}  flex gap-2 p-2 rounded-md text-xs sm:text-sm bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full`}
+          className={`${roboto_slab.className} flex w-full gap-2 rounded-md bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue p-2 text-xs hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue sm:text-sm`}
           onClick={() => setApplySheet(true)}
         >
-          <p className="text-xs sm:text-sm ">See More</p>
+          <p className="text-xs sm:text-sm">See More</p>
           <TbHandClick className="size-4" />
         </SheetTrigger>
-        <SheetContent className="w-11/12 sm:w-3/4  lg:w-1/2  sm:max-w-full overflow-y-scroll no-scrollbar bg-primaryBg border-l-gray-500 ">
+        <SheetContent className="no-scrollbar w-11/12 overflow-y-scroll border-l-gray-500 bg-primaryBg sm:w-3/4 sm:max-w-full lg:w-1/2">
           <SheetHeader>
-            <div className="flex justify-end w-full">
+            <div className="flex w-full justify-end">
               <X
                 onClick={() => setApplySheet(false)}
                 className="cursor-pointer text-gray-400"
               />
             </div>
             <SheetTitle className="text-left">
-              <div className="flex gap-2 items-center mb-4">
+              <div className="mb-4 flex items-center gap-2">
                 <Image
                   src={company_logo}
                   height={500}
                   width={500}
                   alt="Post-image"
-                  className="w-10   rounded-md"
+                  className="w-10 rounded-md"
                   aria-label="post_image"
                 />
-                <p className="text-gray-500 text-sm sm:text-md  ">{company}</p>
+                <p className="sm:text-md text-sm text-gray-500">{company}</p>
               </div>
               {company_website ? (
                 <Link
                   href={company_website}
-                  className={`${poppins.className} text-lg md:text-xl lg:text-2xl mt-2 text-white hover:underline hover:text-blue-400`}
+                  className={`${poppins.className} mt-2 text-lg text-white hover:text-blue-400 hover:underline md:text-xl lg:text-2xl`}
                   target="_blank"
                 >
                   {position}
                 </Link>
               ) : (
                 <p
-                  className={`${poppins.className} text-lg md:text-xl lg:text-2xl mt-2 text-white`}
+                  className={`${poppins.className} mt-2 text-lg text-white md:text-xl lg:text-2xl`}
                 >
                   {position}
                 </p>
               )}
 
-              <div className="flex gap-2 flex-wrap mt-2">
-                <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
+              <div className="mt-2 flex flex-wrap gap-2">
+                <div className="flex items-center gap-2 rounded-full bg-sky-700 p-2">
                   <BriefcaseBusiness className="size-4" />
-                  <p className="text-xs text-white rounded-md">{job_type}</p>
+                  <p className="rounded-md text-xs text-white">{job_type}</p>
                 </div>
-                <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
+                <div className="flex items-center gap-2 rounded-full bg-gray-700 p-2">
                   <Pin className="size-4" />
-                  <p className="text-xs text-gray-400 rounded-md">{location}</p>
+                  <p className="rounded-md text-xs text-gray-400">{location}</p>
                 </div>
 
-                <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
+                <div className="flex items-center gap-2 rounded-full bg-sky-700 p-2">
                   <BriefcaseBusiness className="size-4" />
-                  <p className="text-xs text-white rounded-md">
+                  <p className="rounded-md text-xs text-white">
                     {experience_level}
                   </p>
                 </div>
 
-                <p className="text-xs text-white p-2 rounded-full bg-green-800">
+                <p className="rounded-full bg-green-800 p-2 text-xs text-white">
                   {salary_disclosed && salary_min && salary_max
                     ? `  ₹ ${Math.round(salary_min / 1000)}k - ₹ ${Math.round(
                         salary_max / 1000,
@@ -119,14 +119,14 @@ export default function JobSheetComp({
 
               <Separator className="mt-6 bg-gray-500" />
             </SheetTitle>
-            <SheetDescription className="text-inherit text-left ">
+            <SheetDescription className="text-left text-inherit">
               <div className="mt-4">
                 <p className={`${poppins.className} text-xl text-white`}>
                   Posted By
                 </p>
 
-                <div className="flex gap-2 items-center mt-4">
-                  <Avatar className="cursor-pointer size-8 md:size-10">
+                <div className="mt-4 flex items-center gap-2">
+                  <Avatar className="size-8 cursor-pointer md:size-10">
                     <AvatarImage
                       src={author.avatar ? author.avatar : "/Images/avatar.png"}
                     />
@@ -139,9 +139,9 @@ export default function JobSheetComp({
                       {author.username}
                     </p>
                     {author.role ? (
-                      <div className="flex gap-2 items-center mt-2">
-                        <MdAdminPanelSettings className="text-gray-400 size-4" />
-                        <p className="text-xs sm:text-sm text-gray-400 font-bold">
+                      <div className="mt-2 flex items-center gap-2">
+                        <MdAdminPanelSettings className="size-4 text-gray-400" />
+                        <p className="text-xs font-bold text-gray-400 sm:text-sm">
                           {author.role.toLowerCase()}
                         </p>
                       </div>
@@ -153,14 +153,14 @@ export default function JobSheetComp({
               </div>
               <Separator className="mt-6 bg-gray-500" />
               <Tiptap
-                className="rounded-md w-full font-kanit mt-2   overflow-x-hidden "
+                className="mt-2 w-full overflow-x-hidden rounded-md font-kanit"
                 edit={false}
                 content={role_description}
               />
 
               <div className="flex gap-8">
                 <Button
-                  className={`${fraunces.className} bg-green-800 hover:bg-green-800 w-full flex gap-2`}
+                  className={`${fraunces.className} flex w-full gap-2 bg-green-800 hover:bg-green-800`}
                   aria-label="mobile-apply"
                 >
                   <BookmarkPostComp postId={id} />
@@ -173,7 +173,7 @@ export default function JobSheetComp({
                   aria-label="apply"
                 >
                   <Button
-                    className={`${fraunces.className} flex gap-2 bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full`}
+                    className={`${fraunces.className} flex w-full gap-2 bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
                     aria-label="mobile-apply"
                   >
                     <TbHandClick className="size-4 md:size-6" />

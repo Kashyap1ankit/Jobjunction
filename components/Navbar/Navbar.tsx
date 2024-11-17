@@ -22,19 +22,19 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex justify-between items-center fixed top-0 left-0 py-4 px-4 sm:px-12  border-b-2 border-primaryBorder w-full z-50 bg-primaryBg backdrop-blur-md bg-primaryBg/60 ">
+    <div className="fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b-2 border-primaryBorder bg-primaryBg bg-primaryBg/60 px-4 py-4 backdrop-blur-md sm:px-12">
       <Link href={"/"} aria-label="jj">
         <div className="flex items-center gap-4">
           <Image
             src={"/Images/jj-logo.png"}
             width={500}
             height={500}
-            className="rounded-md w-12"
+            className="w-12 rounded-md"
             alt="JJ"
           />
 
-          <p className={`${workSans.className} text-white text-xl md:text-2xl`}>
-            Job <span className="text-primarySkyBlue ">Junction</span>
+          <p className={`${workSans.className} text-xl text-white md:text-2xl`}>
+            Job <span className="text-primarySkyBlue">Junction</span>
           </p>
         </div>
       </Link>
@@ -43,7 +43,7 @@ export default function Navbar() {
         <Profile />
       ) : (
         <>
-          <div className="hidden sm:inline-flex ">
+          <div className="hidden sm:inline-flex">
             <NavComponent />;
           </div>
 
@@ -52,7 +52,7 @@ export default function Navbar() {
               <SheetTrigger>
                 <Tally3 className="rotate-90 text-white" />
               </SheetTrigger>
-              <SheetContent className="bg-primaryBg border-l-primaryBorder">
+              <SheetContent className="border-l-primaryBorder bg-primaryBg">
                 <SheetHeader>
                   <SheetDescription>
                     <NavComponent />

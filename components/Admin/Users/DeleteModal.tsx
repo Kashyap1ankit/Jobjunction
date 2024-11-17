@@ -53,7 +53,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
     <AlertDialog open={modalOpen}>
       <AlertDialogTrigger>
         <Trash2
-          className="cursor-pointer text-red-500 "
+          className="cursor-pointer text-red-500"
           onClick={() => setModalOpen(true)}
         />
       </AlertDialogTrigger>
@@ -65,7 +65,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
             account and remove your data from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter className="flex  gap-2 ">
+        <AlertDialogFooter className="flex gap-2">
           <Button
             onClick={() => {
               handleDeleteAccountByAdmin();
@@ -77,7 +77,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
           </Button>
           <Button
             onClick={() => setModalOpen(false)}
-            className="bg-transparent text-black hover:bg-transparent border-2 border-slate-500"
+            className="border-2 border-slate-500 bg-transparent text-black hover:bg-transparent"
             aria-label="delete-account-no"
           >
             No

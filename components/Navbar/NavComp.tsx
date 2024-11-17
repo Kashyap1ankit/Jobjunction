@@ -7,7 +7,7 @@ export default function NavComponent() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col sm:flex-row gap-y-8  sm:gap-x-8">
+    <div className="flex flex-col gap-y-8 sm:flex-row sm:gap-x-8">
       <Button
         className={`${workSans.className} w-full bg-white text-black hover:bg-white`}
         onClick={() => signIn()}
@@ -16,7 +16,7 @@ export default function NavComponent() {
         Login
       </Button>
       <Button
-        className={`${workSans.className} w-full bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue`}
+        className={`${workSans.className} w-full bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
         onClick={() => {
           router.push("/signup");
         }}

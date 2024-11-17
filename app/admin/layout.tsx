@@ -10,11 +10,11 @@ export default function AdminLayout({
   return (
     <>
       <Navbar />
-      <div className="md:flex md:p-4 max-h-screen overflow-y-scroll no-scrollbar mt-16">
-        <div className="md:w-1/6 p-2 md:p-0 ">
+      <div className="no-scrollbar mt-16 max-h-screen overflow-y-scroll md:flex md:p-4">
+        <div className="p-2 md:w-1/6 md:p-0">
           <AdminSideBar />
         </div>
-        <div className="md:w-5/6 px-3 md:px-12 ">{children}</div>
+        <div className="px-3 md:w-5/6 md:px-12">{children}</div>
       </div>
     </>
   );

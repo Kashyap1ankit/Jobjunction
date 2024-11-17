@@ -125,7 +125,7 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
   return (
     <div className={className}>
       {edit ? (
-        <div className="flex gap-8 mt-2  pb-2 overflow-x-scroll no-scrollbar items-center relative sticky top-0 left-0 px-4 z-50 bg-[#161f2d] border-b-2 border-b-primaryBorder">
+        <div className="no-scrollbar relative sticky left-0 top-0 z-50 mt-2 flex items-center gap-8 overflow-x-scroll border-b-2 border-b-primaryBorder bg-[#161f2d] px-4 pb-2">
           <div
             onClick={() =>
               editor.commands.toggleHeading({
@@ -134,68 +134,68 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
             }
           >
             <LucideHeading1
-              className={`text-gray-500 cursor-pointer  ${
-                editor.isActive("heading") ? "text-white font-bold" : ""
+              className={`cursor-pointer text-gray-500 ${
+                editor.isActive("heading") ? "font-bold text-white" : ""
               }`}
             />
           </div>
           <div onClick={() => editor.commands.toggleBulletList()}>
             <MdFormatListBulleted
-              className={`text-gray-500 cursor-pointer  ${
-                editor.isActive("bulletList") ? "text-white font-bold" : ""
+              className={`cursor-pointer text-gray-500 ${
+                editor.isActive("bulletList") ? "font-bold text-white" : ""
               }`}
             />
           </div>
 
           <div onClick={() => editor.commands.toggleCodeBlock()}>
             <IoCodeSlash
-              className={`text-gray-500 cursor-pointer  ${
-                editor.isActive("codeBlock") ? "text-white font-bold" : ""
+              className={`cursor-pointer text-gray-500 ${
+                editor.isActive("codeBlock") ? "font-bold text-white" : ""
               }`}
             />
           </div>
 
           <div onClick={() => editor.commands.setHorizontalRule()}>
             <LucideRuler
-              className={`size-4 text-gray-500 cursor-pointer  ${
-                editor.isActive("horizontalRule") ? "text-white font-bold" : ""
+              className={`size-4 cursor-pointer text-gray-500 ${
+                editor.isActive("horizontalRule") ? "font-bold text-white" : ""
               }`}
             />
           </div>
 
           <div onClick={() => editor.commands.toggleBold()}>
             <MdFormatBold
-              className={`text-gray-500 cursor-pointer  ${
-                editor.isActive("bold") ? "text-white font-bold" : ""
+              className={`cursor-pointer text-gray-500 ${
+                editor.isActive("bold") ? "font-bold text-white" : ""
               }`}
             />
           </div>
           <div onClick={() => editor.commands.toggleItalic()}>
             <MdFormatItalic
-              className={`text-gray-500 cursor-pointer  ${
-                editor.isActive("italic") ? "text-white font-bold" : ""
+              className={`cursor-pointer text-gray-500 ${
+                editor.isActive("italic") ? "font-bold text-white" : ""
               }`}
             />
           </div>
           <div onClick={() => editor.commands.toggleUnderline()}>
             <MdFormatUnderlined
-              className={`text-gray-500 cursor-pointer  ${
-                editor.isActive("underline") ? "text-white font-bold" : ""
+              className={`cursor-pointer text-gray-500 ${
+                editor.isActive("underline") ? "font-bold text-white" : ""
               }`}
             />
           </div>
           <div onClick={() => editor.commands.toggleHighlight()}>
             <Highlighter
-              className={`size-4 text-gray-500 cursor-pointer  ${
-                editor.isActive("highlight") ? "text-white font-bold" : ""
+              className={`size-4 cursor-pointer text-gray-500 ${
+                editor.isActive("highlight") ? "font-bold text-white" : ""
               }`}
             />
           </div>
 
           <div onClick={() => editor.commands.toggleStrike()}>
             <Strikethrough
-              className={`size-4 text-gray-500 cursor-pointer  ${
-                editor.isActive("strike") ? "text-white font-bold" : ""
+              className={`size-4 cursor-pointer text-gray-500 ${
+                editor.isActive("strike") ? "font-bold text-white" : ""
               }`}
             />
           </div>
@@ -203,22 +203,22 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
           <div>
             <input
               type="color"
-              className="w-6 h-6 bg-transparent rounded-full border-none outline-none cursor-pointer"
+              className="h-6 w-6 cursor-pointer rounded-full border-none bg-transparent outline-none"
               defaultValue={"#ffffff"}
               onChange={(e) => handleColor(e)}
             />
           </div>
           <div onClick={() => editor.commands.undo()}>
             <Undo
-              className={`size-4 text-gray-500 cursor-pointer  ${
-                editor.isActive("undo") ? "text-white font-bold" : ""
+              className={`size-4 cursor-pointer text-gray-500 ${
+                editor.isActive("undo") ? "font-bold text-white" : ""
               }`}
             />
           </div>
           <div onClick={() => editor.commands.redo()}>
             <Redo
-              className={`size-4 text-gray-500 cursor-pointer  ${
-                editor.isActive("redo") ? "text-white font-bold" : ""
+              className={`size-4 cursor-pointer text-gray-500 ${
+                editor.isActive("redo") ? "font-bold text-white" : ""
               }`}
             />
           </div>
@@ -229,7 +229,7 @@ const Tiptap = ({ className, name, setValue, edit, content }: any) => {
 
       {edit ? (
         <div
-          className={`character-count mt-8 text-white flex gap-2 items-center ${
+          className={`character-count mt-8 flex items-center gap-2 text-white ${
             editor.storage.characterCount.characters() === limit
               ? "character-count--warning"
               : ""

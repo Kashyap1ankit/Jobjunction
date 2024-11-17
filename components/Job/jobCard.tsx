@@ -33,7 +33,7 @@ export default function JobCard({
   }, []);
 
   return (
-    <div className="flex flex-col gap-8 mt-4 md:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-3/4 bg-primaryBorder text-white rounded-xl border-2 border-secondaryBorder hover:cursor-pointer hover:bg-hoverBorder ">
+    <div className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4">
       {/* first section  */}
 
       <div className="flex justify-between">
@@ -44,22 +44,22 @@ export default function JobCard({
               height={500}
               width={500}
               alt="Post-image"
-              className="w-16 h-16 rounded-md"
+              className="h-16 w-16 rounded-md"
               aria-label="post_image"
             />
           </div>
           <div>
-            <div className="flex gap-2 items-center">
-              <p className="text-radio text-md md:text-2xl tracking-wide font-bold ">
+            <div className="flex items-center gap-2">
+              <p className="text-radio text-md font-bold tracking-wide md:text-2xl">
                 {position}
               </p>
               {author.role === "ADMIN" ? (
-                <MdVerifiedUser className="text-sky-300 size-4" />
+                <MdVerifiedUser className="size-4 text-sky-300" />
               ) : null}
             </div>
-            <div className="flex gap-2 items-center flex-wrap mt-2">
-              <p className="text-gray-400 text-sm">{company} | </p>
-              <p className="text-gray-400 text-sm">
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <p className="text-sm text-gray-400">{company} | </p>
+              <p className="text-sm text-gray-400">
                 Posted{" "}
                 {diff > 0
                   ? diff < 1
@@ -80,22 +80,22 @@ export default function JobCard({
 
       {/* second section  */}
 
-      <div className="flex gap-2 flex-wrap">
-        <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
+      <div className="flex flex-wrap gap-2">
+        <div className="flex items-center gap-2 rounded-full bg-sky-700 p-2">
           <BriefcaseBusiness className="size-4" />
-          <p className="text-xs text-white rounded-md">{job_type}</p>
+          <p className="rounded-md text-xs text-white">{job_type}</p>
         </div>
-        <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
+        <div className="flex items-center gap-2 rounded-full bg-gray-700 p-2">
           <Pin className="size-4" />
-          <p className="text-xs text-gray-400 rounded-md">{location}</p>
+          <p className="rounded-md text-xs text-gray-400">{location}</p>
         </div>
 
-        <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
+        <div className="flex items-center gap-2 rounded-full bg-sky-700 p-2">
           <BriefcaseBusiness className="size-4" />
-          <p className="text-xs text-white rounded-md">{experience_level}</p>
+          <p className="rounded-md text-xs text-white">{experience_level}</p>
         </div>
 
-        <p className="text-xs text-white p-2 rounded-full bg-green-800">
+        <p className="rounded-full bg-green-800 p-2 text-xs text-white">
           {salary_disclosed && salary_min && salary_max
             ? `  ₹ ${Math.round(salary_min / 1000)}k - ₹ ${Math.round(
                 salary_max / 1000,
@@ -106,10 +106,10 @@ export default function JobCard({
 
       {/* third section  */}
 
-      <div className="flex flex-wrap gap-4 justify-between items-center">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <Link
           href={`/user/${author.id}/profile`}
-          className="text-gray-400 text-sm hover:cursor-pointer hover:text-blue-500"
+          className="text-sm text-gray-400 hover:cursor-pointer hover:text-blue-500"
           aria-label="username"
         >
           ft: @{author.username.slice(0, 15)}..

@@ -76,17 +76,17 @@ export default function EditUserProfileDialog({
       <AlertDialog open={modalOpen}>
         <AlertDialogTrigger>
           <div
-            className="flex gap-2 items-center px-4 py-2 rounded-full cursor-pointer bg-secondaryBorder"
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-secondaryBorder px-4 py-2"
             onClick={() => setModalOpen(true)}
           >
             <PenIcon className="size-4 text-white" />
-            <p className="text-sm md:text-lg text-white">Edit</p>
+            <p className="text-sm text-white md:text-lg">Edit</p>
           </div>
         </AlertDialogTrigger>
-        <AlertDialogContent className="rounded-md max-w-[300px] sm:max-w-[400px] md:max-w-[450px] bg-primaryBg">
+        <AlertDialogContent className="max-w-[300px] rounded-md bg-primaryBg sm:max-w-[400px] md:max-w-[450px]">
           <AlertDialogHeader>
-            <div className="flex justify-between items-center">
-              <AlertDialogTitle className="mx-auto text-white text-2xl">
+            <div className="flex items-center justify-between">
+              <AlertDialogTitle className="mx-auto text-2xl text-white">
                 Edit Information !
               </AlertDialogTitle>
               <X
@@ -97,7 +97,7 @@ export default function EditUserProfileDialog({
             <AlertDialogDescription>
               <form
                 onSubmit={handleSubmit(updatedUser)}
-                className="flex flex-col gap-6 mt-4"
+                className="mt-4 flex flex-col gap-6"
               >
                 <div>
                   <label htmlFor="bio" className="text-md font-bold text-white">
@@ -106,7 +106,7 @@ export default function EditUserProfileDialog({
                   <input
                     type="text"
                     {...register("bio")}
-                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
+                    className="mt-2 w-full rounded-md bg-inputBg p-2 p-4 text-white outline-none"
                     placeholder="Write.."
                     id="bio"
                     defaultValue={bio || undefined}
@@ -126,7 +126,7 @@ export default function EditUserProfileDialog({
                   <input
                     type="text"
                     {...register("instagram_url")}
-                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
+                    className="mt-2 w-full rounded-md bg-inputBg p-2 p-4 text-white outline-none"
                     placeholder=""
                     id="instagram_url"
                     defaultValue={instagram_url || undefined}
@@ -148,7 +148,7 @@ export default function EditUserProfileDialog({
                   <input
                     type="text"
                     {...register("twitter_url")}
-                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
+                    className="mt-2 w-full rounded-md bg-inputBg p-2 p-4 text-white outline-none"
                     placeholder=""
                     id="twitter_url"
                     defaultValue={twitter_url || undefined}
@@ -170,7 +170,7 @@ export default function EditUserProfileDialog({
                   <input
                     type="text"
                     {...register("linkedin_url")}
-                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
+                    className="mt-2 w-full rounded-md bg-inputBg p-2 p-4 text-white outline-none"
                     placeholder=""
                     id="linkedin_url"
                     defaultValue={linkedin_url || undefined}
@@ -184,7 +184,7 @@ export default function EditUserProfileDialog({
 
                 <div className="flex flex-row-reverse">
                   <Button
-                    className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full mt-6`}
+                    className={`${fraunces.className} mt-6 w-full bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
                     disabled={loader}
                     aria-label="edit-profile-save"
                   >

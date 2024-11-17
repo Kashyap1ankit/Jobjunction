@@ -53,7 +53,7 @@ export function BookmarkPostComp({ postId }: { postId: string }) {
       <div className="flex gap-2">
         <div onClick={() => handleBookmarkClick()}>
           <Bookmark
-            className={`size-4 md:size-6 cursor-pointer ${
+            className={`size-4 cursor-pointer md:size-6 ${
               bookmarked ? "fill-white" : ""
             }`}
           />
@@ -94,7 +94,7 @@ export function DeletePostComp({
       {session.data?.user.id === authorId ||
       session.data?.user.role === "ADMIN" ? (
         <div onClick={() => handlePostDelete()}>
-          <Trash2 className=" size-4 md:size-6 cursor-pointer text-red-600" />
+          <Trash2 className="size-4 cursor-pointer text-red-600 md:size-6" />
         </div>
       ) : null}
     </div>

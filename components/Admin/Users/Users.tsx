@@ -48,7 +48,7 @@ export default function AllUser() {
   }
   return (
     <div>
-      <div className="md:flex md:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
+      <div className="no-scrollbar h-screen max-h-screen gap-8 overflow-y-scroll py-6 md:flex md:flex-col">
         {loading ? (
           <Loader />
         ) : (
@@ -56,25 +56,25 @@ export default function AllUser() {
             <Table>
               <TableHeader className="">
                 <TableRow
-                  className={`${poppins.className} bg-gray-700 text-white font-bold hover:bg-gray-700`}
+                  className={`${poppins.className} bg-gray-700 font-bold text-white hover:bg-gray-700`}
                 >
-                  <TableHead className="text-white rounded-tl-md">Id</TableHead>
+                  <TableHead className="rounded-tl-md text-white">Id</TableHead>
                   <TableHead className="text-white">Username</TableHead>
                   <TableHead className="text-white">Role</TableHead>
                   <TableHead className="text-white">Posts</TableHead>
                   <TableHead className="text-white">Email Id</TableHead>
-                  <TableHead className="text-white rounded-tr-md">
+                  <TableHead className="rounded-tr-md text-white">
                     Action
                   </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody
-                className={`${poppins.className} bg-primaryBorder text-white font-bold text-gray-400`}
+                className={`${poppins.className} bg-primaryBorder font-bold text-gray-400 text-white`}
               >
                 {users.map((user) => (
                   <TableRow
                     key={user.id}
-                    className=" hover:bg-primaryBorder cursor-pointer"
+                    className="cursor-pointer hover:bg-primaryBorder"
                   >
                     <TableCell className="font-medium">
                       #{user.id.slice(0, 5)}

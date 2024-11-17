@@ -126,15 +126,15 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20  overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] mt-12",
+        "scroller relative z-20 mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-12 py-4 w-max flex-nowrap",
-          start && "animate-scroll ",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-12 py-4",
+          start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
@@ -146,8 +146,8 @@ export const InfiniteMovingCards = ({
           });
           const finalIcon = Icon[0].element;
           return (
-            <li className="flex gap-2 items-center" key={item}>
-              <div className="flex gap-2 items-center text-gray-400 ">
+            <li className="flex items-center gap-2" key={item}>
+              <div className="flex items-center gap-2 text-gray-400">
                 {finalIcon}
                 <p className={`${fraunces.className} text-2xl`}>{item}</p>
               </div>

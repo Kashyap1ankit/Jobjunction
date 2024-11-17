@@ -16,7 +16,7 @@ const FilterSideBar = lazy(() => import("@/components/Job/filterCard"));
 export default function MobileFilterCard() {
   const [sheetOpen, setSheetOpen] = useRecoilState(filterMobSheet);
   return (
-    <div className="lg:hidden p-4 ">
+    <div className="p-4 lg:hidden">
       <Sheet open={sheetOpen}>
         <SheetTrigger>
           <Tally3
@@ -26,10 +26,10 @@ export default function MobileFilterCard() {
         </SheetTrigger>
         <SheetContent
           side={"left"}
-          className="overflow-y-scrol bg-primaryBg border-r-gray-500"
+          className="overflow-y-scrol border-r-gray-500 bg-primaryBg"
         >
           <SheetHeader>
-            <div className="w-full flex justify-end">
+            <div className="flex w-full justify-end">
               <X
                 className="size-4 text-gray-400"
                 onClick={() => setSheetOpen(false)}

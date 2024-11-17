@@ -9,34 +9,34 @@ import { poppins, roboto_slab } from "@/utils/fonts/font";
 
 export default function LandingPart3() {
   return (
-    <div className="rounded-lg mt-28 md:mt-52 flex flex-col md:flex-row w-11/12 xl:w-3/4 gap-8 mx-auto overflow-x-hidden bg-gradient-to-t from-secondaryTestimoanlBg to-primaryTestimonalBg border-2 border-slate-900">
-      <div className="p-4 md:p-8 lg:p-12 ">
+    <div className="mx-auto mt-28 flex w-11/12 flex-col gap-8 overflow-x-hidden rounded-lg border-2 border-slate-900 bg-gradient-to-t from-secondaryTestimoanlBg to-primaryTestimonalBg md:mt-52 md:flex-row xl:w-3/4">
+      <div className="p-4 md:p-8 lg:p-12">
         <p
-          className={`${roboto_slab.className} text-2xl sm:text-3xl lg:text-4xl text-white font-bold`}
+          className={`${roboto_slab.className} text-2xl font-bold text-white sm:text-3xl lg:text-4xl`}
         >
           We&apos;re{" "}
           <span
-            className={`${roboto_slab.className}  text-primarySkyBlue cursor-pointer`}
+            className={`${roboto_slab.className} cursor-pointer text-primarySkyBlue`}
           >
             Open Source
           </span>
         </p>
 
         <p
-          className={`${poppins.className} text-xs sm:text-sm text-gray-300 mt-4 w-11/12 md:w-3/4  mb-12 `}
+          className={`${poppins.className} mb-12 mt-4 w-11/12 text-xs text-gray-300 sm:text-sm md:w-3/4`}
         >
           We are open for everyone who want&apos;s to be the part of this
           communit & is capable to contribute to this platform
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <Link
             href={"https://github.com/Kashyap1ankit/Jobjunction"}
             aria-label="github"
           >
             <Button
               variant={"outline"}
-              className="flex gap-4 font-bold bg-white hover:bg-white border-b-4 border-r-4 border-darkBg w-full"
+              className="flex w-full gap-4 border-b-4 border-r-4 border-darkBg bg-white font-bold hover:bg-white"
               aria-label="Github"
             >
               <FaGithub className="size-6" />
@@ -47,7 +47,7 @@ export default function LandingPart3() {
           <Link href={"https://x.com/kashyap_tweetts"} aria-label="twitter">
             <Button
               variant={"outline"}
-              className="flex gap-4 font-bold  border-b-4 border-r-4 border-darkBg bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full"
+              className="flex w-full gap-4 border-b-4 border-r-4 border-darkBg bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue font-bold hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue"
               arial-label="X"
             >
               <FaTwitter className="size-6 fill-white" />
@@ -58,7 +58,7 @@ export default function LandingPart3() {
       </div>
 
       <motion.div
-        className="p-4 md:p-0 w-full rounded-md shadow-xl md:mt-28 "
+        className="w-full rounded-md p-4 shadow-xl md:mt-28 md:p-0"
         whileHover={{
           x: [0, 50],
         }}
@@ -71,7 +71,7 @@ export default function LandingPart3() {
           width={5600}
           height={5600}
           alt="Code Snippet"
-          className="w-full h-full rounded-md md:rounded-none md:rounded-tl-md shadow-xl cursor-pointer"
+          className="h-full w-full cursor-pointer rounded-md shadow-xl md:rounded-none md:rounded-tl-md"
         />
       </motion.div>
     </div>

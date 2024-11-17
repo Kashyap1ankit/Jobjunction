@@ -98,18 +98,18 @@ export default function SignupForm() {
 
   return (
     <div className="min-h-screen">
-      <div className="w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 mx-auto rounded-lg p-4 md:p-6  bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg mt-6 md:mt-8 lg:mt-20 md:mt-24 border-2 border-slate-800 mt-6 md:mt-8 mb-4 lg:mt-20 md:mt-24 text-white">
+      <div className="mx-auto mb-4 mt-6 w-11/12 rounded-lg border-2 border-slate-800 bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg p-4 text-white sm:w-3/4 md:mt-24 md:mt-8 md:w-1/2 md:p-6 lg:mt-20 xl:w-1/3">
         <Link href={"/"} aria-label="go-back">
-          <IoArrowBack className="text-gray-400 size-6 cursor-pointer mb-4 hover:text-white" />
+          <IoArrowBack className="mb-4 size-6 cursor-pointer text-gray-400 hover:text-white" />
         </Link>
 
-        <div className="flex gap-2 ">
+        <div className="flex gap-2">
           {currentIndex > 0 ? (
             <ChevronLeft className="cursor-pointer" onClick={handlePrevious} />
           ) : (
             ""
           )}
-          <p className="text-gray-400 mb-6">Step {currentIndex + 1} / 2</p>
+          <p className="mb-6 text-gray-400">Step {currentIndex + 1} / 2</p>
           {currentIndex >= 0 ? (
             <ChevronRight className="cursor-pointer" onClick={handleNext} />
           ) : (
@@ -119,24 +119,24 @@ export default function SignupForm() {
 
         <>
           <p
-            className={`${poppins.className} text-2xl sm:text-3xl  mb-2 text-center text-white font-bold `}
+            className={`${poppins.className} mb-2 text-center text-2xl font-bold text-white sm:text-3xl`}
           >
             Create New Account
           </p>
           <p
-            className={`${poppins.className} text-sm sm:text-md text-center text-gray-500 font-bold`}
+            className={`${poppins.className} sm:text-md text-center text-sm font-bold text-gray-500`}
           >
             Start your journey with jobjunction
           </p>
         </>
 
         <Button
-          className="bg-white w-full flex gap-4 hover:bg-white mt-8"
+          className="mt-8 flex w-full gap-4 bg-white hover:bg-white"
           onClick={() => signIn("google", { callbackUrl: "/jobs" })}
           aria-label="signup-google"
         >
           <FcGoogle className="size-6" />
-          <p className={`${poppins.className} text-black font-bold`}>
+          <p className={`${poppins.className} font-bold text-black`}>
             Signup With Google
           </p>
         </Button>
@@ -145,60 +145,60 @@ export default function SignupForm() {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {currentIndex === 0 ? (
-            <div className="grid grid-cols-1 gap-x-4 gap-y-8  ">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-8">
               <div>
-                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                  <AtSign className="text-gray-400 size-5" />
+                <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                  <AtSign className="size-5 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Username"
-                    className="outline-none w-full bg-inputBg text-white"
+                    className="w-full bg-inputBg text-white outline-none"
                     {...register("username")}
                   />
                 </div>
                 {errors.username?.message && (
-                  <p className="text-red-500 text-sm mt-2">
+                  <p className="mt-2 text-sm text-red-500">
                     {errors.username?.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                  <Mail className=" text-gray-400 size-5" />
+                <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                  <Mail className="size-5 text-gray-400" />
                   <input
                     type="email"
                     placeholder="Email"
-                    className="outline-none w-full bg-inputBg text-white"
+                    className="w-full bg-inputBg text-white outline-none"
                     {...register("email")}
                   />
                 </div>
                 {errors.email?.message && (
-                  <p className="text-red-500 text-sm mt-2">
+                  <p className="mt-2 text-sm text-red-500">
                     {errors.email?.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                  <Lock className=" text-gray-400 size-5" />
+                <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                  <Lock className="size-5 text-gray-400" />
                   <input
                     type={passwordClick ? "text" : "password"}
                     placeholder="Password"
-                    className="outline-none w-full bg-inputBg text-white"
+                    className="w-full bg-inputBg text-white outline-none"
                     {...register("password")}
                   />
                   <div onClick={() => setPasswordClick((prev) => !prev)}>
                     {passwordClick ? (
-                      <Eye className="cursor-pointer text-gray-400 size-5" />
+                      <Eye className="size-5 cursor-pointer text-gray-400" />
                     ) : (
-                      <EyeOff className="cursor-pointer text-gray-400 size-5" />
+                      <EyeOff className="size-5 cursor-pointer text-gray-400" />
                     )}
                   </div>
                 </div>
                 {errors.password?.message && (
-                  <p className="text-red-500 text-sm mt-2">
+                  <p className="mt-2 text-sm text-red-500">
                     {errors.password?.message}
                   </p>
                 )}
@@ -207,70 +207,70 @@ export default function SignupForm() {
           ) : null}
 
           {currentIndex === 1 ? (
-            <div className="grid grid-cols-1 gap-x-4 gap-y-8 mt-8">
+            <div className="mt-8 grid grid-cols-1 gap-x-4 gap-y-8">
               <div className="w-full">
                 <input
                   type="text"
                   placeholder="Write Bio..."
-                  className="outline-none w-full bg-inputBg text-white p-4  rounded-md "
+                  className="w-full rounded-md bg-inputBg p-4 text-white outline-none"
                   {...register("bio")}
                 />
                 {errors.bio?.message && (
-                  <p className="text-red-500 text-sm mt-2">
+                  <p className="mt-2 text-sm text-red-500">
                     {errors.bio?.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                  <FaInstagram className="text-gray-400 size-5" />
+                <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                  <FaInstagram className="size-5 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Instagram url"
-                    className="outline-none w-full bg-inputBg text-white"
+                    className="w-full bg-inputBg text-white outline-none"
                     {...register("instagram_url")}
                   />
                 </div>
 
                 {errors.instagram_url?.message && (
-                  <p className="text-red-500 text-sm mt-2">
+                  <p className="mt-2 text-sm text-red-500">
                     {errors.instagram_url?.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                  <FaTwitter className="text-gray-400 size-5" />
+                <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                  <FaTwitter className="size-5 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Twitter url"
-                    className="outline-none w-full bg-inputBg text-white"
+                    className="w-full bg-inputBg text-white outline-none"
                     {...register("twitter_url")}
                   />
                 </div>
 
                 {errors.twitter_url?.message && (
-                  <p className="text-red-500 text-sm mt-2">
+                  <p className="mt-2 text-sm text-red-500">
                     {errors.twitter_url?.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                  <FaLinkedin className="text-gray-400 size-5" />
+                <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                  <FaLinkedin className="size-5 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Linkedin url"
-                    className="outline-none w-full bg-inputBg text-white"
+                    className="w-full bg-inputBg text-white outline-none"
                     {...register("linkedin_url")}
                   />
                 </div>
 
                 {errors.linkedin_url?.message && (
-                  <p className="text-red-500 text-sm mt-2">
+                  <p className="mt-2 text-sm text-red-500">
                     {errors.linkedin_url?.message}
                   </p>
                 )}
@@ -280,14 +280,14 @@ export default function SignupForm() {
 
           <Button
             onClick={next}
-            className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue w-full mt-6`}
+            className={`${fraunces.className} mt-6 w-full bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
             disabled={submitting}
             aria-label="signup-submit"
           >
             {currentIndex === 1 ? (
               <div>
                 {submitting ? (
-                  <TbFidgetSpinner className="animate-spin text-2xl " />
+                  <TbFidgetSpinner className="animate-spin text-2xl" />
                 ) : (
                   <p>Submit</p>
                 )}
@@ -298,7 +298,7 @@ export default function SignupForm() {
           </Button>
         </form>
 
-        <p className="mt-4 text-sm text-center text-gray-400">
+        <p className="mt-4 text-center text-sm text-gray-400">
           Existing User ?
           <Link href="/signin" aria-label="signin">
             <span className="cursor-pointer text-secondarySkyBlue">

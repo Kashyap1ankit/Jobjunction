@@ -50,19 +50,19 @@ export default function PostedJob() {
     <>
       <div>
         {errorNoPost || myPostedJobs.length < 0 ? (
-          <div className="w-full h-screen flex items-center justify-center">
+          <div className="flex h-screen w-full items-center justify-center">
             <p className="text-white">No Post found</p>
           </div>
         ) : (
-          <div className="lg:flex lg:flex-col gap-8 py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
+          <div className="no-scrollbar h-screen max-h-screen gap-8 overflow-y-scroll py-6 lg:flex lg:flex-col">
             {loading ? (
               <Loader />
             ) : (
               <>
                 {isVisitorUser ? (
-                  <div className="flex justify-end mb-4">
+                  <div className="mb-4 flex justify-end">
                     <Link href={"/jobs/create"}>
-                      <Button className="flex gap-2 items-center bg-gradient-to-b from-primarySkyBlue to-secondarySkyBlue">
+                      <Button className="flex items-center gap-2 bg-gradient-to-b from-primarySkyBlue to-secondarySkyBlue">
                         <PlusIcon />
                         <p>Add Post</p>
                       </Button>
@@ -72,26 +72,26 @@ export default function PostedJob() {
                 <Table>
                   <TableHeader className="">
                     <TableRow
-                      className={`${poppins.className} bg-gray-700 text-white font-bold hover:bg-gray-700`}
+                      className={`${poppins.className} bg-gray-700 font-bold text-white hover:bg-gray-700`}
                     >
-                      <TableHead className="text-white rounded-tl-md">
+                      <TableHead className="rounded-tl-md text-white">
                         Id
                       </TableHead>
                       <TableHead className="text-white">Company</TableHead>
                       <TableHead className="text-white">Role</TableHead>
                       <TableHead className="text-white">CreatedAt</TableHead>
-                      <TableHead className="text-white rounded-tr-md">
+                      <TableHead className="rounded-tr-md text-white">
                         Action
                       </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody
-                    className={`${poppins.className} bg-primaryBorder text-white font-bold text-gray-400`}
+                    className={`${poppins.className} bg-primaryBorder font-bold text-gray-400 text-white`}
                   >
                     {myPostedJobs.map((post) => (
                       <TableRow
                         key={post.id}
-                        className=" hover:bg-primaryBorder cursor-pointer"
+                        className="cursor-pointer hover:bg-primaryBorder"
                       >
                         <TableCell className="font-medium">
                           #{post.id.slice(0, 5)}

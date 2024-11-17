@@ -79,7 +79,7 @@ export default function FilterSideBar() {
     <>
       <div className="w-full px-4">
         <Button
-          className={`w-full mt-4  bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue text-white `}
+          className={`mt-4 w-full bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue text-white hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
           onClick={() => {
             setMobSheetOpen(false);
             callBackend();
@@ -94,21 +94,21 @@ export default function FilterSideBar() {
       <Accordion
         type="single"
         collapsible
-        className="py-4 px-2 lg:p-4 border-2 border-primaryBorder bg-secondaryBorder rounded-lg"
+        className="rounded-lg border-2 border-primaryBorder bg-secondaryBorder px-2 py-4 lg:p-4"
       >
         <AccordionItem value="item-1">
-          <AccordionTrigger className="font-bold text-left ">
+          <AccordionTrigger className="text-left font-bold">
             Experience Level
           </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2  gap-x-8">
+          <AccordionContent className="grid grid-cols-2 gap-x-8">
             {experienceValues.map((e: string, i: number) => {
               return (
-                <div className="flex gap-2 mt-4" key={i}>
+                <div className="mt-4 flex gap-2" key={i}>
                   <input
                     type="checkbox"
                     value={e}
                     {...register(e)}
-                    className="accent-green-700 cursor-pointer"
+                    className="cursor-pointer accent-green-700"
                   />
                   <label className="text-gray-400">{e}</label>
                 </div>
@@ -140,16 +140,16 @@ export default function FilterSideBar() {
       <Accordion
         type="single"
         collapsible
-        className="py-4 px-2 lg:p-4 border-2 border-primaryBorder bg-secondaryBorder rounded-lg"
+        className="rounded-lg border-2 border-primaryBorder bg-secondaryBorder px-2 py-4 lg:p-4"
       >
         <AccordionItem value="item-1">
-          <AccordionTrigger className="font-bold text-left ">
+          <AccordionTrigger className="text-left font-bold">
             Job Type
           </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2  gap-x-8">
+          <AccordionContent className="grid grid-cols-2 gap-x-8">
             {jobTypeValues.map((e: string, i: number) => {
               return (
-                <div className="flex gap-2 mt-4" key={i}>
+                <div className="mt-4 flex gap-2" key={i}>
                   <input
                     type="checkbox"
                     value={e}
@@ -186,16 +186,16 @@ export default function FilterSideBar() {
       <Accordion
         type="single"
         collapsible
-        className="py-4 px-2 lg:p-4 border-2 border-primaryBorder bg-secondaryBorder rounded-lg"
+        className="rounded-lg border-2 border-primaryBorder bg-secondaryBorder px-2 py-4 lg:p-4"
       >
         <AccordionItem value="item-1">
-          <AccordionTrigger className="font-bold text-left ">
+          <AccordionTrigger className="text-left font-bold">
             Location
           </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2  gap-x-8">
+          <AccordionContent className="grid grid-cols-2 gap-x-8">
             {locationTypeValue.map((e: string, i: number) => {
               return (
-                <div className="flex gap-2 mt-4" key={i}>
+                <div className="mt-4 flex gap-2" key={i}>
                   <input
                     type="checkbox"
                     value={e}

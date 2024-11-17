@@ -87,58 +87,58 @@ export default function CreateForm() {
   }
 
   return (
-    <div className=" bg-tranparent">
-      <div className="p-4 md:p-8 w-11/12 md:w-3/4 mx-auto">
+    <div className="bg-tranparent">
+      <div className="mx-auto w-11/12 p-4 md:w-3/4 md:p-8">
         <IoChevronBackCircleOutline
-          className="mb-4 size-6 text-gray-400 cursor-pointer hover:text-white"
+          className="mb-4 size-6 cursor-pointer text-gray-400 hover:text-white"
           onClick={() => router.push("/jobs")}
         />
 
         <p
-          className={`${roboto_slab.className} text-3xl md:text-4xl  font-bold text-center text-white`}
+          className={`${roboto_slab.className} text-center text-3xl font-bold text-white md:text-4xl`}
         >
           Create New Job !
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-1 md:grid-cols-2  gap-8  mt-8">
+          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
-              <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-[#161f2d]">
-                <PiOfficeChair className=" text-gray-400 size-5" />
+              <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-4">
+                <PiOfficeChair className="size-5 text-gray-400" />
                 <input
-                  className="outline-none w-full bg-[#161f2d] text-white"
+                  className="w-full bg-[#161f2d] text-white outline-none"
                   placeholder="Position"
                   {...register("position")}
                   id="position"
                 />
               </div>
               {errors.position?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.position?.message}
                 </p>
               )}
             </div>
 
             <div>
-              <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-[#161f2d]">
-                <Building className=" text-gray-400 size-5" />
+              <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-4">
+                <Building className="size-5 text-gray-400" />
                 <input
-                  className="outline-none w-full bg-[#161f2d] text-white"
+                  className="w-full bg-[#161f2d] text-white outline-none"
                   placeholder="Company"
                   {...register("company")}
                   id="company"
                 />
               </div>
               {errors.company?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.company?.message}
                 </p>
               )}
             </div>
 
-            <div className="md:col-span-2  rounded-md w-full ">
+            <div className="w-full rounded-md md:col-span-2">
               <Tiptap
-                className="rounded-md w-full p-4 font-kanit mt-2 min-h-80 max-h-80 overflow-y-scroll overflow-x-hidden outline-none w-full bg-[#161f2d] no-scrollbar z-20"
+                className="no-scrollbar z-20 mt-2 max-h-80 min-h-80 w-full overflow-x-hidden overflow-y-scroll rounded-md bg-[#161f2d] p-4 font-kanit outline-none"
                 register={register}
                 name="role_description"
                 setValue={setValue}
@@ -146,14 +146,14 @@ export default function CreateForm() {
               />
 
               {errors.role_description?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.role_description?.message}
                 </p>
               )}
             </div>
 
-            <div className="md:col-span-2  rounded-md w-full ">
-              <label className="text-gray-500 text-lg ">
+            <div className="w-full rounded-md md:col-span-2">
+              <label className="text-lg text-gray-500">
                 Company&apos;s Logo
               </label>
 
@@ -169,53 +169,53 @@ export default function CreateForm() {
               <div>
                 <label
                   htmlFor="company_logo"
-                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer bg-[#161f2d] mx-auto px-8"
+                  className="mx-auto flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-700 bg-[#161f2d] px-8"
                 >
-                  <Upload className="size-12 text-gray-400 text-center w-full" />
-                  <p className="text-gray-400 text-xs mt-2">
+                  <Upload className="size-12 w-full text-center text-gray-400" />
+                  <p className="mt-2 text-xs text-gray-400">
                     Click to upload or drag and drop
                   </p>
-                  <p className="text-gray-400 text-xs mt-2">
+                  <p className="mt-2 text-xs text-gray-400">
                     PNG , JPG or JPEG
                   </p>
                 </label>
               </div>
               {errors.company_logo?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.company_logo.message.toString()}
                 </p>
               )}
             </div>
 
             <div>
-              <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-[#161f2d]">
-                <Building className=" text-gray-400 size-5" />
+              <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-4">
+                <Building className="size-5 text-gray-400" />
                 <input
-                  className="outline-none w-full bg-[#161f2d] text-white"
+                  className="w-full bg-[#161f2d] text-white outline-none"
                   placeholder="Company's Website"
                   {...register("company_website")}
                   id="company"
                 />
               </div>
               {errors.company_website?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.company_website?.message}
                 </p>
               )}
             </div>
 
             <div>
-              <div className="flex gap-2 items-center p-2 rounded-md  w-full bg-[#161f2d]">
+              <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-2">
                 <Select
                   {...register("location")}
                   onValueChange={(value: "Remote" | "Hybrid" | "Onsite") =>
                     setValue("location", value)
                   }
                 >
-                  <SelectTrigger className="outline-none w-full bg-[#161f2d] text-white border-none ">
+                  <SelectTrigger className="w-full border-none bg-[#161f2d] text-white outline-none">
                     <SelectValue placeholder="Location" />
                   </SelectTrigger>
-                  <SelectContent className="outline-none w-full bg-inputBg text-white border-none p-0">
+                  <SelectContent className="w-full border-none bg-inputBg p-0 text-white outline-none">
                     <SelectItem value="Remote">Remote</SelectItem>
                     <SelectItem value="Onsite">Onsite</SelectItem>
                     <SelectItem value="Hybrid">Hybrid</SelectItem>
@@ -223,24 +223,24 @@ export default function CreateForm() {
                 </Select>
               </div>
               {errors.location?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.location?.message}
                 </p>
               )}
             </div>
 
             <div>
-              <div className="flex gap-2 items-center p-2 rounded-md  w-full bg-[#161f2d]">
+              <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-2">
                 <Select
                   {...register("job_type")}
                   onValueChange={(
                     value: "Fulltime" | "Internship" | "Contract" | "Freelance",
                   ) => setValue("job_type", value)}
                 >
-                  <SelectTrigger className="outline-none w-full bg-[#161f2d] text-white border-none ">
+                  <SelectTrigger className="w-full border-none bg-[#161f2d] text-white outline-none">
                     <SelectValue placeholder="Employment Type" />
                   </SelectTrigger>
-                  <SelectContent className="outline-none w-full bg-inputBg text-white border-none p-0">
+                  <SelectContent className="w-full border-none bg-inputBg p-0 text-white outline-none">
                     <SelectItem value="Fulltime">Fulltime</SelectItem>
                     <SelectItem value="Internship">Internship</SelectItem>
                     <SelectItem value="Contract">Contract</SelectItem>
@@ -249,24 +249,24 @@ export default function CreateForm() {
                 </Select>
               </div>
               {errors.job_type?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.job_type?.message}
                 </p>
               )}
             </div>
 
             <div>
-              <div className="flex gap-2 items-center p-2 rounded-md  w-full bg-[#161f2d]">
+              <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-2">
                 <Select
                   {...register("experience_level")}
                   onValueChange={(
                     value: "Fresher" | "0-1y" | "1-3y" | "3-5y" | "5y",
                   ) => setValue("experience_level", value)}
                 >
-                  <SelectTrigger className="outline-none w-full bg-[#161f2d] text-white border-none ">
+                  <SelectTrigger className="w-full border-none bg-[#161f2d] text-white outline-none">
                     <SelectValue placeholder="Experience Level" />
                   </SelectTrigger>
-                  <SelectContent className="outline-none w-full bg-inputBg text-white border-none p-0">
+                  <SelectContent className="w-full border-none bg-inputBg p-0 text-white outline-none">
                     <SelectItem value="Fresher">Fresher</SelectItem>
                     <SelectItem value="0-1y">0-1</SelectItem>
                     <SelectItem value="1-3y">1-3</SelectItem>
@@ -276,7 +276,7 @@ export default function CreateForm() {
                 </Select>
               </div>
               {errors.experience_level?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.experience_level?.message}
                 </p>
               )}
@@ -285,36 +285,36 @@ export default function CreateForm() {
             {watchSalaryToggle ? (
               <>
                 <div>
-                  <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-[#161f2d]">
-                    <IndianRupee className=" text-gray-400 size-5" />
+                  <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-4">
+                    <IndianRupee className="size-5 text-gray-400" />
                     <input
                       type="text"
-                      className="outline-none w-full bg-[#161f2d] text-white"
+                      className="w-full bg-[#161f2d] text-white outline-none"
                       placeholder="Min Salary (per month)"
                       {...register("salary_min")}
                       id="salary_min"
                     />
                   </div>
                   {errors.salary_min?.message && (
-                    <p className="mt-2 font-bold text-red-500 text-sm">
+                    <p className="mt-2 text-sm font-bold text-red-500">
                       {errors.salary_min?.message}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-[#161f2d]">
-                    <IndianRupee className=" text-gray-400 size-5" />
+                  <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-4">
+                    <IndianRupee className="size-5 text-gray-400" />
                     <input
                       type="text"
-                      className="outline-none w-full bg-[#161f2d] text-white"
+                      className="w-full bg-[#161f2d] text-white outline-none"
                       placeholder="Max Salary (per month)"
                       {...register("salary_max")}
                       id="salary_max"
                     />
                   </div>
                   {errors.salary_max?.message && (
-                    <p className="mt-2 font-bold text-red-500 text-sm">
+                    <p className="mt-2 text-sm font-bold text-red-500">
                       {errors.salary_max.message}
                     </p>
                   )}
@@ -322,7 +322,7 @@ export default function CreateForm() {
               </>
             ) : null}
 
-            <div className="md:col-span-2 flex flex-row gap-4 ">
+            <div className="flex flex-row gap-4 md:col-span-2">
               <Switch
                 defaultChecked={true}
                 {...register("salary_disclosed")}
@@ -332,26 +332,26 @@ export default function CreateForm() {
                 }}
                 className="data-[state=checked]:bg-secondarySkyBlue"
               />
-              <label className="text-gray-500 text-md ">
+              <label className="text-md text-gray-500">
                 Want to Disclose Salary
               </label>
             </div>
 
             <div>
-              <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-[#161f2d]">
+              <div className="flex w-full items-center gap-2 rounded-md bg-[#161f2d] p-4">
                 <Link
-                  className=" text-gray-400 size-5"
+                  className="size-5 text-gray-400"
                   aria-label="apply_link_form"
                 />
                 <input
-                  className="outline-none w-full bg-[#161f2d] text-white"
+                  className="w-full bg-[#161f2d] text-white outline-none"
                   placeholder="Apply Link"
                   {...register("apply_link")}
                   id="apply_link"
                 />
               </div>
               {errors.apply_link?.message && (
-                <p className="mt-2 font-bold text-red-500 text-sm">
+                <p className="mt-2 text-sm font-bold text-red-500">
                   {errors.apply_link?.message}
                 </p>
               )}
@@ -361,7 +361,7 @@ export default function CreateForm() {
           <div className="flex justify-end">
             <Button
               type="submit"
-              className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue  mt-6`}
+              className={`${fraunces.className} mt-6 bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
               disabled={loading}
               aria-label="create-job-submit"
             >

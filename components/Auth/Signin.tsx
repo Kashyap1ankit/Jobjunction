@@ -51,30 +51,30 @@ export default function SigninForm() {
 
   return (
     <div className="min-h-screen">
-      <div className="mx-auto rounded-lg p-4 md:p-6 w-11/12 sm:w-3/4 md:w-1/2 xl:w-1/3 bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg mt-6 md:mt-8 lg:mt-20 md:mt-24 border-2 border-slate-800 flex flex-col gap-6">
+      <div className="mx-auto mt-6 flex w-11/12 flex-col gap-6 rounded-lg border-2 border-slate-800 bg-gradient-to-b from-secondaryTestimoanlBg to-primaryTestimonalBg p-4 sm:w-3/4 md:mt-24 md:mt-8 md:w-1/2 md:p-6 lg:mt-20 xl:w-1/3">
         <div>
           <Link href={"/"} aria-label="go-back">
-            <IoArrowBack className="text-gray-400 size-6 cursor-pointer mb-4 hover:text-white" />
+            <IoArrowBack className="mb-4 size-6 cursor-pointer text-gray-400 hover:text-white" />
           </Link>
           <p
-            className={`${poppins.className} text-2xl sm:text-3xl md:text-4xl mb-2 text-center text-white font-bold `}
+            className={`${poppins.className} mb-2 text-center text-2xl font-bold text-white sm:text-3xl md:text-4xl`}
           >
             Welcome Back !
           </p>
           <p
-            className={`${poppins.className} text-sm sm:text-md text-center text-gray-500 font-bold`}
+            className={`${poppins.className} sm:text-md text-center text-sm font-bold text-gray-500`}
           >
             Continue your journey with jobjunction
           </p>
         </div>
 
         <Button
-          className="bg-white w-full flex gap-4 hover:bg-white"
+          className="flex w-full gap-4 bg-white hover:bg-white"
           onClick={() => signIn("google", { callbackUrl: "/jobs" })}
           aria-label="signin"
         >
           <FcGoogle className="size-6" />
-          <p className={`${poppins.className} text-black font-bold`}>
+          <p className={`${poppins.className} font-bold text-black`}>
             Signin With Google
           </p>
         </Button>
@@ -84,41 +84,41 @@ export default function SigninForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 gap-x-4 gap-y-4 md:gap-y-8">
             <div>
-              <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                <AtSign className="text-gray-400 size-5" />
+              <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                <AtSign className="size-5 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Username"
-                  className="outline-none w-full bg-inputBg text-white "
+                  className="w-full bg-inputBg text-white outline-none"
                   {...register("username")}
                 />
               </div>
               {errors.username?.message && (
-                <p className="text-red-500 text-sm mt-2">
+                <p className="mt-2 text-sm text-red-500">
                   {errors.username?.message}
                 </p>
               )}
             </div>
 
             <div>
-              <div className="flex gap-2 items-center p-4 rounded-md  w-full bg-inputBg">
-                <Lock className=" text-gray-400 size-5" />
+              <div className="flex w-full items-center gap-2 rounded-md bg-inputBg p-4">
+                <Lock className="size-5 text-gray-400" />
                 <input
                   type={passwordClick ? "text" : "password"}
                   placeholder="Password"
-                  className="outline-none w-full bg-inputBg text-white"
+                  className="w-full bg-inputBg text-white outline-none"
                   {...register("password")}
                 />
                 <div onClick={() => setPasswordClick((prev) => !prev)}>
                   {passwordClick ? (
-                    <Eye className="cursor-pointer text-gray-400 size-5" />
+                    <Eye className="size-5 cursor-pointer text-gray-400" />
                   ) : (
-                    <EyeOff className="cursor-pointer text-gray-400 size-5" />
+                    <EyeOff className="size-5 cursor-pointer text-gray-400" />
                   )}
                 </div>
               </div>
               {errors.password?.message && (
-                <p className="text-red-500 text-sm mt-2">
+                <p className="mt-2 text-sm text-red-500">
                   {errors.password?.message}
                 </p>
               )}
@@ -127,11 +127,11 @@ export default function SigninForm() {
             <Button
               type="submit"
               disabled={submitting}
-              className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:to-primarySkyBlue hover:from-secondarySkyBlue`}
+              className={`${fraunces.className} bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
               aria-label="signup"
             >
               {submitting ? (
-                <TbFidgetSpinner className="animate-spin text-2xl " />
+                <TbFidgetSpinner className="animate-spin text-2xl" />
               ) : (
                 <p>Submit</p>
               )}
@@ -139,7 +139,7 @@ export default function SigninForm() {
           </div>
         </form>
 
-        <p className="mt-4 text-sm text-center text-gray-400">
+        <p className="mt-4 text-center text-sm text-gray-400">
           New User ?
           <Link href="/signup" aria-label="signup">
             <span className="cursor-pointer text-secondarySkyBlue">

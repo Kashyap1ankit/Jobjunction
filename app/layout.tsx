@@ -26,7 +26,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Suspense fallback={<Loader />}>
           <AuthProvider session={session}>
-            <div className=" overflow-x-hidden bg-primaryBg">
+            <div className="overflow-x-hidden bg-primaryBg">
               {children}
               <Toaster />
             </div>

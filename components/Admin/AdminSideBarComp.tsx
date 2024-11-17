@@ -29,9 +29,9 @@ export default function AdminSideBarComp() {
           aria-label="admin"
         >
           <p
-            className={` duration-500 text-gray-400 ${
+            className={`text-gray-400 duration-500 ${
               activeTab === "admin"
-                ? "bg-secondaryBorder text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
+                ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-sideBarColor"
                 : ""
             }`}
           >
@@ -46,9 +46,9 @@ export default function AdminSideBarComp() {
           aria-label="admin-user"
         >
           <p
-            className={`mt-8 duration-500 text-gray-400 ${
+            className={`mt-8 text-gray-400 duration-500 ${
               activeTab === "users"
-                ? "bg-secondaryBorder text-sideBarColor w-fit p-2 rounded-full  font-kanit w-full "
+                ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-sideBarColor"
                 : ""
             }`}
           >

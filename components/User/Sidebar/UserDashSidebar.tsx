@@ -14,7 +14,7 @@ export default function UserDashboardSidebar() {
   const [sheetOpen, setSheetOpen] = useState(false);
   return (
     <>
-      <div className=" border-r-2 border-primaryBorder hidden md:block min-h-screen pt-8 ">
+      <div className="hidden min-h-screen border-r-2 border-primaryBorder pt-8 md:block">
         <SidebarComp />
       </div>
 
@@ -26,7 +26,7 @@ export default function UserDashboardSidebar() {
           <SheetContent
             side={"left"}
             onClick={() => setSheetOpen(false)}
-            className="bg-primaryBg border-r-gray-500"
+            className="border-r-gray-500 bg-primaryBg"
           >
             <SheetHeader>
               <SheetDescription className="mt-4">

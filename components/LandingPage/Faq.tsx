@@ -10,9 +10,9 @@ import { FaqTypes } from "@/types/types";
 
 export default function FAQ() {
   return (
-    <div className="w-full mx-auto mt-24 md:mt-32">
+    <div className="mx-auto mt-24 w-full md:mt-32">
       <p
-        className={`${roboto_slab.className} text-white text-3xl md:text-4xl text-center`}
+        className={`${roboto_slab.className} text-center text-3xl text-white md:text-4xl`}
       >
         Frequently Asked <span className="text-primarySkyBlue">Questions</span>
       </p>
@@ -22,10 +22,10 @@ export default function FAQ() {
             return (
               <AccordionItem
                 value={`item-${i}`}
-                className="w-full md:w-1/2 mx-auto bg-primaryBorder rounded-md px-4 mt-12"
+                className="mx-auto mt-12 w-full rounded-md bg-primaryBorder px-4 md:w-1/2"
                 key={i}
               >
-                <AccordionTrigger className="text-white hover:underline-offset-0 text-sm md:text-md">
+                <AccordionTrigger className="md:text-md text-sm text-white hover:underline-offset-0">
                   {e.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-500">

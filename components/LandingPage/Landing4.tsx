@@ -5,7 +5,7 @@ export default function LandingPart4() {
   return (
     <div className="mt-32">
       <p
-        className={`${roboto_slab.className} text-center  text-white text-3xl md:text-4xl`}
+        className={`${roboto_slab.className} text-center text-3xl text-white md:text-4xl`}
       >
         Recently
         <span className={`${roboto_slab.className} text-primarySkyBlue`}>

@@ -16,7 +16,7 @@ export default function TrustedBy() {
   return (
     <div className="mt-32">
       <p
-        className={`${poppins.className} text-md py-2 px-8 border-2 border-primarySkyBlue w-fit rounded-3xl text-center text-white mx-auto`}
+        className={`${poppins.className} text-md mx-auto w-fit rounded-3xl border-2 border-primarySkyBlue px-8 py-2 text-center text-white`}
       >
         Landed Jobs At &#10024;
       </p>
