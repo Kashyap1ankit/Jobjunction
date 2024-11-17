@@ -3,17 +3,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  LogOut,
-  PlusCircle,
-  Shield,
-  ShieldAlert,
-  UserCircle,
-} from "lucide-react";
+import { LogOut, PlusCircle, Shield, UserCircle } from "lucide-react";
 import { TbHandClick } from "react-icons/tb";
 import TextComponent from "../TextComp";
 import Link from "next/link";
@@ -30,43 +22,43 @@ export default function Profile() {
           <Image
             src={imageUrl || "/Images/avatar.png"}
             alt="user-avatar"
-            className="w-8 h-8 md:w-12 md:h-12 rounded-full shadow-md"
+            className="h-8 w-8 rounded-full shadow-md md:h-12 md:w-12"
             aria-label="user-profile"
             width={500}
             height={500}
           />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="flex flex-col items-left  bg-secondaryBorder text-gray-400 border-2 border-primaryBorder mx-4">
+        <DropdownMenuContent className="items-left mx-4 flex flex-col border-2 border-primaryBorder bg-secondaryBorder text-gray-400">
           <DropdownMenuItem>
             <Link
               href="/jobs"
-              className="flex gap-2 items-center w-full justify-center cursor-pointer "
+              className="flex w-full cursor-pointer items-center justify-center gap-2"
               aria-label="apply"
             >
               <TbHandClick />
-              <TextComponent text="Apply" className=" font-bebas" />
+              <TextComponent text="Apply" className="font-bebas" />
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Link
               href={"/jobs/create"}
-              className="flex gap-2 items-center w-full justify-center cursor-pointer"
+              className="flex w-full cursor-pointer items-center justify-center gap-2"
               aria-label="post"
             >
               <PlusCircle className="size-4" />
-              <TextComponent text="Post" className=" font-bebas" />
+              <TextComponent text="Post" className="font-bebas" />
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Link
               href={`/user/${session.data?.user?.id}/profile`}
-              className="flex gap-2 items-center w-full justify-center cursor-pointer"
+              className="flex w-full cursor-pointer items-center justify-center gap-2"
               aria-label="profile"
             >
               <UserCircle className="size-4" />
-              <TextComponent text="Profile" className=" font-bebas" />
+              <TextComponent text="Profile" className="font-bebas" />
             </Link>
           </DropdownMenuItem>
 
@@ -74,10 +66,10 @@ export default function Profile() {
             <DropdownMenuItem>
               <Link
                 href={`/admin`}
-                className="flex gap-2 items-center w-full justify-center cursor-pointer"
+                className="flex w-full cursor-pointer items-center justify-center gap-2"
                 aria-label="profile"
               >
-                <Shield className=" size-4 fill-white" />
+                <Shield className="size-4 fill-white" />
                 <p>Admin</p>
               </Link>
             </DropdownMenuItem>
@@ -86,9 +78,9 @@ export default function Profile() {
           <DropdownMenuItem>
             <div
               onClick={() => signOut()}
-              className="flex gap-2 items-center w-full justify-center cursor-pointer"
+              className="flex w-full cursor-pointer items-center justify-center gap-2"
             >
-              <LogOut className=" size-4 " />
+              <LogOut className="size-4" />
               <p>Logout</p>
             </div>
           </DropdownMenuItem>

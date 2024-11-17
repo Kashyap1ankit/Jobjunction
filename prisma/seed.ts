@@ -103,7 +103,7 @@ async function insertUser() {
       } catch (error) {
         console.log("Error while inserting user", (error as Error).message);
       }
-    })
+    }),
   );
 }
 
@@ -137,7 +137,7 @@ async function insertPosts() {
       } catch (error) {
         console.log("Error while inserting posts", (error as Error).message);
       }
-    })
+    }),
   );
 }
 

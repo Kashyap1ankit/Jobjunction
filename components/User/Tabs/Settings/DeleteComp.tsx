@@ -2,14 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { isProfileVisitorUser } from "@/store/store";
-import { redirect, useParams, useRouter } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
@@ -42,7 +41,7 @@ export default function DeleteComp() {
 
   const [inputError, setInputError] = useState(false);
   const [randomString, setRandomString] = useState<string>(
-    Randomstring.generate(8)
+    Randomstring.generate(8),
   );
 
   useEffect(() => {
@@ -64,7 +63,7 @@ export default function DeleteComp() {
       if (response.status !== 201) throw new Error(response.message);
       setModalOpen(false);
       signOut();
-    } catch (error) {
+    } catch {
       toast("Error Occured");
     } finally {
       setLoading(false);
@@ -76,8 +75,8 @@ export default function DeleteComp() {
   }
 
   return (
-    <div className="min-h-screen mt-12">
-      <p className="text-xl text-red-500 font-kanit">Delete Account</p>
+    <div className="mt-12 min-h-screen">
+      <p className="font-kanit text-xl text-red-500">Delete Account</p>
 
       <div className="mt-8">
         <p className="text-gray-400">
@@ -85,15 +84,15 @@ export default function DeleteComp() {
           certain.
         </p>
         <AlertDialog open={modalOpen}>
-          <AlertDialogTrigger className="mt-8 w-full ">
+          <AlertDialogTrigger className="mt-8 w-full">
             <div
-              className="bg-red-500 text-black   py-2 px-4 cursor-pointer rounded-md text-white w-full sm:w-fit"
+              className="w-full cursor-pointer rounded-md bg-red-500 px-4 py-2 text-black text-white sm:w-fit"
               onClick={() => setModalOpen(true)}
             >
               Delete
             </div>
           </AlertDialogTrigger>
-          <AlertDialogContent className="max-w-[300px] rounded-md md:max-w-[450px] bg-primaryBg">
+          <AlertDialogContent className="max-w-[300px] rounded-md bg-primaryBg md:max-w-[450px]">
             <AlertDialogHeader>
               <AlertDialogTitle className="text-white">
                 Are you absolutely sure?
@@ -109,7 +108,7 @@ export default function DeleteComp() {
                   onSubmit={handleSubmit(handleDeleteAccount)}
                 >
                   <label
-                    className={`${poppins.className} text-white `}
+                    className={`${poppins.className} text-white`}
                     htmlFor="random"
                   >
                     Type <span className="text-red-500">{randomString}</span>
@@ -117,7 +116,7 @@ export default function DeleteComp() {
                   <input
                     {...register("random")}
                     id="random"
-                    className=" mt-2 p-2 rounded-md text-white p-4 rounded-md  w-full bg-inputBg outline-none"
+                    className="mt-2 w-full rounded-md bg-inputBg p-2 p-4 text-white outline-none"
                     onPaste={(e) => e.preventDefault()}
                   />
                   {errors.random?.message && (
@@ -129,17 +128,17 @@ export default function DeleteComp() {
                     <p className="mt-2 text-red-500">Mismatched , Try again</p>
                   )}
 
-                  <div className="flex gap-2 items-baseline">
+                  <div className="flex items-baseline gap-2">
                     <Button
                       disabled={loading}
-                      className="mt-4 bg-red-500 hover:bg-red-500 text-white"
+                      className="mt-4 bg-red-500 text-white hover:bg-red-500"
                       aria-label="delete-yes"
                     >
                       {loading ? <FaSpinner className="animate-spin" /> : "Yes"}
                     </Button>
 
                     <div
-                      className="bg-transparent text-white hover:bg-transparent border-2 border-slate-500 py-2 px-4 cursor-pointer rounded-md"
+                      className="cursor-pointer rounded-md border-2 border-slate-500 bg-transparent px-4 py-2 text-white hover:bg-transparent"
                       onClick={() => setModalOpen(false)}
                     >
                       <p>No</p>

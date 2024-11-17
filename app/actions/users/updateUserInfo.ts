@@ -9,7 +9,7 @@ export async function UpdateUserInfo(
   bio: string | undefined,
   instagram_url: string | undefined,
   twitter_url: string | undefined,
-  linkedin_url: string | undefined
+  linkedin_url: string | undefined,
 ) {
   try {
     const { success }: { success: boolean } = userProfileUpdateSchema.safeParse(
@@ -18,7 +18,7 @@ export async function UpdateUserInfo(
         instagram_url,
         twitter_url,
         linkedin_url,
-      }
+      },
     );
 
     if (!success) throw new Error("Schema Vlidation failed");
@@ -29,13 +29,13 @@ export async function UpdateUserInfo(
 
     const updatedUser = await prisma.user.update({
       where: {
-        id: id,
+        id,
       },
       data: {
-        bio: bio,
-        instagram_url: instagram_url,
-        linkedin_url: linkedin_url,
-        twitter_url: twitter_url,
+        bio,
+        instagram_url,
+        linkedin_url,
+        twitter_url,
       },
     });
 

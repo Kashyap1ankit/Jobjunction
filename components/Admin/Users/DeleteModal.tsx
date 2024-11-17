@@ -21,6 +21,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setError] = useState({
     status: false,
     message: "",
@@ -34,6 +35,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
       if (response.status !== 201) throw new Error(response.message);
       setModalOpen(false);
     } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       setError({
         status: true,
         message: (error as Error).message,
@@ -53,7 +55,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
     <AlertDialog open={modalOpen}>
       <AlertDialogTrigger>
         <Trash2
-          className="cursor-pointer text-red-500 "
+          className="cursor-pointer text-red-500"
           onClick={() => setModalOpen(true)}
         />
       </AlertDialogTrigger>
@@ -65,7 +67,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
             account and remove your data from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter className="flex  gap-2 ">
+        <AlertDialogFooter className="flex gap-2">
           <Button
             onClick={() => {
               handleDeleteAccountByAdmin();
@@ -77,7 +79,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
           </Button>
           <Button
             onClick={() => setModalOpen(false)}
-            className="bg-transparent text-black hover:bg-transparent border-2 border-slate-500"
+            className="border-2 border-slate-500 bg-transparent text-black hover:bg-transparent"
             aria-label="delete-account-no"
           >
             No

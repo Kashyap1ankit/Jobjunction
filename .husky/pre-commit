@@ -1,0 +1,4 @@
+npm run format:check 
+npm run format:fix
+npm run lint
+git add .

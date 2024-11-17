@@ -1,6 +1,6 @@
 import { lazy } from "react";
 const SavedJobsComp = lazy(
-  () => import("@/components/User/Tabs/Posts/Bookmark")
+  () => import("@/components/User/Tabs/Posts/Bookmark"),
 );
 
 export default function MySavedJobs() {

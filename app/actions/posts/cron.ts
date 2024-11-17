@@ -13,7 +13,7 @@ async function deleteExpiredJobs() {
       },
     });
 
-    for (let job of allJobs) {
+    for (const job of allJobs) {
       const diff = Math.floor(calculateDayDiff(job.createdAt));
 
       if (diff >= 7) {
@@ -26,7 +26,10 @@ async function deleteExpiredJobs() {
       }
     }
   } catch (error) {
-    console.log(error);
+    return {
+      status: 400,
+      message: (error as Error).message,
+    };
   }
 }
 
@@ -35,6 +38,6 @@ export const cleanDB = async () => {
     "0 0 * * *", //running my delete jobs function everynight at 12am IST
     async () => {
       await deleteExpiredJobs();
-    }
+    },
   );
 };

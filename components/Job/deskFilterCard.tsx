@@ -2,7 +2,7 @@ import FilterSideBar from "./filterCard";
 
 export default function DesktopFilterCard() {
   return (
-    <div className="hidden lg:flex lg:flex-col lg:gap-8  min-w-[300px] w-1/5 rounded-md max-h-screen overflow-y-scroll filter-scrollbar text-white mx-12">
+    <div className="filter-scrollbar mx-12 hidden max-h-screen w-1/5 min-w-[300px] overflow-y-scroll rounded-md text-white lg:flex lg:flex-col lg:gap-8">
       <FilterSideBar />
     </div>
   );

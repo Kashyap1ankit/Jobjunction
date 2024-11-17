@@ -40,9 +40,9 @@ export default function SidebarComp() {
           aria-label="profile"
         >
           <p
-            className={` duration-500 text-gray-400 ${
+            className={`text-gray-400 duration-500 ${
               activeTab === "profile"
-                ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full "
+                ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-white"
                 : ""
             }`}
           >
@@ -57,9 +57,9 @@ export default function SidebarComp() {
           aria-label="user-profile"
         >
           <p
-            className={` duration-500 text-gray-400 ${
+            className={`text-gray-400 duration-500 ${
               activeTab === "profile"
-                ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full "
+                ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-white"
                 : ""
             }`}
           >
@@ -76,9 +76,9 @@ export default function SidebarComp() {
           aria-label="post"
         >
           <p
-            className={` mt-8  duration-500 text-gray-400 ${
+            className={`mt-8 text-gray-400 duration-500 ${
               activeTab === "posts"
-                ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full"
+                ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-white"
                 : ""
             }`}
           >
@@ -93,9 +93,9 @@ export default function SidebarComp() {
           aria-label="user-post"
         >
           <p
-            className={` mt-8 text-gray-400 duration-500 ${
+            className={`mt-8 text-gray-400 duration-500 ${
               activeTab === "posts"
-                ? "bg-secondaryBorder  text-white w-fit p-2 rounded-full  font-kanit w-full"
+                ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-white"
                 : ""
             }`}
           >
@@ -113,9 +113,9 @@ export default function SidebarComp() {
             aria-label="saved"
           >
             <p
-              className={` mt-8  duration-500 text-gray-400 ${
+              className={`mt-8 text-gray-400 duration-500 ${
                 activeTab === "bookmark"
-                  ? "bg-secondaryBorder text-white w-fit p-2 rounded-full  font-kanit w-full"
+                  ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-white"
                   : ""
               }`}
             >
@@ -130,9 +130,9 @@ export default function SidebarComp() {
             aria-label="delete"
           >
             <p
-              className={` mt-8  duration-500 text-red-500 ${
+              className={`mt-8 text-red-500 duration-500 ${
                 activeTab === "destroy"
-                  ? "bg-secondaryBorder w-fit p-2 rounded-full  font-kanit w-full"
+                  ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit"
                   : ""
               }`}
             >

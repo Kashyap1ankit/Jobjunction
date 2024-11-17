@@ -2,39 +2,39 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function JobCardSkeleton() {
   return (
-    <div className="flex flex-col gap-8 mt-4 md:mt-0 p-4 md:p-6 shadow-lg mx-auto w-11/12  lg:w-3/4 bg-primaryBorder text-white rounded-xl border-2 border-secondaryBorder hover:cursor-pointer hover:bg-hoverBorder ">
+    <div className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4">
       <div className="flex justify-between">
         <div className="flex items-center gap-4">
           <div>
-            <Skeleton className="w-16 h-16 rounded-md" />
+            <Skeleton className="h-16 w-16 rounded-md" />
           </div>
           <div>
-            <div className="flex gap-2 items-center">
-              <Skeleton className="bg-gray-400 text-radio text-md md:text-2xl tracking-wide font-bold w-28 sm:w-52 p-4" />
+            <div className="flex items-center gap-2">
+              <Skeleton className="text-radio text-md w-28 bg-gray-400 p-4 font-bold tracking-wide sm:w-52 md:text-2xl" />
 
-              <Skeleton className="w-4 h-4 sm:w-8 sm:h-8 rounded-full" />
+              <Skeleton className="h-4 w-4 rounded-full sm:h-8 sm:w-8" />
             </div>
-            <div className="flex gap-2 items-center flex-wrap mt-2">
-              <Skeleton className="w-24 p-2 rounded-full" /> |
-              <Skeleton className="w-24 p-2 rounded-full" />
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <Skeleton className="w-24 rounded-full p-2" /> |
+              <Skeleton className="w-24 rounded-full p-2" />
             </div>
           </div>
         </div>
 
-        <Skeleton className="hidden sm:block sm:w-6 sm:h-8" />
+        <Skeleton className="hidden sm:block sm:h-8 sm:w-6" />
       </div>
 
       {/* second section  */}
 
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex flex-wrap gap-2">
         {[1, 2].map(() => {
           return (
             <>
-              <div className="flex gap-2 items-center p-2 bg-sky-700 rounded-full">
-                <Skeleton className="w-12 h-4" />
+              <div className="flex items-center gap-2 rounded-full bg-sky-700 p-2">
+                <Skeleton className="h-4 w-12" />
               </div>
-              <div className="flex gap-2 items-center p-2 bg-gray-700 rounded-full">
-                <Skeleton className="w-12 h-4" />
+              <div className="flex items-center gap-2 rounded-full bg-gray-700 p-2">
+                <Skeleton className="h-4 w-12" />
               </div>
             </>
           );
@@ -43,10 +43,10 @@ export default function JobCardSkeleton() {
 
       {/* third section  */}
 
-      <div className="flex flex-wrap gap-4 justify-between items-center">
-        <Skeleton className="bg-gray-400 w-32 p-2 rounded-full" />
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <Skeleton className="w-32 rounded-full bg-gray-400 p-2" />
 
-        <Skeleton className="w-20 p-4 rounded-md" />
+        <Skeleton className="w-20 rounded-md p-4" />
       </div>
     </div>
   );

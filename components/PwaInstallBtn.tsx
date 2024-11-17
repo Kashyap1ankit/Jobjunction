@@ -45,7 +45,7 @@ const PWAInstallButton = () => {
     <>
       {installable ? (
         <motion.div
-          className={`${poppins.className} flex gap-4 text-md  w-fit  bg-white  rounded-md border-2 border-b-8  border-r-8 border-darkBg cursor-pointer hover:-translate-y-1  text-black p-2  hover:bg-white items-center`}
+          className={`${poppins.className} text-md flex w-fit cursor-pointer items-center gap-4 rounded-md border-2 border-b-8 border-r-8 border-darkBg bg-white p-2 text-black hover:-translate-y-1 hover:bg-white`}
           animate={{
             opacity: [0, 1],
           }}
@@ -69,12 +69,12 @@ const PWAInstallButton = () => {
         >
           <Link
             href={"/jobs/create"}
-            className="flex gap-2 text-md  w-full   bg-white  rounded-md border-2 border-b-8  border-r-8 border-darkBg cursor-pointer hover:-translate-y-1 font-bebas text-black p-2  hover:bg-white"
+            className="text-md flex w-full cursor-pointer gap-2 rounded-md border-2 border-b-8 border-r-8 border-darkBg bg-white p-2 font-bebas text-black hover:-translate-y-1 hover:bg-white"
             aria-label="create-route"
           >
             <p>Post Job</p>
 
-            <Briefcase className="size-6 ml-2" />
+            <Briefcase className="ml-2 size-6" />
           </Link>
         </motion.div>
       )}

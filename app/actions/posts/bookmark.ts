@@ -13,8 +13,8 @@ export async function HandleBookmakrClick(userId: string, postId: string) {
 
     const checkForBookmark = await prisma.bookmark.findFirst({
       where: {
-        postId: postId,
-        userId: userId,
+        postId,
+        userId,
       },
     });
 
@@ -34,8 +34,8 @@ export async function HandleBookmakrClick(userId: string, postId: string) {
 
     const createNewBookmark = await prisma.bookmark.create({
       data: {
-        postId: postId,
-        userId: userId,
+        postId,
+        userId,
       },
     });
 
@@ -63,8 +63,8 @@ export async function CheckForBookmark(userId: string, postId: string) {
 
     const checkForBookmark = await prisma.bookmark.findFirst({
       where: {
-        postId: postId,
-        userId: userId,
+        postId,
+        userId,
       },
     });
 
@@ -92,7 +92,7 @@ export async function GetBookmarkByUserId(userId: string) {
 
     const getUserBookmarks = await prisma.bookmark.findMany({
       where: {
-        userId: userId,
+        userId,
       },
 
       select: {

@@ -15,7 +15,7 @@ export default function TextDivider({
 }: TextDividerProps) {
   return (
     <div
-      className={cn("flex items-center w-full", className)}
+      className={cn("flex w-full items-center", className)}
       role="separator"
       aria-orientation="horizontal"
       {...props}
@@ -23,7 +23,7 @@ export default function TextDivider({
       <div
         className={cn("flex-grow border-t border-gray-300", lineClassName)}
       />
-      <span className="flex-shrink mx-4 text-gray-600">{children}</span>
+      <span className="mx-4 flex-shrink text-gray-600">{children}</span>
       <div
         className={cn("flex-grow border-t border-gray-300", lineClassName)}
       />

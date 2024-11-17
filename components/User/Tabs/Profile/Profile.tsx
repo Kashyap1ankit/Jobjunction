@@ -21,12 +21,11 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import EditUserProfileDialog from "./EditDialog";
 import { TbExternalLink } from "react-icons/tb";
 import Link from "next/link";
 import { UserRole } from "@prisma/client";
-import { roboto_slab } from "@/utils/fonts/font";
 import Loader from "@/app/loading";
 
 export default function UserProfileDashboard() {
@@ -34,8 +33,7 @@ export default function UserProfileDashboard() {
   const [loader, setLoader] = useRecoilState(universalLoader);
   const [error, setError] = useRecoilState(universalError);
   const [refetch, setRefetch] = useRecoilState(refetchAtom);
-  const [isVisitorUser, setIsVisitorUser] =
-    useRecoilState(isProfileVisitorUser);
+  const isVisitorUser = useRecoilValue(isProfileVisitorUser);
 
   const [user, setUser] = useState<GetUserDetailByIdType>({
     id: "",
@@ -56,7 +54,7 @@ export default function UserProfileDashboard() {
     const date = new Date(createdAt);
 
     const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(
-      date.getMonth()
+      date.getMonth(),
     ).padStart(2, "0")}/${String(date.getFullYear()).padStart(2, "0")}`;
 
     setAccountCreated(formattedDate);
@@ -95,7 +93,7 @@ export default function UserProfileDashboard() {
 
   if (error.status) {
     return (
-      <div className="w-full h-full flex items-center justify-center text-xl text-red-400">
+      <div className="flex h-full w-full items-center justify-center text-xl text-red-400">
         Error...
         <RefreshCcw
           onClick={() => {
@@ -105,7 +103,7 @@ export default function UserProfileDashboard() {
             });
             setRefetch((prev) => !prev);
           }}
-          className="cursor-pointer size-4 text-red-400"
+          className="size-4 cursor-pointer text-red-400"
         />
       </div>
     );
@@ -113,8 +111,8 @@ export default function UserProfileDashboard() {
 
   return (
     <div className="mb-6">
-      <div className="flex justify-between items-center border-2 border-primaryBorder bg-primaryBorder p-4 rounded-xl mt-12">
-        <div className="flex gap-6 items-center">
+      <div className="mt-12 flex items-center justify-between rounded-xl border-2 border-primaryBorder bg-primaryBorder p-4">
+        <div className="flex items-center gap-6">
           <Image
             src={user.avatar || "/Images/avatar.png"}
             width={100}
@@ -124,20 +122,20 @@ export default function UserProfileDashboard() {
           />
 
           <div>
-            <p className="text-sm sm:text-lg md:text-xl font-kanit font-bold text-white">
+            <p className="font-kanit text-sm font-bold text-white sm:text-lg md:text-xl">
               {user.username}
             </p>
 
-            <div className="flex gap-2 items-center mt-2">
-              <MdAdminPanelSettings className="text-gray-400 size-4" />
-              <p className="text-sm text-gray-400 font-bold">
+            <div className="mt-2 flex items-center gap-2">
+              <MdAdminPanelSettings className="size-4 text-gray-400" />
+              <p className="text-sm font-bold text-gray-400">
                 {user.role?.toLowerCase()}
               </p>
             </div>
 
-            <div className="flex gap-2 items-center mt-2">
-              <Calendar className="text-gray-400 size-4" />
-              <p className="text-sm text-gray-400 font-bold text-sm">
+            <div className="mt-2 flex items-center gap-2">
+              <Calendar className="size-4 text-gray-400" />
+              <p className="text-sm font-bold text-gray-400">
                 {accountCreated}
               </p>
             </div>
@@ -145,9 +143,9 @@ export default function UserProfileDashboard() {
         </div>
       </div>
 
-      <div className=" border-2 border-primaryBorder bg-primaryBorder p-4 rounded-xl mt-12">
-        <div className="flex justify-between items-center">
-          <p className="text-bold font-kanit font-bold text-xl text-white">
+      <div className="mt-12 rounded-xl border-2 border-primaryBorder bg-primaryBorder p-4">
+        <div className="flex items-center justify-between">
+          <p className="text-bold font-kanit text-xl font-bold text-white">
             More Details
           </p>
 
@@ -164,43 +162,43 @@ export default function UserProfileDashboard() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 md:gap-y-8 mt-4">
+        <div className="mt-4 grid grid-cols-1 gap-y-4 md:gap-y-8 lg:grid-cols-2">
           <div>
-            <p className="flex gap-2 items-center text-gray-400 font-kanit text-lg font-bebas">
+            <p className="flex items-center gap-2 font-bebas font-kanit text-lg text-gray-400">
               <User2 className="size-4" />
               <span>User Name</span>
             </p>
-            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-300">
+            <p className="font-kanit text-sm font-bold text-slate-300 sm:text-lg md:text-lg">
               {user.username}
             </p>
           </div>
 
           <div>
-            <p className="flex gap-2 items-center text-gray-400 font-kanit text-lg font-bebas">
+            <p className="flex items-center gap-2 font-bebas font-kanit text-lg text-gray-400">
               <Mail className="size-4" />
               <span> Email Id</span>
             </p>
-            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-300">
+            <p className="font-kanit text-sm font-bold text-slate-300 sm:text-lg md:text-lg">
               {user.email}
             </p>
           </div>
 
           <div>
-            <p className="flex gap-2 items-center text-gray-400 font-kanit text-lg font-bebas">
+            <p className="flex items-center gap-2 font-bebas font-kanit text-lg text-gray-400">
               <Notebook className="size-4" />
               <span>Bio</span>
             </p>
-            <p className="font-bold font-kanit text-sm sm:text-lg md:text-lg text-slate-300">
+            <p className="font-kanit text-sm font-bold text-slate-300 sm:text-lg md:text-lg">
               {user.bio || "null"}
             </p>
           </div>
 
           <div>
-            <p className="flex gap-2 items-center text-gray-400 font-kanit text-lg font-bebas">
+            <p className="flex items-center gap-2 font-bebas font-kanit text-lg text-gray-400">
               <Linkedin className="size-4" />
               <span>Linkedin</span>
             </p>
-            <p className=" flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-300">
+            <p className="flex items-center gap-2 font-kanit text-sm font-bold text-slate-300 sm:text-lg md:text-lg">
               {user.linkedin_url || "null"}
               {user.linkedin_url ? (
                 <Link href={user.linkedin_url} aria-label="linkedin">
@@ -213,11 +211,11 @@ export default function UserProfileDashboard() {
           </div>
 
           <div>
-            <p className="flex gap-2 items-center text-gray-400 font-kanit text-lg font-bebas">
+            <p className="flex items-center gap-2 font-bebas font-kanit text-lg text-gray-400">
               <FaTwitter />
               <span>Twitter</span>
             </p>
-            <p className="flex gap-2 items-center font-bold font-kanit text-sm sm:text-lg  md:text-lg text-slate-300">
+            <p className="flex items-center gap-2 font-kanit text-sm font-bold text-slate-300 sm:text-lg md:text-lg">
               {user.twitter_url || "null"}
               {user.twitter_url ? (
                 <Link href={user.twitter_url} aria-label="twitter">
@@ -230,11 +228,11 @@ export default function UserProfileDashboard() {
           </div>
 
           <div>
-            <p className="flex gap-2 items-center text-gray-400 font-kanit text-lg font-bebas">
+            <p className="flex items-center gap-2 font-bebas font-kanit text-lg text-gray-400">
               <FaInstagram />
               <span>Instagram</span>
             </p>
-            <p className="flex gap-2 items-center font-bold font-kanit text-sm  sm:text-lg  md:text-lg text-slate-300">
+            <p className="flex items-center gap-2 font-kanit text-sm font-bold text-slate-300 sm:text-lg md:text-lg">
               {user.instagram_url || "null"}
               {user.instagram_url ? (
                 <Link href={user.instagram_url} aria-label="instagram">

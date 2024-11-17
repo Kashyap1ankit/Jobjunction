@@ -32,7 +32,7 @@ export default function SavedJobsComp() {
   const [errorNoPost, setErrorNoPost] = useState(false);
 
   const [bookmarkedJobs, setBookmarkedJobs] = useState<GetUserBookmarksType[]>(
-    []
+    [],
   );
 
   const isVisitorUser = useRecoilValue(isProfileVisitorUser);
@@ -48,7 +48,7 @@ export default function SavedJobsComp() {
         const response = await GetBookmarkByUserId(user.id);
         if (response.status !== 200) throw new Error(response.message);
         setBookmarkedJobs(response.data);
-      } catch (error) {
+      } catch {
         setErrorNoPost(true);
       } finally {
         setLoading(false);
@@ -61,37 +61,37 @@ export default function SavedJobsComp() {
       <>
         <div>
           {errorNoPost || bookmarkedJobs.length < 0 ? (
-            <div className="w-full h-screen flex items-center justify-center">
+            <div className="flex h-screen w-full items-center justify-center">
               <p className="text-white">No Bookmarks found</p>
             </div>
           ) : (
-            <div className="py-6 h-screen max-h-screen overflow-y-scroll no-scrollbar ">
+            <div className="no-scrollbar h-screen max-h-screen overflow-y-scroll py-6">
               {loading ? (
                 <Loader />
               ) : (
                 <Table>
                   <TableHeader className="">
                     <TableRow
-                      className={`${poppins.className} bg-gray-700 text-white font-bold hover:bg-gray-700`}
+                      className={`${poppins.className} bg-gray-700 font-bold text-white hover:bg-gray-700`}
                     >
-                      <TableHead className="text-white rounded-tl-md">
+                      <TableHead className="rounded-tl-md text-white">
                         Id
                       </TableHead>
                       <TableHead className="text-white">Company</TableHead>
                       <TableHead className="text-white">Role</TableHead>
                       <TableHead className="text-white">Apply Link</TableHead>
-                      <TableHead className="text-white rounded-tr-md">
+                      <TableHead className="rounded-tr-md text-white">
                         Action
                       </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody
-                    className={`${poppins.className} bg-primaryBorder text-white font-bold text-gray-400`}
+                    className={`${poppins.className} bg-primaryBorder font-bold text-gray-400 text-white`}
                   >
                     {bookmarkedJobs.map((post) => (
                       <TableRow
                         key={post.id}
-                        className=" hover:bg-primaryBorder cursor-pointer"
+                        className="cursor-pointer hover:bg-primaryBorder"
                       >
                         <TableCell className="font-medium">
                           #{post.id.slice(0, 5)}

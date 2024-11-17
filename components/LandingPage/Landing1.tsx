@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function LandingPart1() {
   return (
-    <div className=" px-4 md:px-0">
+    <div className="px-4 md:px-0">
       <Link
         href={"https://peerlist.io/kashyap1ankit/project/job-junction"}
         aria-label="peerlist-tag"
@@ -19,17 +19,17 @@ export default function LandingPart1() {
           width={400}
           height={400}
           alt="peerlist-img"
-          className="w-24 md:w-32 mx-auto mb-4 "
+          className="mx-auto mb-4 w-24 md:w-32"
         />
       </Link>
 
-      <div className="flex flex-col gap-4 items-center flex-wrap ">
+      <div className="flex flex-col flex-wrap items-center gap-4">
         <p
-          className={`${roboto_slab.className} text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center w-11/12   lg:w-3/4 `}
+          className={`${roboto_slab.className} w-11/12 text-center text-3xl text-white sm:text-4xl md:text-5xl lg:w-3/4 lg:text-6xl xl:text-7xl`}
         >
           Find your Next Opportunity With Job{" "}
           <motion.span
-            className={`${roboto_slab.className}  text-primarySkyBlue skew-x-12 cursor-pointer`}
+            className={`${roboto_slab.className} skew-x-12 cursor-pointer text-primarySkyBlue`}
             animate={{
               y: [-200, 0],
             }}
@@ -42,17 +42,17 @@ export default function LandingPart1() {
         </p>
 
         <p
-          className={`${poppins.className} text-xs md:text-md lg:text-lg text-gray-500 text-center w-full  sm:w-1/2`}
+          className={`${poppins.className} md:text-md w-full text-center text-xs text-gray-500 sm:w-1/2 lg:text-lg`}
         >
           Whether you&apos;re looking for your next career move or you know a
           great opportunity for others, Job Junction is the place to be
         </p>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-6 w-full mt-12 justify-center">
+      <div className="mt-12 flex w-full flex-col justify-center gap-6 sm:flex-row">
         <Link
           href={"/jobs"}
-          className={`${workSans.className}  text-white   rounded-lg bg-primarySkyBlue cursor-pointer text-black py-2 px-4 text-sm md:text-md text-center `}
+          className={`${workSans.className} md:text-md cursor-pointer rounded-lg bg-primarySkyBlue px-4 py-2 text-center text-sm text-black text-white`}
           aria-label="explore"
         >
           Explore Careers
@@ -60,7 +60,7 @@ export default function LandingPart1() {
 
         <Link
           href={"/#testimonal"}
-          className={`${workSans.className}  text-white   rounded-lg bg-gray-800 z-30 cursor-pointer text-black py-2 px-4  text-sm md:text-md text-center`}
+          className={`${workSans.className} md:text-md z-30 cursor-pointer rounded-lg bg-gray-800 px-4 py-2 text-center text-sm text-black text-white`}
           aria-label="testimonal"
         >
           Success Stories
