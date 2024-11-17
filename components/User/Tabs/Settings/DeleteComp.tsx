@@ -42,7 +42,7 @@ export default function DeleteComp() {
 
   const [inputError, setInputError] = useState(false);
   const [randomString, setRandomString] = useState<string>(
-    Randomstring.generate(8)
+    Randomstring.generate(8),
   );
 
   useEffect(() => {

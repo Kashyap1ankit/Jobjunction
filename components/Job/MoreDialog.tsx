@@ -22,7 +22,7 @@ export function BookmarkPostComp({ postId }: { postId: string }) {
     try {
       const response = await HandleBookmakrClick(
         session.data?.user?.id,
-        postId
+        postId,
       );
       if (response.status !== 200) throw new Error(response.message);
       setBookmarked(true);

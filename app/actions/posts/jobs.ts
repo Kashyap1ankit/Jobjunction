@@ -238,7 +238,7 @@ export async function UploadImage(data: FormData) {
             reject(err);
           }
           resolve(res);
-        }
+        },
       );
 
       streamifier.createReadStream(buffer).pipe(cld);

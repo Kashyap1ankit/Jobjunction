@@ -39,7 +39,7 @@ export const createJobSchema = z
             }
             return true;
           },
-          { message: "Image should be less than 2mb" }
+          { message: "Image should be less than 2mb" },
         ),
       z.string().optional(),
     ]),
@@ -51,7 +51,7 @@ export const createJobSchema = z
         (value) => !value || /^https?:\/\/[^\s$.?#].[^\s]*$/.test(value),
         {
           message: "Company's website must be a valid URL",
-        }
+        },
       ),
     role_description: z
       .string({ message: "Description is required" })

@@ -54,7 +54,7 @@ export default function EditUserProfileDialog({
         data.bio,
         data.instagram_url,
         data.twitter_url,
-        data.linkedin_url
+        data.linkedin_url,
       );
 
       if (res.status !== 200) throw new Error(res.message);

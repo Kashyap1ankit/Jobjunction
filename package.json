@@ -13,7 +13,8 @@
     "postinstall": "npx prisma generate && npx prisma migrate deploy",
     "prisma:seed": "npx prisma db seed",
     "prisma:docker": "npx prisma migrate dev && npm run prisma:seed && npx prisma studio ",
-    "dev:docker": "concurrently \"npm run prisma:docker \" \" npm run dev\" "
+    "dev:docker": "concurrently \"npm run prisma:docker \" \" npm run dev\" ",
+    "prepare": "husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -57,6 +58,7 @@
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-react": "^8.3.0",
     "framer-motion": "^11.9.0",
+    "husky": "^9.1.6",
     "lowlight": "^3.1.0",
     "lucide-react": "^0.408.0",
     "next": "14.2.5",
@@ -89,6 +91,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
+    "prettier": "3.3.3",
     "prisma": "^5.18.0",
     "tailwindcss": "^3.4.4",
     "ts-node": "^10.9.2",

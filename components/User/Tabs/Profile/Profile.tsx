@@ -56,7 +56,7 @@ export default function UserProfileDashboard() {
     const date = new Date(createdAt);
 
     const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(
-      date.getMonth()
+      date.getMonth(),
     ).padStart(2, "0")}/${String(date.getFullYear()).padStart(2, "0")}`;
 
     setAccountCreated(formattedDate);

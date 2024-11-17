@@ -234,7 +234,7 @@ export default function CreateForm() {
                 <Select
                   {...register("job_type")}
                   onValueChange={(
-                    value: "Fulltime" | "Internship" | "Contract" | "Freelance"
+                    value: "Fulltime" | "Internship" | "Contract" | "Freelance",
                   ) => setValue("job_type", value)}
                 >
                   <SelectTrigger className="outline-none w-full bg-[#161f2d] text-white border-none ">
@@ -260,7 +260,7 @@ export default function CreateForm() {
                 <Select
                   {...register("experience_level")}
                   onValueChange={(
-                    value: "Fresher" | "0-1y" | "1-3y" | "3-5y" | "5y"
+                    value: "Fresher" | "0-1y" | "1-3y" | "3-5y" | "5y",
                   ) => setValue("experience_level", value)}
                 >
                   <SelectTrigger className="outline-none w-full bg-[#161f2d] text-white border-none ">

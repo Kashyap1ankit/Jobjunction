@@ -32,7 +32,7 @@ export default function SavedJobsComp() {
   const [errorNoPost, setErrorNoPost] = useState(false);
 
   const [bookmarkedJobs, setBookmarkedJobs] = useState<GetUserBookmarksType[]>(
-    []
+    [],
   );
 
   const isVisitorUser = useRecoilValue(isProfileVisitorUser);

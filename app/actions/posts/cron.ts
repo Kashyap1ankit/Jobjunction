@@ -35,6 +35,6 @@ export const cleanDB = async () => {
     "0 0 * * *", //running my delete jobs function everynight at 12am IST
     async () => {
       await deleteExpiredJobs();
-    }
+    },
   );
 };

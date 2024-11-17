@@ -111,7 +111,7 @@ export default function JobSheetComp({
                 <p className="text-xs text-white p-2 rounded-full bg-green-800">
                   {salary_disclosed && salary_min && salary_max
                     ? `  ₹ ${Math.round(salary_min / 1000)}k - ₹ ${Math.round(
-                        salary_max / 1000
+                        salary_max / 1000,
                       )}k/month`
                     : "Not disclosed"}
                 </p>

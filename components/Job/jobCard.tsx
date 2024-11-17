@@ -65,10 +65,10 @@ export default function JobCard({
                   ? diff < 1
                     ? "today"
                     : diff > 1 && diff < 2
-                    ? "yesterday"
-                    : diff > 2 && diff < 6
-                    ? `${Math.ceil(diff)} days ago`
-                    : `${Math.ceil(Math.ceil(diff) / 7)} weeks ago`
+                      ? "yesterday"
+                      : diff > 2 && diff < 6
+                        ? `${Math.ceil(diff)} days ago`
+                        : `${Math.ceil(Math.ceil(diff) / 7)} weeks ago`
                   : "Invalid posting date"}
               </p>
             </div>
@@ -98,7 +98,7 @@ export default function JobCard({
         <p className="text-xs text-white p-2 rounded-full bg-green-800">
           {salary_disclosed && salary_min && salary_max
             ? `  ₹ ${Math.round(salary_min / 1000)}k - ₹ ${Math.round(
-                salary_max / 1000
+                salary_max / 1000,
               )}k/month`
             : "Not disclosed"}
         </p>
