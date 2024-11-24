@@ -6,6 +6,7 @@ const AuthProvider = lazy(() => import("@/provider"));
 import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/sonner";
 import Loader from "./loading";
+import RegisterSw from "@/components/RegisterSw";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default async function RootLayout({
             <div className="overflow-x-hidden bg-primaryBg">
               {children}
               <Toaster />
+              <RegisterSw />
             </div>
           </AuthProvider>
         </Suspense>

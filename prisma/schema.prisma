@@ -25,6 +25,7 @@ model User {
   role          UserRole @default(USER)
   posts         Post[]
   bookmarks     Bookmark[]
+  notification  Notification[]
 }
 
 model Post {
@@ -55,6 +56,13 @@ model Bookmark {
   userId String
   post   Post   @relation(fields: [postId],references: [id],onDelete: Cascade)
   user   User   @relation(fields: [userId],references: [id],onDelete: Cascade)
+}
+
+model Notification {
+  id            String  @id @default(uuid())
+  userId        String
+  user          User    @relation(fields: [userId],references: [id])
+  subscription  String
 }
 
 

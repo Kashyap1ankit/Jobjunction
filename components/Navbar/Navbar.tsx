@@ -14,6 +14,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import GetNotification from "../GetNotification";
 
 export default function Navbar() {
   const session = useSession();
@@ -39,30 +40,34 @@ export default function Navbar() {
         </div>
       </Link>
 
-      {session.status === "authenticated" ? (
-        <Profile />
-      ) : (
-        <>
-          <div className="hidden sm:inline-flex">
-            <NavComponent />;
-          </div>
+      <div className="flex items-center gap-8">
+        <GetNotification />
 
-          <div className="block sm:hidden">
-            <Sheet>
-              <SheetTrigger>
-                <Tally3 className="rotate-90 text-white" />
-              </SheetTrigger>
-              <SheetContent className="border-l-primaryBorder bg-primaryBg">
-                <SheetHeader>
-                  <SheetDescription>
-                    <NavComponent />
-                  </SheetDescription>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </>
-      )}
+        {session.status === "authenticated" ? (
+          <Profile />
+        ) : (
+          <>
+            <div className="hidden sm:inline-flex">
+              <NavComponent />;
+            </div>
+
+            <div className="block sm:hidden">
+              <Sheet>
+                <SheetTrigger>
+                  <Tally3 className="rotate-90 text-white" />
+                </SheetTrigger>
+                <SheetContent className="border-l-primaryBorder bg-primaryBg">
+                  <SheetHeader>
+                    <SheetDescription>
+                      <NavComponent />
+                    </SheetDescription>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }

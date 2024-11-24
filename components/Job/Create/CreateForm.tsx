@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { SendNotification } from "@/app/actions/notification";
 
 export default function CreateForm() {
   const {
@@ -76,7 +77,15 @@ export default function CreateForm() {
       data.company_logo = uploadedImageUrl.secure_url;
       const response = await CreateJob(data);
       if (response.status !== 200) throw new Error(response.message);
-      toast("Successfully created");
+      toast.success("Successfully created", {
+        style: {
+          backgroundColor: "#65a30d",
+          color: "white",
+          borderColor: "#65a30d",
+        },
+      });
+
+      await SendNotification(data.company);
       router.push("/jobs");
     } catch (error) {
       toast((error as Error).message);
