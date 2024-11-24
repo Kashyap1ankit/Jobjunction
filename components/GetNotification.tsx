@@ -77,7 +77,6 @@ export default function GetNotification() {
 
   async function subscribeUser(registration: ServiceWorkerRegistration) {
     try {
-      console.log(registration);
       if (!("Notification" in window)) {
         throw new Error("This browser does not support notifications");
       }
@@ -108,7 +107,7 @@ export default function GetNotification() {
 
       if (response.status !== 200) throw new Error(response.message);
 
-      toast.success("Notification Is enabled", {
+      toast.success("Notification is enabled", {
         style: {
           backgroundColor: "#65a30d",
           color: "white",

@@ -41,10 +41,11 @@ export default function Navbar() {
       </Link>
 
       <div className="flex items-center gap-8">
-        <GetNotification />
-
         {session.status === "authenticated" ? (
-          <Profile />
+          <>
+            <GetNotification />
+            <Profile />
+          </>
         ) : (
           <>
             <div className="hidden sm:inline-flex">
