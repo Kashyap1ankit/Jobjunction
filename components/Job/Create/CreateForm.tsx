@@ -22,7 +22,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { SendNotification } from "@/app/actions/notification";
 
 export default function CreateForm() {
   const {
@@ -85,7 +84,6 @@ export default function CreateForm() {
         },
       });
 
-      await SendNotification(data.company);
       router.push("/jobs");
     } catch (error) {
       toast((error as Error).message);
