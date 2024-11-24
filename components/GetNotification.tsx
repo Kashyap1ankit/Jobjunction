@@ -49,6 +49,7 @@ export default function GetNotification() {
           );
         }
       } catch (error) {
+        console.log("1");
         toast((error as Error).message);
       } finally {
         setRefetch((prev) => !prev);
@@ -71,6 +72,7 @@ export default function GetNotification() {
         await subscribeUser(registration);
       }
     } catch (error) {
+      console.log("1-2");
       toast((error as Error).message);
     }
   }
@@ -115,6 +117,7 @@ export default function GetNotification() {
         },
       });
     } catch (error) {
+      console.log("1-3");
       toast.error((error as Error).message, {
         style: {
           backgroundColor: "red",
