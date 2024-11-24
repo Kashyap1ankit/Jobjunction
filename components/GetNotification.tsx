@@ -49,7 +49,6 @@ export default function GetNotification() {
           );
         }
       } catch (error) {
-        console.log("1");
         toast((error as Error).message);
       } finally {
         setRefetch((prev) => !prev);
@@ -72,7 +71,6 @@ export default function GetNotification() {
         await subscribeUser(registration);
       }
     } catch (error) {
-      console.log("1-2");
       toast((error as Error).message);
     }
   }
@@ -103,9 +101,13 @@ export default function GetNotification() {
 
       const subcriptionObject =
         await registration.pushManager.subscribe(option);
+      console.log("subs model", subcriptionObject);
+
       const response = await addNotificationSubscription(
         JSON.stringify(subcriptionObject),
       );
+
+      console.log("response", response);
 
       if (response.status !== 200) throw new Error(response.message);
 
@@ -117,7 +119,7 @@ export default function GetNotification() {
         },
       });
     } catch (error) {
-      console.log("1-3");
+      console.log("error in ctahc", error);
       toast.error((error as Error).message, {
         style: {
           backgroundColor: "red",
