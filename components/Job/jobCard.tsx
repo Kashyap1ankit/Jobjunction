@@ -1,5 +1,5 @@
 import { BriefcaseBusiness, Pin } from "lucide-react";
-import { JobLisitingType } from "@/types/types";
+import { ApprovedJobLisitingType } from "@/types/types";
 import { BookmarkPostComp } from "./MoreDialog";
 import JobSheetComp from "./JobSheet";
 import { MdVerifiedUser } from "react-icons/md";
@@ -24,7 +24,7 @@ export default function JobCard({
   experience_level,
   apply_link,
   createdAt,
-}: JobLisitingType) {
+}: ApprovedJobLisitingType) {
   const [diff, setDiff] = useState(0);
 
   const getPostedTime = (diff: number) => {

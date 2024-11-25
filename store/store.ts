@@ -1,6 +1,6 @@
 "use client";
 
-import { JobLisitingType, universalErrorType } from "@/types/types";
+import { ApprovedJobLisitingType, universalErrorType } from "@/types/types";
 import { atom, atomFamily } from "recoil";
 
 //Universal
@@ -20,7 +20,7 @@ export const universalError = atom<universalErrorType>({
 
 //Joblisting atoms
 
-export const allJobListings = atom<JobLisitingType[]>({
+export const allJobListings = atom<ApprovedJobLisitingType[]>({
   key: "allJobListing",
   default: [],
 });

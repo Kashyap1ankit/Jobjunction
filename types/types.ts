@@ -58,9 +58,33 @@ export type SeededPostsType = {
   salary_max: number | null;
   salary_min: number | null;
 };
+
+export type ApprovedJobLisitingType = {
+  id: string;
+  apply_link: string;
+  company: string;
+  company_logo: string;
+  company_website: string | null;
+  experience_level: string;
+  job_type: string;
+  location: string;
+  position: string;
+  role_description: string;
+  salary_disclosed: boolean;
+  salary_max: number | null;
+  salary_min: number | null;
+  author: {
+    id: string;
+    avatar: string | null;
+    username: string;
+    role: "ADMIN" | "USER";
+  };
+  createdAt: Date;
+};
+
 export type GetAllPostResponseType = {
   status: number;
-  data: JobLisitingType[] | [];
+  data: ApprovedJobLisitingType[] | [];
   message: string;
 };
 
@@ -78,6 +102,7 @@ export type JobLisitingType = {
   salary_disclosed: boolean;
   salary_max: number | null;
   salary_min: number | null;
+  approved: boolean;
   author: {
     id: string;
     avatar: string | null;

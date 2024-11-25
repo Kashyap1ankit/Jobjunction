@@ -12,6 +12,7 @@ export default function AdminSideBarComp() {
 
   useEffect(() => {
     if (pathname.includes("/admin")) setActiveTab("admin");
+    if (pathname.includes("/admin/manage/posts")) setActiveTab("manage");
     if (pathname.includes("/admin/users/all")) setActiveTab("users");
   }, []);
 
@@ -35,7 +36,24 @@ export default function AdminSideBarComp() {
                 : ""
             }`}
           >
-            All Posts
+            Live Posts
+          </p>
+        </Link>
+
+        <Link
+          href={`/admin/manage/posts`}
+          onClick={() => setActiveTab("manage")}
+          className="min-w-40 text-center"
+          aria-label="admin-user"
+        >
+          <p
+            className={`mt-8 text-gray-400 duration-500 ${
+              activeTab === "manage"
+                ? "w-fit w-full rounded-full bg-secondaryBorder p-2 font-kanit text-sideBarColor"
+                : ""
+            }`}
+          >
+            Pending Posts
           </p>
         </Link>
 
@@ -52,7 +70,7 @@ export default function AdminSideBarComp() {
                 : ""
             }`}
           >
-            All Users
+            Registered Users
           </p>
         </Link>
       </>

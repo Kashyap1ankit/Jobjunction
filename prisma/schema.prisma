@@ -43,6 +43,7 @@ model Post {
   salary_disclosed Boolean
   salary_max       Int?
   salary_min       Int?
+  approved         Boolean?   @default(false)
   author           User      @relation(fields: [authorId], references: [id],onDelete: Cascade)
   bookmarks        Bookmark[]
 

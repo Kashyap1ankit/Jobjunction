@@ -6,7 +6,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { JobLisitingType } from "@/types/types";
+import { ApprovedJobLisitingType } from "@/types/types";
 import { fraunces, poppins, roboto_slab } from "@/utils/fonts/font";
 import { BriefcaseBusiness, Pin, X } from "lucide-react";
 import { useState } from "react";
@@ -36,7 +36,7 @@ export default function JobSheetComp({
   salary_max,
   experience_level,
   apply_link,
-}: JobLisitingType) {
+}: ApprovedJobLisitingType) {
   const [applySheet, setApplySheet] = useState(false);
   return (
     <div id={id}>

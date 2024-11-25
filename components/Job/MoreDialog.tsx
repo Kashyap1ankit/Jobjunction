@@ -1,6 +1,6 @@
 "use client";
 
-import { Bookmark, Trash2 } from "lucide-react";
+import { Bookmark, CircleX, Trash2 } from "lucide-react";
 import { useEffect } from "react";
 
 import {
@@ -65,9 +65,11 @@ export function BookmarkPostComp({ postId }: { postId: string }) {
 export function DeletePostComp({
   postId,
   authorId,
+  cross,
 }: {
   postId: string;
   authorId: string;
+  cross?: boolean;
 }) {
   const session: any = useSession();
   const setAllJobs = useSetRecoilState(allJobListings);
@@ -92,7 +94,11 @@ export function DeletePostComp({
       {session.data?.user.id === authorId ||
       session.data?.user.role === "ADMIN" ? (
         <div onClick={() => handlePostDelete()}>
-          <Trash2 className="size-4 cursor-pointer text-red-600 md:size-6" />
+          {cross ? (
+            <CircleX className="text-red-500" />
+          ) : (
+            <Trash2 className="size-4 cursor-pointer text-red-600 md:size-6" />
+          )}
         </div>
       ) : null}
     </div>
