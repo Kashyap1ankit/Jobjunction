@@ -38,6 +38,7 @@ export async function CreateJob(postdata: createJobSchemaType) {
         salary_disclosed: postdata.salary_disclosed,
         salary_max: postdata.salary_max,
         salary_min: postdata.salary_min,
+        approved: false,
         author: {
           connect: {
             id: response.userId,
@@ -72,6 +73,66 @@ export async function CreateJob(postdata: createJobSchemaType) {
 export async function GetAllPost() {
   try {
     const allPosts = await prisma.post.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+
+      where: {
+        approved: false,
+      },
+
+      select: {
+        id: true,
+        apply_link: true,
+        company: true,
+        company_logo: true,
+        company_website: true,
+        experience_level: true,
+        job_type: true,
+        location: true,
+        position: true,
+        role_description: true,
+        salary_disclosed: true,
+        salary_max: true,
+        salary_min: true,
+        approved: true,
+        author: {
+          select: {
+            id: true,
+            avatar: true,
+            username: true,
+            role: true,
+          },
+        },
+        createdAt: true,
+      },
+    });
+
+    if (!allPosts) throw new Error("No Posts Found");
+
+    return {
+      status: 200,
+      message: "Succesfylly Fetched all Posts",
+      data: allPosts,
+    };
+  } catch (error) {
+    return {
+      status: 404,
+      message: (error as Error).message,
+      data: [],
+    };
+  }
+}
+
+//Get All approved jobs posting
+
+export async function GetAllApprovedPost() {
+  try {
+    const allPosts = await prisma.post.findMany({
+      where: {
+        approved: true,
+      },
+
       orderBy: {
         createdAt: "desc",
       },
@@ -258,6 +319,32 @@ export async function UploadImage(data: FormData) {
       message: (error as Error).message,
       public_id: null,
       secure_url: null,
+    };
+  }
+}
+
+//Approve job
+
+export async function ApproveJob(id: string) {
+  try {
+    await prisma.post.update({
+      where: {
+        id,
+      },
+
+      data: {
+        approved: true,
+      },
+    });
+
+    return {
+      status: 200,
+      message: "Job has been approved",
+    };
+  } catch (error) {
+    return {
+      status: 400,
+      message: (error as Error).message,
     };
   }
 }

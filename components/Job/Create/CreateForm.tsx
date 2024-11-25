@@ -76,7 +76,7 @@ export default function CreateForm() {
       data.company_logo = uploadedImageUrl.secure_url;
       const response = await CreateJob(data);
       if (response.status !== 200) throw new Error(response.message);
-      toast.success("Successfully created", {
+      toast.success("Successfully created ! Now wait for admin approval", {
         style: {
           backgroundColor: "#65a30d",
           color: "white",

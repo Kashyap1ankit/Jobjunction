@@ -1,14 +1,10 @@
 "use client";
-import { useEffect } from "react";
-import { GetAllApprovedPost } from "@/app/actions/posts/jobs";
+import { useEffect, useState } from "react";
+import { ApproveJob, GetAllPost } from "@/app/actions/posts/jobs";
 import { toast } from "sonner";
-import { GetAllPostResponseType } from "@/types/types";
+import { ApprovedJobLisitingType, GetAllPostResponseType } from "@/types/types";
 import { useRecoilState, useRecoilValue } from "recoil";
-import {
-  allJobListings,
-  joblistingError,
-  universalLoader,
-} from "@/store/store";
+import { joblistingError, universalLoader } from "@/store/store";
 
 import {
   Table,
@@ -21,13 +17,15 @@ import {
 
 import { poppins } from "@/utils/fonts/font";
 import Link from "next/link";
-import { DeletePostComp } from "@/components/Job/MoreDialog";
 
 import Image from "next/image";
 import Loader from "@/app/loading";
+import { CircleCheck } from "lucide-react";
+import { SendNotification } from "@/app/actions/notification";
+import { DeletePostComp } from "@/components/Job/MoreDialog";
 
-export default function AllJobsComp() {
-  const [allJobs, setAllJobs] = useRecoilState(allJobListings);
+export default function PendingPostsComp() {
+  const [allJobs, setAllJobs] = useState<ApprovedJobLisitingType[] | []>([]);
   const [loading, setLoading] = useRecoilState(universalLoader);
   const errorNoPost = useRecoilValue(joblistingError);
 
@@ -35,7 +33,7 @@ export default function AllJobsComp() {
     const getAllJobs = async () => {
       setLoading(true);
       try {
-        const response: GetAllPostResponseType = await GetAllApprovedPost();
+        const response: GetAllPostResponseType = await GetAllPost();
         if (response.status !== 200) throw new Error(response.message);
         setAllJobs(response.data);
       } catch (error) {
@@ -47,6 +45,30 @@ export default function AllJobsComp() {
 
     getAllJobs();
   }, []);
+
+  async function handleApproveJob(id: string, company: string) {
+    try {
+      const response = await ApproveJob(id);
+      if (response.status !== 200) throw new Error(response.message);
+
+      setAllJobs((prev) => {
+        const filteredArray = prev.filter((e) => e.id !== id);
+        return filteredArray;
+      });
+
+      toast.success("Job Approved", {
+        style: {
+          backgroundColor: "#65a30d",
+          color: "white",
+          borderColor: "#65a30d",
+        },
+      });
+
+      await SendNotification(company);
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
+  }
 
   return (
     <>
@@ -119,10 +141,17 @@ export default function AllJobsComp() {
                       <TableCell>
                         {post.createdAt.toLocaleDateString()}
                       </TableCell>
-                      <TableCell className="">
+                      <TableCell className="flex gap-2">
+                        <CircleCheck
+                          className="text-green-500"
+                          onClick={() =>
+                            handleApproveJob(post.id, post.company)
+                          }
+                        />
                         <DeletePostComp
                           postId={post.id}
                           authorId={post.author.id}
+                          cross={true}
                         />
                       </TableCell>
                     </TableRow>

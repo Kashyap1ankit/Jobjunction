@@ -78,18 +78,15 @@ export default function GetNotification() {
   async function subscribeUser(registration: ServiceWorkerRegistration) {
     try {
       if (!("Notification" in window)) {
-        console.log("notification error");
         throw new Error("This browser does not support notifications");
       }
 
       const permission = await Notification.requestPermission();
       if (permission !== "granted") {
-        console.log("permission eror");
         throw new Error("Notification permission denied");
       }
 
       if (!("PushManager" in window)) {
-        console.log("pushmanager eror");
         throw new Error("Push messaging is not supported");
       }
 
@@ -104,7 +101,6 @@ export default function GetNotification() {
 
       const subcriptionObject =
         await registration.pushManager.subscribe(option);
-      console.log("subs model", subcriptionObject);
 
       const response = await addNotificationSubscription(
         JSON.stringify(subcriptionObject),

@@ -2,9 +2,9 @@
 
 import JobCard from "@/components/Job/jobCard";
 import { useEffect } from "react";
-import { GetAllPost } from "@/app/actions/posts/jobs";
+import { GetAllApprovedPost } from "@/app/actions/posts/jobs";
 import { toast } from "sonner";
-import { GetAllPostResponseType, JobLisitingType } from "@/types/types";
+import { ApprovedJobLisitingType, GetAllPostResponseType } from "@/types/types";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   allJobListings,
@@ -22,7 +22,7 @@ export default function AllJobsComp() {
     const getAllJobs = async () => {
       setLoading(true);
       try {
-        const response: GetAllPostResponseType = await GetAllPost();
+        const response: GetAllPostResponseType = await GetAllApprovedPost();
         if (response.status !== 200) throw new Error(response.message);
         setAllJobs(response.data);
       } catch (error) {
@@ -53,7 +53,7 @@ export default function AllJobsComp() {
             })
           ) : (
             <>
-              {allJobs.map((e: JobLisitingType) => {
+              {allJobs.map((e: ApprovedJobLisitingType) => {
                 return (
                   <JobCard
                     key={e.id}
