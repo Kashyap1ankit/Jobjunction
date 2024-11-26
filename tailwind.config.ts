@@ -1,10 +1,11 @@
 import type { Config } from "tailwindcss";
+//eslint-disable-next-line
 const defaultTheme = require("tailwindcss/defaultTheme");
-
+//eslint-disable-next-line
 const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+} = require("tailwindcss/lib/util/flattenColorPalette"); //eslint-disable-line
 
 const config = {
   darkMode: ["class"],
@@ -43,7 +44,6 @@ const config = {
         hoverBorder: "#1f2636",
         primaryTestimonalBg: "#020817",
         secondaryTestimoanlBg: "#101b3d",
-
         primaryViolet: "#2b2638",
         inputBg: "#262a34",
         border: "hsl(var(--border))",
@@ -134,12 +134,12 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), addVariablesForColors],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors], //eslint-disable-line
 } satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
   );
 

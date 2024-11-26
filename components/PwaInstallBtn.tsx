@@ -1,29 +1,28 @@
 "use client";
-
 import { BeforeInstallPromptEvent } from "@/types/types";
 import React, { useEffect, useState } from "react";
-import { Download, Briefcase } from "lucide-react";
-import { motion } from "framer-motion";
-import { poppins } from "@/utils/fonts/font";
-import Link from "next/link";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+import { Download, Zap } from "lucide-react";
+import Image from "next/image";
+import { toast } from "sonner";
 
 const PWAInstallButton = () => {
   const [deferredEvent, setDeferredEvent] =
     useState<BeforeInstallPromptEvent | null>(null);
-  const [installable, setInstallable] = useState<boolean>(false);
 
   useEffect(() => {
     const transferEvent = (e: BeforeInstallPromptEvent) => {
       e.preventDefault();
       setDeferredEvent(e);
-      setInstallable(true);
-      localStorage.setItem("pwaInstallable", "true");
     };
-
-    const storedInstallable = localStorage.getItem("pwaInstallable");
-    if (storedInstallable === "true") {
-      setInstallable(true);
-    }
 
     window.addEventListener("beforeinstallprompt", transferEvent);
 
@@ -36,49 +35,50 @@ const PWAInstallButton = () => {
     if (deferredEvent) {
       deferredEvent.prompt();
       setDeferredEvent(null);
-      setInstallable(false);
-      localStorage.removeItem("pwaInstallable");
+    } else {
+      toast.info("Install prompt is not available.", {
+        style: {
+          backgroundColor: "grey",
+          color: "white",
+        },
+      });
     }
   };
 
   return (
-    <>
-      {installable ? (
-        <motion.div
-          className={`${poppins.className} text-md flex w-fit cursor-pointer items-center gap-4 rounded-md border-2 border-b-8 border-r-8 border-darkBg bg-white p-2 text-black hover:-translate-y-1 hover:bg-white`}
-          animate={{
-            opacity: [0, 1],
-          }}
-          transition={{
-            delay: 1,
-          }}
-          onClick={handleInstallClick}
-        >
-          <p>Get App</p>
-          <Download className="size-4" />
-        </motion.div>
-      ) : (
-        <motion.div
-          animate={{
-            x: [300, 0],
-            opacity: [0, 1],
-          }}
-          transition={{
-            delay: 1,
-          }}
-        >
-          <Link
-            href={"/jobs/create"}
-            className="text-md flex w-full cursor-pointer gap-2 rounded-md border-2 border-b-8 border-r-8 border-darkBg bg-white p-2 font-bebas text-black hover:-translate-y-1 hover:bg-white"
-            aria-label="create-route"
-          >
-            <p>Post Job</p>
-
-            <Briefcase className="ml-2 size-6" />
-          </Link>
-        </motion.div>
-      )}
-    </>
+    <Drawer>
+      <DrawerTrigger className="text-2xl text-white">
+        <Zap />
+      </DrawerTrigger>
+      <DrawerContent className="mx-auto w-full pb-4 sm:w-3/4 md:w-1/2 lg:w-1/3">
+        <DrawerHeader>
+          <DrawerTitle className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Image
+                alt="jj-logo"
+                className="w-12 rounded-md border-2"
+                width={500}
+                height={500}
+                src={"/Images/jj-logo.png"}
+              />
+              <p>Job Junction</p>
+            </div>
+            <Button
+              className="flex items-center gap-2 rounded-full bg-secondarySkyBlue text-center text-white hover:bg-secondarySkyBlue"
+              variant={"secondary"}
+              aria-label="pwa-install-button"
+              onClick={handleInstallClick}
+            >
+              <p>Install</p>
+              <Download className="size-4" />
+            </Button>
+          </DrawerTitle>
+          <DrawerDescription className="w-3/4 text-left">
+            Find your Next Opportunity With Job Junction
+          </DrawerDescription>
+        </DrawerHeader>
+      </DrawerContent>
+    </Drawer>
   );
 };
 

@@ -15,6 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import GetNotification from "../GetNotification";
+import PWAInstallButton from "@/components/PwaInstallBtn";
 
 export default function Navbar() {
   const session = useSession();
@@ -30,7 +31,7 @@ export default function Navbar() {
             src={"/Images/jj-logo.png"}
             width={500}
             height={500}
-            className="w-12 rounded-md"
+            className="hidden w-12 rounded-md sm:block"
             alt="JJ"
           />
 
@@ -40,7 +41,8 @@ export default function Navbar() {
         </div>
       </Link>
 
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 md:gap-8">
+        <PWAInstallButton />
         {session.status === "authenticated" ? (
           <>
             <GetNotification />
