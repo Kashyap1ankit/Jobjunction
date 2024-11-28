@@ -13,9 +13,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Installing dependencies
-        run: npm install
-        with:
+        env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: npm install
 
       - name: Fixing the formatting
         run: npm run format:fix
