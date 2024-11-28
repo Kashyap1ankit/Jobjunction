@@ -1,0 +1,19 @@
+name: Formatting & Linting
+run-name: Checking formatting & Linting
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  Linting-formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fixing the formatting
+        run: npm run format:fix
+
+      - name: Checking the formatting
+        run: npm run format:check
+
+      - name: Linting the code
+        run: npm run lint
