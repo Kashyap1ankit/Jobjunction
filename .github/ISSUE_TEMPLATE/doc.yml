@@ -1,0 +1,49 @@
+name: Documentation Change
+description: Change in the documentation
+title: "[Doc]:"
+labels: ["doc"]
+projects: ["jobjunction"]
+body:
+  - type: textarea
+    id: what-add
+    attributes:
+      label: What's the purpose of changing documentation ?
+      description: Expalin the purpose of change.
+      placeholder: ex. new route setup process docs
+    validations:
+      required: true
+  - type: textarea
+    id: how-to
+    attributes:
+      label: How will you approach it ?
+      description: How will you approach the process?
+      placeholder: ex. will try to make the documentation easy to read
+    validations:
+      required: true
+
+  - type: dropdown
+    id: breaking
+    attributes:
+      label: Is this a breaking change
+      multiple: false
+      options:
+        - Yes
+        - No
+
+  - type: dropdown
+    id: interested
+    attributes:
+      label: Are you willing to solve it
+      multiple: false
+      options:
+        - Yes
+        - No
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
