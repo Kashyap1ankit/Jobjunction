@@ -16,7 +16,9 @@
     "dev:docker": "concurrently \"npm run prisma:docker \" \" npm run dev\" ",
     "format:check": "prettier . --check",
     "format:fix": "prettier . --write",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format:check-prod": "npx prettier . --check",
+    "format:fix-prod": "npx prettier . --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

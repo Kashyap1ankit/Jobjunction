@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Fixing the formatting
-        run: npm run format:fix
+        run: npm run format:fix-prod
 
       - name: Checking the formatting
-        run: npm run format:check
+        run: npm run format:check-prod
 
       - name: Linting the code
         run: npm run lint
