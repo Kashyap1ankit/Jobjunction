@@ -9,6 +9,9 @@ jobs:
   Linting-formatting:
     runs-on: ubuntu-latest
     steps:
+      - name: Copying the code
+        uses: actions/checkout@v4
+
       - name: Fixing the formatting
         run: npm run format:fix
 
