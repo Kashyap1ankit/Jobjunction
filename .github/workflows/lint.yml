@@ -9,6 +9,14 @@ jobs:
   Linting-formatting:
     runs-on: ubuntu-latest
     steps:
+      - name: Copying the code
+        uses: actions/checkout@v4
+
+      - name: Installing dependencies
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: npm install
+
       - name: Fixing the formatting
         run: npm run format:fix
 
