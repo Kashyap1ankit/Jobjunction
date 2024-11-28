@@ -15,6 +15,9 @@ jobs:
       - name: Installing dependencies
         run: npm install
 
+      - name: Generating prisma client
+        run: npm run prod:prisma-client
+
       - name: Fixing the formatting
         run: npm run format:fix
 
