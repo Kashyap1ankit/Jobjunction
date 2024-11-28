@@ -9,7 +9,7 @@ jobs:
   Linting-formatting:
     runs-on: ubuntu-latest
     steps:
-      - name: Copying the code
+      - name: Copying the source code
         uses: actions/checkout@v4
 
       - name: Installing dependencies
@@ -23,5 +23,8 @@ jobs:
       - name: Checking the formatting
         run: npm run format:check
 
-      - name: Linting the code
+      - name: Linting
         run: npm run lint
+
+      - name: Building
+        run: npm run build
