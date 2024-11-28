@@ -27,8 +27,8 @@ body:
       label: Is this a breaking change
       multiple: false
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
 
   - type: dropdown
     id: interested
@@ -36,8 +36,8 @@ body:
       label: Are you willing to solve it
       multiple: false
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
 
   - type: checkboxes
     id: terms

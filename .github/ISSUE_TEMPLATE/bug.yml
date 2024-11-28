@@ -9,7 +9,7 @@ body:
     attributes:
       label: What's the bug?
       description: What and where is actually the issue is?
-      placeholder: ex. Input form is not getting submitted
+      placeholder: ex. Input form is 'No't getting submitted
     validations:
       required: true
   - type: textarea
@@ -26,8 +26,8 @@ body:
       label: Are you willing to solve it
       multiple: false
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
   - type: checkboxes
     id: terms
     attributes:
