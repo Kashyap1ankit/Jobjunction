@@ -7,6 +7,7 @@ import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/sonner";
 import Loader from "./loading";
 import RegisterSw from "@/components/RegisterSw";
+import { ReactLenis } from "lenis/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,19 +25,19 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} relative mx-auto max-w-[1654px] bg-primaryBg`}
-      >
-        <Suspense fallback={<Loader />}>
-          <AuthProvider session={session}>
-            <div className="overflow-x-hidden">
-              {children}
-              <Toaster />
-              <RegisterSw />
-            </div>
-          </AuthProvider>
-        </Suspense>
-      </body>
+      <ReactLenis root>
+        <body className={`${inter.className} mx-auto bg-primaryBg`}>
+          <Suspense fallback={<Loader />}>
+            <AuthProvider session={session}>
+              <div className="overflow-x-hidden">
+                {children}
+                <Toaster />
+                <RegisterSw />
+              </div>
+            </AuthProvider>
+          </Suspense>
+        </body>
+      </ReactLenis>
     </html>
   );
 }

@@ -3,7 +3,7 @@ const Navbar = lazy(() => import("@/components/Navbar/Navbar"));
 
 export default function JobLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mt-20 bg-primaryBg">
+    <div className="mx-auto mt-20 max-w-7xl bg-primaryBg">
       <Navbar />
       {children}
     </div>

@@ -42,7 +42,7 @@ export default function AllJobsComp() {
           <p>No Post found</p>
         </div>
       ) : (
-        <div className="no-scrollbar h-screen max-h-screen gap-8 overflow-y-scroll bg-transparent py-6 md:flex md:flex-col">
+        <div className="gap-8 bg-transparent py-6 md:flex md:flex-col">
           {loading ? (
             [1, 2, 3].map((_, i) => {
               return (

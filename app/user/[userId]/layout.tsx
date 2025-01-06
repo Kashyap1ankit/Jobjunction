@@ -12,7 +12,7 @@ export default function UserLayout({
   return (
     <>
       <Navbar />
-      <div className="no-scrollbar mt-16 max-h-screen overflow-y-scroll md:flex md:p-4">
+      <div className="no-scrollbar mx-auto mt-16 max-h-screen max-w-7xl overflow-y-scroll md:flex md:p-4">
         <div className="p-2 md:w-1/6 md:p-0">
           <UserDashboardSidebar />
         </div>
