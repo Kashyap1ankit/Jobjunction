@@ -104,7 +104,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           user.bio = userDetials.bio as string;
           user.createdAt = userDetials.createdAt;
           return true;
-        } catch (error) {
+        } catch {
           return false;
         }
       }
