@@ -12,7 +12,7 @@ const FAQ = lazy(() => import("@/components/LandingPage/Faq"));
 
 export default function Home() {
   return (
-    <div className="pt-28 md:pt-36">
+    <div className="mx-auto max-w-7xl pt-28 md:pt-36">
       <Background />
       <Navbar />
       <LandingPart1 />
