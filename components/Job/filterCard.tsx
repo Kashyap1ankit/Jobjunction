@@ -62,7 +62,6 @@ export default function FilterSideBar() {
         method: "POST",
         body: JSON.stringify(filter),
       });
-
       const finalData = await response.json();
 
       if (finalData.status !== 200) throw new Error(finalData.message);

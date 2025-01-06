@@ -48,7 +48,7 @@ export const createJobSchema = z
       .optional()
       .transform((value) => (value?.length === 0 ? undefined : value))
       .refine(
-        (value) => !value || /^https?:\/\/[^\s$.?#].[^\s]*$/.test(value),
+        (value) => !value || /^https?:\/\/[^\s$.?#].[^\s]*$/.test(value), //eslint-disable-line
         {
           message: "Company's website must be a valid URL",
         },

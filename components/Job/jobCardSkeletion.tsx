@@ -27,16 +27,16 @@ export default function JobCardSkeleton() {
       {/* second section  */}
 
       <div className="flex flex-wrap gap-2">
-        {[1, 2].map(() => {
+        {[1, 2].map((e, i) => {
           return (
-            <>
+            <div key={i}>
               <div className="flex items-center gap-2 rounded-full bg-sky-700 p-2">
                 <Skeleton className="h-4 w-12" />
               </div>
               <div className="flex items-center gap-2 rounded-full bg-gray-700 p-2">
                 <Skeleton className="h-4 w-12" />
               </div>
-            </>
+            </div>
           );
         })}
       </div>
