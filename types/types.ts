@@ -80,6 +80,7 @@ export type ApprovedJobLisitingType = {
     role: "ADMIN" | "USER";
   };
   createdAt: Date;
+  show?: boolean;
 };
 
 export type GetAllPostResponseType = {

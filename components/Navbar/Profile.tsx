@@ -16,7 +16,7 @@ export default function Profile() {
   const session = useSession();
   const imageUrl = session.data?.user?.image;
   return (
-    <div>
+    <div className="relative">
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none" aria-label="profile-dd">
           <Image
@@ -28,7 +28,7 @@ export default function Profile() {
             height={500}
           />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="items-left mx-4 flex flex-col border-2 border-primaryBorder bg-secondaryBorder text-gray-400">
+        <DropdownMenuContent className="items-left absolute right-0 z-50 flex max-w-[90vw] flex-col border-2 border-primaryBorder bg-secondaryBorder text-gray-400">
           <DropdownMenuItem>
             <Link
               href="/jobs"
