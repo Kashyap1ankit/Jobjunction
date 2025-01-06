@@ -25,7 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} n relative mx-auto max-w-[1654px] bg-primaryBg`}
+        className={`${inter.className} relative mx-auto max-w-[1654px] bg-primaryBg`}
       >
         <Suspense fallback={<Loader />}>
           <AuthProvider session={session}>
