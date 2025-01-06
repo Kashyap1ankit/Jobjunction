@@ -7,7 +7,7 @@ export default function LandingPart4() {
       <p
         className={`${roboto_slab.className} text-center text-3xl text-white md:text-4xl`}
       >
-        Recently
+        Recently{" "}
         <span className={`${roboto_slab.className} text-primarySkyBlue`}>
           Placed
         </span>

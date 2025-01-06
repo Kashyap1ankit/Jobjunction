@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { cleanDB } from "./actions/posts/cron";
+import RecentJobs from "@/components/LandingPage/RecentJobs";
 
 const LandingPart1 = lazy(() => import("@/components/LandingPage/Landing1"));
 const LandingPart3 = lazy(() => import("@/components/LandingPage/Landing3"));
@@ -11,13 +11,13 @@ const TrustedBy = lazy(() => import("@/components/LandingPage/TrustedBy"));
 const FAQ = lazy(() => import("@/components/LandingPage/Faq"));
 
 export default function Home() {
-  cleanDB(); //cron
   return (
     <div className="pt-28 md:pt-36">
       <Background />
       <Navbar />
       <LandingPart1 />
       <TrustedBy />
+      <RecentJobs />
       <LandingPart3 />
       <LandingPart4 />
       <FAQ />

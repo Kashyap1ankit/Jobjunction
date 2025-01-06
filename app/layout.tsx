@@ -24,10 +24,12 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} relative mx-auto max-w-[1654px] overflow-hidden bg-primaryBg`}
+      >
         <Suspense fallback={<Loader />}>
           <AuthProvider session={session}>
-            <div className="overflow-x-hidden bg-primaryBg">
+            <div className="overflow-x-hidden">
               {children}
               <Toaster />
               <RegisterSw />

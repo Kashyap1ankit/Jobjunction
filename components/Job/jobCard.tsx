@@ -24,6 +24,7 @@ export default function JobCard({
   experience_level,
   apply_link,
   createdAt,
+  show = true,
 }: ApprovedJobLisitingType) {
   const [diff, setDiff] = useState(0);
 
@@ -114,34 +115,35 @@ export default function JobCard({
       </div>
 
       {/* third section  */}
+      {show ? (
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <Link
+            href={`/user/${author.id}/profile`}
+            className="text-sm text-gray-400 hover:cursor-pointer hover:text-blue-500"
+            aria-label="username"
+          >
+            ft: @{author.username.slice(0, 15)}..
+          </Link>
 
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <Link
-          href={`/user/${author.id}/profile`}
-          className="text-sm text-gray-400 hover:cursor-pointer hover:text-blue-500"
-          aria-label="username"
-        >
-          ft: @{author.username.slice(0, 15)}..
-        </Link>
-
-        <JobSheetComp
-          id={id}
-          author={author}
-          position={position}
-          company={company}
-          company_logo={company_logo}
-          company_website={company_website}
-          role_description={role_description}
-          job_type={job_type}
-          location={location}
-          salary_disclosed={salary_disclosed}
-          salary_min={salary_min}
-          salary_max={salary_max}
-          experience_level={experience_level}
-          apply_link={apply_link}
-          createdAt={createdAt}
-        />
-      </div>
+          <JobSheetComp
+            id={id}
+            author={author}
+            position={position}
+            company={company}
+            company_logo={company_logo}
+            company_website={company_website}
+            role_description={role_description}
+            job_type={job_type}
+            location={location}
+            salary_disclosed={salary_disclosed}
+            salary_min={salary_min}
+            salary_max={salary_max}
+            experience_level={experience_level}
+            apply_link={apply_link}
+            createdAt={createdAt}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
