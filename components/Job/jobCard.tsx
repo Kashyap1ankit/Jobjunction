@@ -33,6 +33,8 @@ export default function JobCard({
     universalActivePostModal,
   );
 
+  //eslint-disable-next-line
+  const [_, setIsSmallScreen] = useState(false);
   const getPostedTime = (diff: number) => {
     if (diff <= 0) {
       return "Invalid posting date";
@@ -56,6 +58,14 @@ export default function JobCard({
     setDiff(calculatedDiff);
   }, []);
 
+  //calculating the screen size
+
+  useEffect(() => {
+    if (window) {
+      if (window.innerWidth < 1024) setIsSmallScreen(true);
+    }
+  }, []);
+
   return (
     <div
       className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4"
@@ -77,7 +87,7 @@ export default function JobCard({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <p className="text-radio text-md font-bold tracking-wide md:text-2xl">
+              <p className="text-radio text-md font-bold tracking-wide hover:text-blue-600 md:text-2xl">
                 {position}
               </p>
               {author.role === "ADMIN" ? (

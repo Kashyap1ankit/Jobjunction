@@ -2,7 +2,6 @@
 
 import { GetJobById } from "@/app/actions/posts/jobs";
 import Tiptap from "@/components/Job/Create/TipTap";
-import { BookmarkPostComp } from "@/components/Job/MoreDialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -114,64 +113,50 @@ export default function ActivePostModal() {
             <Separator className="mt-6 bg-gray-500" />
           </div>
           <div className="text-left text-inherit">
-            <div className="mt-4">
-              <p className={`${poppins.className} text-xl text-white`}>
-                Posted By
-              </p>
+            <div className="mt-4 flex items-center justify-between">
+              <div>
+                <p className={`${poppins.className} text-xl text-white`}>
+                  Posted By
+                </p>
 
-              <div className="mt-4 flex items-center gap-2">
-                <Avatar className="size-8 cursor-pointer md:size-10">
-                  <AvatarImage
-                    src={
-                      currentData.author.avatar
-                        ? currentData.author.avatar
-                        : "/Images/avatar.png"
-                    }
-                  />
-                  <AvatarFallback>CO</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p
-                    className={`${poppins.className} overlfow-x-hidden text-white`}
-                  >
-                    {currentData.author.username}
-                  </p>
-                  {currentData.author.role ? (
-                    <div className="mt-2 flex items-center gap-2">
-                      <MdAdminPanelSettings className="size-4 text-gray-400" />
-                      <p className="text-xs font-bold text-gray-400 sm:text-sm">
-                        {currentData.author.role.toLowerCase()}
-                      </p>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                <div className="mt-4 flex items-center gap-2">
+                  <Avatar className="size-8 cursor-pointer md:size-10">
+                    <AvatarImage
+                      src={
+                        currentData.author.avatar
+                          ? currentData.author.avatar
+                          : "/Images/avatar.png"
+                      }
+                    />
+                    <AvatarFallback>CO</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p
+                      className={`${poppins.className} overlfow-x-hidden text-white`}
+                    >
+                      {currentData.author.username}
+                    </p>
+                    {currentData.author.role ? (
+                      <div className="mt-2 flex items-center gap-2">
+                        <MdAdminPanelSettings className="size-4 text-gray-400" />
+                        <p className="text-xs font-bold text-gray-400 sm:text-sm">
+                          {currentData.author.role.toLowerCase()}
+                        </p>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            <Separator className="mt-6 bg-gray-500" />
-            <Tiptap
-              className="mt-2 w-full overflow-x-hidden rounded-md font-kanit"
-              edit={false}
-              content={currentData.role_description}
-            />
-
-            <div className="flex gap-8">
-              <Button
-                className={`${fraunces.className} flex w-full gap-2 bg-green-800 hover:bg-green-800`}
-                aria-label="mobile-apply"
-              >
-                <BookmarkPostComp postId={"1"} />
-                <p className="text-md md:text-lg">Save</p>
-              </Button>
 
               <Link
                 href={currentData.apply_link}
-                className="block w-full"
                 aria-label="apply"
+                target="_blank"
               >
                 <Button
-                  className={`${fraunces.className} flex w-full gap-2 bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
+                  className={`${fraunces.className} flex w-fit gap-2 bg-gradient-to-r from-primarySkyBlue to-secondarySkyBlue hover:bg-gradient-to-r hover:from-secondarySkyBlue hover:to-primarySkyBlue`}
                   aria-label="mobile-apply"
                 >
                   <TbHandClick className="size-4 md:size-6" />
@@ -179,6 +164,12 @@ export default function ActivePostModal() {
                 </Button>
               </Link>
             </div>
+            <Separator className="mt-6 bg-gray-500" />
+            <Tiptap
+              className="mt-2 w-full overflow-x-hidden rounded-md font-kanit"
+              edit={false}
+              content={currentData.role_description}
+            />
           </div>
         </>
       )}

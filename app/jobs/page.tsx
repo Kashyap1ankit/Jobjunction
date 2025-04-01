@@ -11,7 +11,7 @@ export default function AllJobs() {
 
       <MobileFilterCard /> */}
 
-      <div className="max-h-screen overflow-y-scroll lg:w-1/2">
+      <div className="max-h-screen overflow-y-scroll lg:w-2/5 xl:w-1/2">
         <AllJobsComp />
       </div>
 
