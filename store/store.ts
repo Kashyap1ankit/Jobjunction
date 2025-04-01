@@ -18,6 +18,11 @@ export const universalError = atom<universalErrorType>({
   },
 });
 
+export const universalActivePostModal = atom<string>({
+  key: "universalActiveModal",
+  default: "123",
+});
+
 //Joblisting atoms
 
 export const allJobListings = atom<ApprovedJobLisitingType[]>({

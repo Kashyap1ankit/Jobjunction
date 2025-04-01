@@ -1,32 +1,37 @@
 import { BriefcaseBusiness, Pin } from "lucide-react";
 import { ApprovedJobLisitingType } from "@/types/types";
 import { BookmarkPostComp } from "./MoreDialog";
-import JobSheetComp from "./JobSheet";
+
 import { MdVerifiedUser } from "react-icons/md";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { calculateDayDiff } from "@/utils/helpers/calculate-day-difference";
 import Image from "next/image";
+import { useSetRecoilState } from "recoil";
+import { universalActivePostModal } from "@/store/store";
 
 export default function JobCard({
   id,
   author,
   position,
   company,
-  role_description,
+
   company_logo,
-  company_website,
+
   job_type,
   location,
   salary_disclosed,
   salary_min,
   salary_max,
   experience_level,
-  apply_link,
+
   createdAt,
   show = true,
 }: ApprovedJobLisitingType) {
   const [diff, setDiff] = useState(0);
+  const setUniversalActivePostModal = useSetRecoilState(
+    universalActivePostModal,
+  );
 
   const getPostedTime = (diff: number) => {
     if (diff <= 0) {
@@ -52,7 +57,10 @@ export default function JobCard({
   }, []);
 
   return (
-    <div className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4">
+    <div
+      className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4"
+      onClick={() => setUniversalActivePostModal(id)}
+    >
       {/* first section  */}
 
       <div className="flex justify-between">
@@ -124,24 +132,6 @@ export default function JobCard({
           >
             ft: @{author.username.slice(0, 15)}..
           </Link>
-
-          <JobSheetComp
-            id={id}
-            author={author}
-            position={position}
-            company={company}
-            company_logo={company_logo}
-            company_website={company_website}
-            role_description={role_description}
-            job_type={job_type}
-            location={location}
-            salary_disclosed={salary_disclosed}
-            salary_min={salary_min}
-            salary_max={salary_max}
-            experience_level={experience_level}
-            apply_link={apply_link}
-            createdAt={createdAt}
-          />
         </div>
       ) : null}
     </div>
