@@ -46,7 +46,7 @@ export default function AllJobsComp() {
           <p>No Post found</p>
         </div>
       ) : (
-        <div className="gap-8 bg-transparent py-6 md:flex md:flex-col">
+        <div className="mt-12 gap-8 bg-transparent py-6 sm:mt-16 md:flex md:flex-col">
           {loading ? (
             [1, 2, 3].map((_, i) => {
               return (
