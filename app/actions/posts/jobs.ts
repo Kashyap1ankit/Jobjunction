@@ -179,6 +179,60 @@ export async function GetAllApprovedPost() {
   }
 }
 
+export async function GetJobById(id: string) {
+  try {
+    const allPosts = await prisma.post.findMany({
+      where: {
+        id,
+        approved: true,
+      },
+
+      orderBy: {
+        createdAt: "desc",
+      },
+
+      select: {
+        id: true,
+        apply_link: true,
+        company: true,
+        company_logo: true,
+        company_website: true,
+        experience_level: true,
+        job_type: true,
+        location: true,
+        position: true,
+        role_description: true,
+        salary_disclosed: true,
+        salary_max: true,
+        salary_min: true,
+        author: {
+          select: {
+            id: true,
+            avatar: true,
+            username: true,
+            role: true,
+          },
+        },
+        createdAt: true,
+      },
+    });
+
+    if (!allPosts) throw new Error("No Posts Found");
+
+    return {
+      status: 200,
+      message: "Succesfylly Fetched all Posts",
+      data: allPosts,
+    };
+  } catch (error) {
+    return {
+      status: 404,
+      message: (error as Error).message,
+      data: [],
+    };
+  }
+}
+
 //Get jobs by authorid
 
 export async function GetPostByAuthorId(authorId: string) {

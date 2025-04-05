@@ -1,32 +1,43 @@
 import { BriefcaseBusiness, Pin } from "lucide-react";
 import { ApprovedJobLisitingType } from "@/types/types";
 import { BookmarkPostComp } from "./MoreDialog";
-import JobSheetComp from "./JobSheet";
+
 import { MdVerifiedUser } from "react-icons/md";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { calculateDayDiff } from "@/utils/helpers/calculate-day-difference";
 import Image from "next/image";
+import { useSetRecoilState } from "recoil";
+import { universalActivePostModal } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 export default function JobCard({
   id,
   author,
   position,
   company,
-  role_description,
+
   company_logo,
-  company_website,
+
   job_type,
   location,
   salary_disclosed,
   salary_min,
   salary_max,
   experience_level,
-  apply_link,
+
   createdAt,
   show = true,
 }: ApprovedJobLisitingType) {
   const [diff, setDiff] = useState(0);
+  const setUniversalActivePostModal = useSetRecoilState(
+    universalActivePostModal,
+  );
+
+  //eslint-disable-next-line
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const router = useRouter();
 
   const getPostedTime = (diff: number) => {
     if (diff <= 0) {
@@ -51,8 +62,29 @@ export default function JobCard({
     setDiff(calculatedDiff);
   }, []);
 
+  //calculating the screen size
+
+  useEffect(() => {
+    function handleResize() {
+      setIsSmallScreen(window.innerWidth < 1024);
+    }
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4">
+    <div
+      className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4"
+      onClick={() => {
+        isSmallScreen //eslint-disable-line
+          ? router.push(`/jobs/${id}`)
+          : setUniversalActivePostModal(id);
+      }}
+    >
       {/* first section  */}
 
       <div className="flex justify-between">
@@ -69,7 +101,7 @@ export default function JobCard({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <p className="text-radio text-md font-bold tracking-wide md:text-2xl">
+              <p className="text-radio text-md font-bold tracking-wide hover:text-blue-600 md:text-2xl">
                 {position}
               </p>
               {author.role === "ADMIN" ? (
@@ -124,24 +156,6 @@ export default function JobCard({
           >
             ft: @{author.username.slice(0, 15)}..
           </Link>
-
-          <JobSheetComp
-            id={id}
-            author={author}
-            position={position}
-            company={company}
-            company_logo={company_logo}
-            company_website={company_website}
-            role_description={role_description}
-            job_type={job_type}
-            location={location}
-            salary_disclosed={salary_disclosed}
-            salary_min={salary_min}
-            salary_max={salary_max}
-            experience_level={experience_level}
-            apply_link={apply_link}
-            createdAt={createdAt}
-          />
         </div>
       ) : null}
     </div>

@@ -86,3 +86,17 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #262a34 inset;
   -webkit-text-fill-color: white !important;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
