@@ -9,6 +9,7 @@ import { calculateDayDiff } from "@/utils/helpers/calculate-day-difference";
 import Image from "next/image";
 import { useSetRecoilState } from "recoil";
 import { universalActivePostModal } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 export default function JobCard({
   id,
@@ -34,7 +35,10 @@ export default function JobCard({
   );
 
   //eslint-disable-next-line
-  const [_, setIsSmallScreen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const router = useRouter();
+
   const getPostedTime = (diff: number) => {
     if (diff <= 0) {
       return "Invalid posting date";
@@ -61,15 +65,22 @@ export default function JobCard({
   //calculating the screen size
 
   useEffect(() => {
-    if (window) {
-      if (window.innerWidth < 1024) setIsSmallScreen(true);
+    console.log("small screen", window.innerWidth);
+    if (window.innerWidth < 1024) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
     }
-  }, []);
+  }, [window]);
 
   return (
     <div
       className="mx-auto mt-4 flex w-11/12 flex-col gap-8 rounded-xl border-2 border-secondaryBorder bg-primaryBorder p-4 text-white shadow-lg hover:cursor-pointer hover:bg-hoverBorder md:mt-0 md:p-6 lg:w-3/4"
-      onClick={() => setUniversalActivePostModal(id)}
+      onClick={() => {
+        isSmallScreen //eslint-disable-line
+          ? router.push(`/jobs/${id}`)
+          : setUniversalActivePostModal(id);
+      }}
     >
       {/* first section  */}
 
