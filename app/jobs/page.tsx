@@ -15,7 +15,7 @@ export default function AllJobs() {
         <AllJobsComp />
       </div>
 
-      <div className="mt-10 hidden md:block lg:w-1/2">
+      <div className="mt-10 hidden lg:block lg:w-1/2">
         <ActivePostModal />
       </div>
     </div>

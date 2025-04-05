@@ -65,13 +65,16 @@ export default function JobCard({
   //calculating the screen size
 
   useEffect(() => {
-    console.log("small screen", window.innerWidth);
-    if (window.innerWidth < 1024) {
-      setIsSmallScreen(true);
-    } else {
-      setIsSmallScreen(false);
+    function handleResize() {
+      setIsSmallScreen(window.innerWidth < 1024);
     }
-  }, [window]);
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div

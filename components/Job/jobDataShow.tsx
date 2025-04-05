@@ -70,7 +70,7 @@ export default function JobDetailShow(data: ApprovedJobLisitingType) {
         <Separator className="mt-6 bg-gray-500" />
       </div>
       <div className="text-left text-inherit">
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-12">
           <div>
             <p className={`${poppins.className} text-xl text-white`}>
               Posted By
