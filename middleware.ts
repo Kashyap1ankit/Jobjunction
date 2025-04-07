@@ -8,12 +8,23 @@ import {
   REDIRECT_URL,
 } from "@/lib/auth";
 
+function matchPublicRoute(pathname: string) {
+  return publicRoutes.some((route) => {
+    if (route.includes("[id]")) {
+      //eslint-disable-next-line
+      const regex = new RegExp("^" + route.replace("[id]", "[^/]+") + "$");
+      return regex.test(pathname);
+    }
+    return route === pathname;
+  });
+}
+
 export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
   const isNextApiRoute = nextUrl.pathname.startsWith(nextApiRoutes);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
-  const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+  const isPublicRoute = matchPublicRoute(nextUrl.pathname);
   const isAdminRoute = nextUrl.pathname.startsWith(adminRoute);
 
   if (isNextApiRoute) return NextResponse.next();

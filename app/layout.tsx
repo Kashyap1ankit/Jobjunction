@@ -7,6 +7,7 @@ import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/sonner";
 import Loader from "./loading";
 import RegisterSw from "@/components/RegisterSw";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
               <Toaster />
               <RegisterSw />
             </div>
+            <Analytics />
           </AuthProvider>
         </Suspense>
       </body>
