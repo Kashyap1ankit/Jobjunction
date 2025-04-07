@@ -23,6 +23,7 @@ export async function CheckUser() {
       status: 200,
       message: "Logged In",
       userId: session.user.id,
+      role: isUser.role,
     };
   } catch (error: any) {
     return {

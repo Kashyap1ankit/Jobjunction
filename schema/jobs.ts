@@ -22,7 +22,7 @@ export const createJobSchema = z
     position: z
       .string({ message: "Position is required" })
       .min(2, { message: "Extend it little" })
-      .max(20, { message: "Keep it shorter" }),
+      .max(25, { message: "Keep it shorter" }),
 
     company: z
       .string({ message: "Company name is required" })

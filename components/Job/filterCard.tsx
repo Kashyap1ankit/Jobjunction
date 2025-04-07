@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import ApplyFilterBtn from "./applyBtn";
 import ClearFilterBtn from "./clearFIlterBtn";
 
 const experienceValues = ["Fresher", "0-1y", "1y", "3y", "5y"];
@@ -107,8 +106,6 @@ export default function FilterSideBar() {
               </div>
             );
           })}
-
-          <ApplyFilterBtn fn={callBackend} />
         </SelectContent>
       </Select>
 
@@ -140,8 +137,6 @@ export default function FilterSideBar() {
               </div>
             );
           })}
-
-          <ApplyFilterBtn fn={callBackend} />
         </SelectContent>
       </Select>
 
@@ -173,8 +168,6 @@ export default function FilterSideBar() {
               </div>
             );
           })}
-
-          <ApplyFilterBtn fn={callBackend} />
         </SelectContent>
       </Select>
     </div>

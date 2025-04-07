@@ -38,7 +38,7 @@ export async function CreateJob(postdata: createJobSchemaType) {
         salary_disclosed: postdata.salary_disclosed,
         salary_max: postdata.salary_max,
         salary_min: postdata.salary_min,
-        approved: false,
+        approved: response.role === "ADMIN" ? true : false,
         author: {
           connect: {
             id: response.userId,
