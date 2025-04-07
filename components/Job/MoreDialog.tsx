@@ -50,7 +50,13 @@ export function BookmarkPostComp({ postId }: { postId: string }) {
   return (
     <>
       <div className="flex gap-2">
-        <div onClick={() => handleBookmarkClick()}>
+        <div
+          onClick={(e: any) => {
+            e.stopPropagation();
+
+            handleBookmarkClick();
+          }}
+        >
           <Bookmark
             className={`size-4 cursor-pointer md:size-6 ${
               bookmarked ? "fill-white" : ""
