@@ -22,7 +22,6 @@ JobJuncton is the platform where you can come and see all the job postings that 
 - If you any job posting then you can goto `/jobs/create` and can easily create the new job posting . Salary range is must to be defined because we want only those job posted which has some motivation to do
 
 - On the `/user/${userId}` we have mutli routes option
-
   - `/profile` has the user detail option which shows all the user details like username , role and date on which account is created. And if you visit your own profile then you can see the edit option from where you can simply change your bio and modify social links
 
   - `/jobs/me` has all the job listing which the user has posted
@@ -32,7 +31,6 @@ JobJuncton is the platform where you can come and see all the job postings that 
   - `/settings/delete` is the route where user can come and can delete their account after 1 simple check (private route)
 
 - On the `/admin` route , admins can access this route only. Here we have 2 routes
-
   - `/posts` has all the job posting that platform has . Admin can see and delete posts from here
 
   - `/users` is the route where all user of website is visible and the admin can delete their account.

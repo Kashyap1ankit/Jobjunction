@@ -5,20 +5,25 @@ import { useEffect } from "react";
 import { GetAllApprovedPost } from "@/app/actions/posts/jobs";
 import { toast } from "sonner";
 import { ApprovedJobLisitingType, GetAllPostResponseType } from "@/types/types";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+
 import {
-  allJobListings,
-  joblistingError,
-  universalActivePostModal,
-  universalLoader,
+  useAllJobListings,
+  useJobListingError,
+  useUniversalActivePostModal,
+  useUniversalLoader,
 } from "@/store/store";
 import JobCardSkeleton from "./jobCardSkeletion";
 
 export default function AllJobsComp() {
-  const [allJobs, setAllJobs] = useRecoilState(allJobListings);
-  const [loading, setLoading] = useRecoilState(universalLoader);
-  const setActivePostModal = useSetRecoilState(universalActivePostModal);
-  const errorNoPost = useRecoilValue(joblistingError);
+  const { allJobs, setAllJobs } = useAllJobListings();
+  // const [allJobs, setAllJobs] = useRecoilState(allJobListings);
+  // const [loading, setLoading] = useRecoilState(universalLoader);
+  const { loading, setLoading } = useUniversalLoader();
+  // const setActivePostModal = useSetRecoilState(universalActivePostModal);
+  const { setActiveJobModalId: setActivePostModal } =
+    useUniversalActivePostModal();
+  // const errorNoPost = useRecoilValue(joblistingError);
+  const { errorNoPost } = useJobListingError();
 
   useEffect(() => {
     const getAllJobs = async () => {

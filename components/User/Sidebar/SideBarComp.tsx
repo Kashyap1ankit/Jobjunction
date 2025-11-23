@@ -1,12 +1,11 @@
 "use client";
 
-import { isProfileVisitorUser } from "@/store/store";
+import { useIsProfileVisitorUser } from "@/store/store";
 import { useCheckForVisitor } from "@/utils/hooks/useCheckVisitor";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 
 export default function SidebarComp() {
   const { userId }: { userId: string } = useParams();
@@ -14,7 +13,7 @@ export default function SidebarComp() {
   useCheckForVisitor(userId);
 
   const [activeTab, setActiveTab] = useState("profile");
-  const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  // const isVisitorUser = useRecoilValue(isProfileVisitorUser);
 
   const session = useSession();
   const pathname = usePathname();
@@ -29,6 +28,8 @@ export default function SidebarComp() {
   if (!session.data?.user) {
     return <div className="text-gray-400">No User found</div>;
   }
+
+  const { isVisitorUser } = useIsProfileVisitorUser();
 
   return (
     <>

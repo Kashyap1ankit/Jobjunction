@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import { ApproveJob, GetAllPost } from "@/app/actions/posts/jobs";
 import { toast } from "sonner";
 import { ApprovedJobLisitingType, GetAllPostResponseType } from "@/types/types";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { joblistingError, universalLoader } from "@/store/store";
+import { useJobListingError, useUniversalLoader } from "@/store/store";
 
 import {
   Table,
@@ -26,8 +25,10 @@ import { DeletePostComp } from "@/components/Job/MoreDialog";
 
 export default function PendingPostsComp() {
   const [allJobs, setAllJobs] = useState<ApprovedJobLisitingType[] | []>([]);
-  const [loading, setLoading] = useRecoilState(universalLoader);
-  const errorNoPost = useRecoilValue(joblistingError);
+  // const [loading, setLoading] = useRecoilState(universalLoader);
+  const { loading, setLoading } = useUniversalLoader();
+  // const errorNoPost = useRecoilValue(joblistingError);
+  const { errorNoPost } = useJobListingError();
 
   useEffect(() => {
     const getAllJobs = async () => {

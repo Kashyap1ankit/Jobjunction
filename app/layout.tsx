@@ -58,7 +58,7 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {/* <ReactLenis root> */}
       <body className={`${inter.className} mx-auto bg-primaryBg`}>
         <Suspense fallback={<Loader />}>

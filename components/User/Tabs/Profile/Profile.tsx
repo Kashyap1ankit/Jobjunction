@@ -2,10 +2,10 @@
 
 import { GetUserDetailById } from "@/app/actions/users/checkUser";
 import {
-  isProfileVisitorUser,
-  refetchAtom,
-  universalError,
-  universalLoader,
+  useIsProfileVisitorUser,
+  useRefetchAtom,
+  useUniversalError,
+  useUniversalLoader,
 } from "@/store/store";
 import { GetUserDetailByIdType } from "@/types/types";
 import {
@@ -21,7 +21,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { useRecoilState, useRecoilValue } from "recoil";
+
 import EditUserProfileDialog from "./EditDialog";
 import { TbExternalLink } from "react-icons/tb";
 import Link from "next/link";
@@ -30,11 +30,14 @@ import Loader from "@/app/loading";
 
 export default function UserProfileDashboard() {
   const [accountCreated, setAccountCreated] = useState<string>();
-  const [loader, setLoader] = useRecoilState(universalLoader);
-  const [error, setError] = useRecoilState(universalError);
-  const [refetch, setRefetch] = useRecoilState(refetchAtom);
-  const isVisitorUser = useRecoilValue(isProfileVisitorUser);
-
+  // const [loader, setLoader] = useRecoilState(universalLoader);
+  const { loading: loader, setLoading: setLoader } = useUniversalLoader();
+  // const [error, setError] = useRecoilState(universalError);
+  const { default: error, setError } = useUniversalError();
+  // const [refetch, setRefetch] = useRecoilState(refetchAtom);
+  const { refetch, setRefetch } = useRefetchAtom();
+  // const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  const { isVisitorUser } = useIsProfileVisitorUser();
   const [user, setUser] = useState<GetUserDetailByIdType>({
     id: "",
     username: "",
@@ -101,6 +104,7 @@ export default function UserProfileDashboard() {
               status: false,
               message: "",
             });
+            //@ts-expect-error no type defined
             setRefetch((prev) => !prev);
           }}
           className="size-4 cursor-pointer text-red-400"

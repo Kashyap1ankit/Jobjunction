@@ -1,13 +1,12 @@
 "use client";
 
 import {
-  allJobListings,
-  joblistingError,
-  universalLoader,
+  useAllJobListings,
+  useJobListingError,
+  useUniversalLoader,
 } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
 
 import {
   Select,
@@ -28,9 +27,12 @@ type filteredArrayType = {
 };
 export default function FilterSideBar() {
   const { register, watch, reset } = useForm();
-  const setAllJobs = useSetRecoilState(allJobListings);
-  const setLoading = useSetRecoilState(universalLoader);
-  const setError = useSetRecoilState(joblistingError);
+  // const setAllJobs = useSetRecoilState(allJobListings);
+  const { setAllJobs } = useAllJobListings();
+  // const setLoading = useSetRecoilState(universalLoader);
+  const { setLoading } = useUniversalLoader();
+  // const setError = useSetRecoilState(joblistingError);
+  const { setError } = useJobListingError();
 
   const [filter, setFilter] = useState<filteredArrayType>({
     experience: [],

@@ -96,7 +96,7 @@ export default function GetNotification() {
 
       const option = {
         userVisibleOnly: true,
-        applicationServerKey: appServeKey,
+        applicationServerKey: appServeKey as BufferSource,
       };
 
       const subcriptionObject =

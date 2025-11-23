@@ -1,10 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { isProfileVisitorUser } from "@/store/store";
+import { useIsProfileVisitorUser } from "@/store/store";
 import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -34,7 +33,8 @@ export default function DeleteComp() {
 
   const session = useSession();
   const { userId }: { userId: string } = useParams();
-  const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  // const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  const { isVisitorUser } = useIsProfileVisitorUser();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -98,53 +98,61 @@ export default function DeleteComp() {
                 Are you absolutely sure?
               </AlertDialogTitle>
               <AlertDialogDescription>
-                <p>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </p>
+                <div>
+                  <p>
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </p>
 
-                <form
-                  className="mt-6"
-                  onSubmit={handleSubmit(handleDeleteAccount)}
-                >
-                  <label
-                    className={`${poppins.className} text-white`}
-                    htmlFor="random"
+                  <form
+                    className="mt-6"
+                    onSubmit={handleSubmit(handleDeleteAccount)}
                   >
-                    Type <span className="text-red-500">{randomString}</span>
-                  </label>
-                  <input
-                    {...register("random")}
-                    id="random"
-                    className="mt-2 w-full rounded-md bg-inputBg p-2 p-4 text-white outline-none"
-                    onPaste={(e) => e.preventDefault()}
-                  />
-                  {errors.random?.message && (
-                    <p className="mt-2 text-red-500">
-                      {errors.random?.message}
-                    </p>
-                  )}
-                  {inputError && (
-                    <p className="mt-2 text-red-500">Mismatched , Try again</p>
-                  )}
-
-                  <div className="flex items-baseline gap-2">
-                    <Button
-                      disabled={loading}
-                      className="mt-4 bg-red-500 text-white hover:bg-red-500"
-                      aria-label="delete-yes"
+                    <label
+                      className={`${poppins.className} text-white`}
+                      htmlFor="random"
                     >
-                      {loading ? <FaSpinner className="animate-spin" /> : "Yes"}
-                    </Button>
+                      Type <span className="text-red-500">{randomString}</span>
+                    </label>
+                    <input
+                      {...register("random")}
+                      id="random"
+                      className="mt-2 w-full rounded-md bg-inputBg p-2 p-4 text-white outline-none"
+                      onPaste={(e) => e.preventDefault()}
+                    />
+                    {errors.random?.message && (
+                      <p className="mt-2 text-red-500">
+                        {errors.random?.message}
+                      </p>
+                    )}
+                    {inputError && (
+                      <p className="mt-2 text-red-500">
+                        Mismatched , Try again
+                      </p>
+                    )}
 
-                    <div
-                      className="cursor-pointer rounded-md border-2 border-slate-500 bg-transparent px-4 py-2 text-white hover:bg-transparent"
-                      onClick={() => setModalOpen(false)}
-                    >
-                      <p>No</p>
+                    <div className="flex items-baseline gap-2">
+                      <Button
+                        disabled={loading}
+                        className="mt-4 bg-red-500 text-white hover:bg-red-500"
+                        aria-label="delete-yes"
+                      >
+                        {loading ? (
+                          <FaSpinner className="animate-spin" />
+                        ) : (
+                          "Yes"
+                        )}
+                      </Button>
+
+                      <div
+                        className="cursor-pointer rounded-md border-2 border-slate-500 bg-transparent px-4 py-2 text-white hover:bg-transparent"
+                        onClick={() => setModalOpen(false)}
+                      >
+                        No
+                      </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </AlertDialogDescription>
             </AlertDialogHeader>
           </AlertDialogContent>

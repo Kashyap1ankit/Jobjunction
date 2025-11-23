@@ -1,15 +1,15 @@
 "use client";
 
 import { GetJobById } from "@/app/actions/posts/jobs";
-import { universalActivePostModal } from "@/store/store";
+import { useUniversalActivePostModal } from "@/store/store";
 import { ApprovedJobLisitingType, GetAllPostResponseType } from "@/types/types";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 import { toast } from "sonner";
 import JobDetailShow from "./jobDataShow";
 
 export default function ActivePostModal() {
-  const activeJobModalId = useRecoilValue(universalActivePostModal);
+  // const activeJobModalId = useRecoilValue(universalActivePostModal);
+  const { activeJobModalId } = useUniversalActivePostModal();
   const [currentData, setCurrentData] = useState<
     ApprovedJobLisitingType | undefined
   >(undefined);

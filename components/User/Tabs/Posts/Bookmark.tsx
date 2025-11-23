@@ -1,12 +1,12 @@
 "use client";
 
 import { GetBookmarkByUserId } from "@/app/actions/posts/bookmark";
-import { isProfileVisitorUser } from "@/store/store";
+import { useIsProfileVisitorUser } from "@/store/store";
 import { GetUserBookmarksType } from "@/types/types";
 import { useSession } from "next-auth/react";
 import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+
 import Link from "next/link";
 import { BookmarkPostComp } from "@/components/Job/MoreDialog";
 import {
@@ -35,7 +35,8 @@ export default function SavedJobsComp() {
     [],
   );
 
-  const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  // const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  const { isVisitorUser } = useIsProfileVisitorUser();
 
   useEffect(() => {
     if (!isVisitorUser) redirect(`/user/${userId}/profile`);
