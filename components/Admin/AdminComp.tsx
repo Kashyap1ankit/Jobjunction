@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { GetAllApprovedPost } from "@/app/actions/posts/jobs";
 import { toast } from "sonner";
 import { GetAllPostResponseType } from "@/types/types";
-import { useRecoilState, useRecoilValue } from "recoil";
+
 import {
-  allJobListings,
-  joblistingError,
-  universalLoader,
+  useAllJobListings,
+  useJobListingError,
+  useUniversalLoader,
 } from "@/store/store";
 
 import {
@@ -27,9 +27,12 @@ import Image from "next/image";
 import Loader from "@/app/loading";
 
 export default function AllJobsComp() {
-  const [allJobs, setAllJobs] = useRecoilState(allJobListings);
-  const [loading, setLoading] = useRecoilState(universalLoader);
-  const errorNoPost = useRecoilValue(joblistingError);
+  // const [allJobs, setAllJobs] = useRecoilState(allJobListings);
+  const { allJobs, setAllJobs } = useAllJobListings();
+  // const [loading, setLoading] = useRecoilState(universalLoader);
+  const { loading, setLoading } = useUniversalLoader();
+  // const errorNoPost = useRecoilValue(joblistingError);
+  const { errorNoPost } = useJobListingError();
 
   useEffect(() => {
     const getAllJobs = async () => {

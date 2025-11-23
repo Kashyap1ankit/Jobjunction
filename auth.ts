@@ -3,7 +3,7 @@ import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import prisma from "./db/index";
 import { signinSchema } from "./schema/auth";
-import { NextConfig } from "next";
+
 import bcrypt from "bcryptjs";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -161,4 +161,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
     maxAge: 60 * 60 * 24 * 3,
   },
-}) satisfies NextConfig;
+});

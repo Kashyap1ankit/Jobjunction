@@ -3,6 +3,7 @@
 import { userProfileUpdateSchema } from "@/schema/auth";
 import { CheckUser } from "./checkUser";
 import prisma from "@/db";
+import { auth } from "@/auth";
 
 export async function UpdateUserInfo(
   id: string,
@@ -55,6 +56,9 @@ export async function UpdateUserInfo(
 
 export async function DeleteUser(userId: string) {
   try {
+    const session = await auth();
+
+    if (!session?.user) throw new Error("Not Logged In");
     const response = await CheckUser();
     if (response.status !== 200) throw new Error(response.message);
 

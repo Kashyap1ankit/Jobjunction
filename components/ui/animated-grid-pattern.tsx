@@ -15,7 +15,7 @@ interface GridPatternProps {
   className?: string;
   maxOpacity?: number;
   duration?: number;
-  repeatDelay?: number;
+  repeatdelay?: number;
 }
 
 export function GridPattern({
@@ -44,22 +44,14 @@ export function GridPattern({
 
   // Adjust the generateSquares function to return objects with an id, x, and y
   function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }));
+    return Array.from({ length: count }, (_, i) => ({ id: i, pos: getPos() }));
   }
 
   // Function to update a single square's position
   const updateSquarePosition = (id: number) => {
     setSquares((currentSquares) =>
       currentSquares.map((sq) =>
-        sq.id === id
-          ? {
-              ...sq,
-              pos: getPos(),
-            }
-          : sq,
+        sq.id === id ? { ...sq, pos: getPos() } : sq,
       ),
     );
   };

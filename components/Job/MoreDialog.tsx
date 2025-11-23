@@ -9,12 +9,17 @@ import {
 } from "@/app/actions/posts/bookmark";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
-import { allJobListings, bookmarkedPosts } from "@/store/store";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useAllJobListings, useBookmarkStore } from "@/store/store";
+
 import { DestroyPost } from "@/app/actions/posts/jobs";
+import { ApprovedJobLisitingType } from "@/types/types";
 
 export function BookmarkPostComp({ postId }: { postId: string }) {
-  const [bookmarked, setBookmarked] = useRecoilState(bookmarkedPosts(postId));
+  // const [bookmarked, setBookmarked] = useRecoilState(bookmarkedPosts(postId));
+  const bookmarked = useBookmarkStore(
+    (s) => s.bookmarkedPosts[postId] ?? false,
+  );
+  const setBookmarked = useBookmarkStore((s) => s.setBookmarked);
   const session: any = useSession();
 
   async function handleBookmarkClick() {
@@ -24,11 +29,11 @@ export function BookmarkPostComp({ postId }: { postId: string }) {
         postId,
       );
       if (response.status !== 200) throw new Error(response.message);
-      setBookmarked(true);
+      setBookmarked(postId, true);
 
       toast(response.message);
     } catch (error) {
-      setBookmarked(false);
+      setBookmarked(postId, false);
       toast((error as Error).message);
     }
   }
@@ -38,9 +43,9 @@ export function BookmarkPostComp({ postId }: { postId: string }) {
       try {
         const response = await CheckForBookmark(session.data?.user?.id, postId);
         if (response.status !== 200) throw new Error(response.message);
-        setBookmarked(true);
+        setBookmarked(postId, true);
       } catch {
-        setBookmarked(false);
+        setBookmarked(postId, false);
       }
     };
 
@@ -78,7 +83,8 @@ export function DeletePostComp({
   cross?: boolean;
 }) {
   const session: any = useSession();
-  const setAllJobs = useSetRecoilState(allJobListings);
+  // const setAllJobs = useSetRecoilState(allJobListings);
+  const { setAllJobs } = useAllJobListings();
 
   async function handlePostDelete() {
     try {
@@ -86,8 +92,11 @@ export function DeletePostComp({
 
       if (response.status !== 201) throw new Error(response.message);
       toast("Deleted Successfully");
+      //@ts-expect-error type not define
       setAllJobs((prev) => {
-        const filteredArray = prev.filter((e) => e.id !== postId);
+        const filteredArray = prev.filter(
+          (e: ApprovedJobLisitingType) => e.id !== postId,
+        );
         return filteredArray;
       });
     } catch (error) {

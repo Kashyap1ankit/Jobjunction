@@ -1,18 +1,11 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { redirect, usePathname } from "next/navigation";
-import { useEffect } from "react";
-
-export default function UserProfilePage({
+export default async function UserProfilePage({
   params,
 }: {
-  params: { userId: string };
+  params: Promise<{ userId: string }>;
 }) {
-  const pathname = usePathname();
+  const { userId } = await params;
 
-  useEffect(() => {
-    if (pathname === `/user/${params.userId}`)
-      redirect(`/user/${params.userId}/profile`);
-  });
-  return <div className="text-white"> You entered wrong page</div>;
+  redirect(`/user/${userId}/profile`);
 }

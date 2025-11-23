@@ -1,18 +1,18 @@
 "use client";
 
-import { isProfileVisitorUser } from "@/store/store";
+import { useIsProfileVisitorUser } from "@/store/store";
 import { useSession } from "next-auth/react";
-import { useSetRecoilState } from "recoil";
+import { useEffect } from "react";
 
 export function useCheckForVisitor(id: string) {
   const session = useSession();
-  const setIsVisitorUser = useSetRecoilState(isProfileVisitorUser);
+  // const setIsVisitorUser = useSetRecoilState(isProfileVisitorUser);
+  const { setIsVisitorUser } = useIsProfileVisitorUser();
 
-  if (session.data) {
-    if (session.data.user?.id === id) {
-      setIsVisitorUser(true);
-    } else {
-      setIsVisitorUser(false);
-    }
-  }
+  useEffect(() => {
+    if (!session.data) return;
+
+    const isVisitor = session.data.user?.id === id;
+    setIsVisitorUser(isVisitor);
+  }, [session.data, id, setIsVisitorUser]);
 }

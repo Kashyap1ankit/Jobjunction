@@ -36,7 +36,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
       setModalOpen(false);
     } catch (error) {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      setError({
+      (setError({
         status: true,
         message: (error as Error).message,
       }),
@@ -45,7 +45,7 @@ export default function DeleteUserAdminModal({ userId }: { userId: string }) {
             status: false,
             message: "",
           });
-        }, 1500);
+        }, 1500));
     } finally {
       setLoading(false);
     }

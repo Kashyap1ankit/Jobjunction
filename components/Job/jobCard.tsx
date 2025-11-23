@@ -7,8 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { calculateDayDiff } from "@/utils/helpers/calculate-day-difference";
 import Image from "next/image";
-import { useSetRecoilState } from "recoil";
-import { universalActivePostModal } from "@/store/store";
+import { useUniversalActivePostModal } from "@/store/store";
 import { useRouter } from "next/navigation";
 
 export default function JobCard({
@@ -30,9 +29,11 @@ export default function JobCard({
   show = true,
 }: ApprovedJobLisitingType) {
   const [diff, setDiff] = useState(0);
-  const setUniversalActivePostModal = useSetRecoilState(
-    universalActivePostModal,
-  );
+  const { setActiveJobModalId: setUniversalActivePostModal } =
+    useUniversalActivePostModal();
+  // const setUniversalActivePostModal = useSetRecoilState(
+  //   universalActivePostModal,
+  // );
 
   //eslint-disable-next-line
   const [isSmallScreen, setIsSmallScreen] = useState(false);

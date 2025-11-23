@@ -18,9 +18,9 @@ import Link from "next/link";
 import { DeletePostComp } from "@/components/Job/MoreDialog";
 import { Button } from "@/components/ui/button";
 import { PlusIcon } from "lucide-react";
-import { isProfileVisitorUser } from "@/store/store";
-import { useRecoilValue } from "recoil";
+
 import Loader from "@/app/loading";
+import { useIsProfileVisitorUser } from "@/store/store";
 
 export default function PostedJob() {
   const { userId }: { userId: string } = useParams();
@@ -28,7 +28,8 @@ export default function PostedJob() {
   const [errorNoPost, setErrorNoPost] = useState(false);
 
   const [myPostedJobs, setMyPostedJobs] = useState<GetUserPostedJobsType[]>([]);
-  const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  // const isVisitorUser = useRecoilValue(isProfileVisitorUser);
+  const { isVisitorUser } = useIsProfileVisitorUser();
 
   useEffect(() => {
     const getUserPost = async () => {

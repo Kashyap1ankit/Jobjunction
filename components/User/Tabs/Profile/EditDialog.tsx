@@ -11,14 +11,13 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { userProfileUpdateSchema, userProfileUpdateType } from "@/schema/auth";
-import { refetchAtom, universalError } from "@/store/store";
+import { useRefetchAtom, useUniversalError } from "@/store/store";
 import { fraunces } from "@/utils/fonts/font";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PenIcon, X } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaSpinner } from "react-icons/fa";
-import { useSetRecoilState } from "recoil";
 
 export default function EditUserProfileDialog({
   id,
@@ -35,8 +34,10 @@ export default function EditUserProfileDialog({
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [loader, setLoader] = useState(false);
-  const setError = useSetRecoilState(universalError);
-  const setRefetch = useSetRecoilState(refetchAtom);
+  // const setError = useSetRecoilState(universalError);
+  const { setError } = useUniversalError();
+  // const setRefetch = useSetRecoilState(refetchAtom);
+  const { setRefetch } = useRefetchAtom();
 
   const {
     register,
@@ -58,7 +59,7 @@ export default function EditUserProfileDialog({
       );
 
       if (res.status !== 200) throw new Error(res.message);
-
+      //@ts-expect-error no type defined
       setRefetch((prev) => !prev);
     } catch (error) {
       setError({
